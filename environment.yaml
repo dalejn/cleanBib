@@ -1,0 +1,11 @@
+name: cleanBib
+channels:
+  - conda-forge
+dependencies:
+  - python
+  - pip:
+    - nbgitpuller
+    - sphinx-gallery
+    - bibtex
+    - glob
+    - csv
