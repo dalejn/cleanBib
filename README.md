@@ -9,7 +9,7 @@ If you are not using LaTeX, export your bibliography in .bib format using your r
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dalejn/cleanBib/master)
 Start the Binder environment.
 
-Upload your bib file to the Jupyter notebook environment (Upload button top-right).
+Upload your bib file to the Jupyter notebook environment (Upload button top-right). NOTE: after selecting which file to upload, you will need to press the new Upload button that has appeared in the directory interface.
 
 Open cleanBib.ipynb (will open in a new tab/window) and run the code.
 
