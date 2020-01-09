@@ -9,9 +9,9 @@ If you are not using LaTeX, export your bibliography in .bib format using your r
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dalejn/cleanBib/master)
 Start the Binder environment.
 
-Upload your bib file to the Jupyter notebook environment.
+Upload your bib file to the Jupyter notebook environment (Upload button top-right).
 
-Open cleanBib.ipynb. 
+Open cleanBib.ipynb (will open in a new tab/window) and run the code.
 
-Check the output called cleanedBib.csv
+Go to the previous tab showing the Jupyter notebook directory files. Check the output called cleanedBib.csv. If there are missing cells under First Author (FA) or Last Author (LA), then check that your .bib file has names for those entries (common causes for blank cells are 'et al.' or 'and Others'). Formatting errors may also be caused by non-standard characters--those names should be  manually inputted. Remove the current version of the .bib file and upload the corrected version. Run the code in cleanBib.ipynb again until satisfied. 
 
