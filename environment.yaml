@@ -6,6 +6,6 @@ dependencies:
   - pip:
     - nbgitpuller
     - sphinx-gallery
-    - bibtex
+    - pybtex
     - glob
     - csv
