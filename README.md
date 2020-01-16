@@ -8,6 +8,8 @@ See [Dworkin, Linn, Teich, Zurn, Shinohara, Bassett (2020). bioRxiv. doi: https:
 
 For a template diversity statement .pdf and .tex, see the /diversityStatement directory.
 
+## Calculating gender proportions in reference list
+
 ## .bib file
 1. Check that your .bib file only contains references that you have used in your text. If you are using LaTeX, [use the checkcites function](https://github.com/cereda/checkcites)
 
