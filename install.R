@@ -1,1 +1,1 @@
-rjson
+install.packages('rjson')
