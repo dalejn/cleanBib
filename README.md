@@ -1,7 +1,7 @@
 # Instructions
 
 ## .bib file
-1. Check that your .bib file only contains references that you have used in your text. If you are using LaTeX, use the checkcites function: https://github.com/cereda/checkcites
+1. Check that your .bib file only contains references that you have used in your text. If you are using LaTeX, [use the checkcites function](https://github.com/cereda/checkcites)
 
 If you are not using LaTeX, export your bibliography in .bib format using your reference manager of choice (Mendeley, Zotero, EndNote, etc.)
 
