@@ -19,5 +19,5 @@ If you are not using LaTeX, export your bibliography in .bib format using your r
 
 6. Save the output cleanedBib.csv and manually modify as needed. Re-upload modified cleanedBib.csv if needed.
 
-7. Open getReferenceGends.R. On line 14, define the genderAPI_key with your [free gender-api account](https://gender-api.com/). Once registered and logged in, [find your 18-character API key at the bottom of this page](https://gender-api.com/en/account/overview#my-api-key)
+7. Open getReferenceGends.ipynb. On line 14, define the genderAPI_key with your [free gender-api account](https://gender-api.com/). Once registered and logged in, [find your 18-character API key at the bottom of this page](https://gender-api.com/en/account/overview#my-api-key)
 
