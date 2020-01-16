@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2018)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: diversityStatement.aux
+The style file: ieeetr.bst
+Database file #1: ./bibfile.bib
+Warning--empty institution in YannikThiemKrisF.SealeyAmyE.FerrerAdrielM.Trott2018
+You've used 6 entries,
+            1876 wiz_defined-function locations,
+            518 strings with 4873 characters,
+and the built_in function-call counts, 1712 in all, are:
+= -- 165
+> -- 84
+< -- 0
++ -- 30
+- -- 24
+* -- 135
+:= -- 260
+add.period$ -- 6
+call.type$ -- 6
+change.case$ -- 7
+chr.to.int$ -- 0
+cite$ -- 7
+duplicate$ -- 83
+empty$ -- 142
+format.name$ -- 24
+if$ -- 404
+int.to.chr$ -- 0
+int.to.str$ -- 6
+missing$ -- 5
+newline$ -- 21
+num.names$ -- 6
+pop$ -- 12
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 57
+stack$ -- 0
+substring$ -- 104
+swap$ -- 37
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 1
+while$ -- 16
+width$ -- 7
+write$ -- 62
+(There was 1 warning)
