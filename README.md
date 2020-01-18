@@ -39,7 +39,7 @@ If you are not using LaTeX, export your bibliography in .bib format using your r
 
 9. Run code in the first box/section. This box contains the code that will use your limited credits/queries. 
 
-10. Run code in the second box/section. The output will provide a frequency count for male-male, male-female, female-male, and female-female. Your reference proportions will be displayed next to expected proportions in the field of neuroscience. Proportion difference relative to expected proportions will be printed. Runinng just this box will not use your limited credits/queries. Optionally, load your manually modified Authors.csv by uncommenting #names<-read.csv('Authors.csv')
+10. Run code in the second box/section. The output will provide a frequency count for male-male, male-female, female-male, and female-female. Your reference proportions will be displayed next to expected proportions in the field of neuroscience. Proportion difference relative to expected proportions will be printed. Runinng just this box will not use your limited credits/queries. Optionally, load your manually modified Authors.csv by uncommenting #names<-read.csv('Authors.csv'). For example, modify Authors.csv to remove self-citations (defined as first or last authors in your bibliography entries who are co-authors of your paper).
 
 # References
 
