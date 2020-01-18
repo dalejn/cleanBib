@@ -2,7 +2,7 @@
 
 ## Diversity statement
 
-Recent work in neuroscience and other fields has identified a bias in citation practices such that papers from women and other minorities are under-cited relative to the number of such papers in the field [1, 2, 3, 4, 5, 6]. Here we sought to proactively consider choosing references that reflect the diversity of the field in thought, form of contribution, gender, and other factors. We used automatic classification of gender based on the first names of the first and last authors [1], with possible combinations including male/male, male/female, female/male, and female/female. Excluding self-citations to the senior authors of our current paper, the references contain X% male/male, Y % male/female, Z% female/male, A% female/female, and B% unknown categorization. We look forward to future work that could help us to better understand how to support equitable practices in science.
+Recent work in neuroscience and other fields has identified a bias in citation practices such that papers from women and other minorities are under-cited relative to the number of such papers in the field [1, 2, 3, 4, 5, 6]. Here we sought to proactively consider choosing references that reflect the diversity of the field in thought, form of contribution, gender, and other factors. We used automatic classification of gender based on the first names of the first and last authors [1], with possible combinations including male/male, male/female, female/male, and female/female. Excluding self-citations to the first and last authors of our current paper, the references contain X% male/male, Y % male/female, Z% female/male, A% female/female, and B% unknown categorization. We look forward to future work that could help us to better understand how to support equitable practices in science.
 
 See [J. D. Dworkin, K. A. Linn, E. G. Teich, P. Zurn, R. T. Shinohara, and D. S. Bassett (2020). bioRxiv. doi: https://doi.org/10.1101/2020.01.03.894378](https://www.biorxiv.org/content/10.1101/2020.01.03.894378v1.full.pdf)
 
@@ -39,7 +39,7 @@ If you are not using LaTeX, export your bibliography in .bib format using your r
 
 9. Run code in the first box/section. NOTE: this box contains the code that will use your limited credits/queries. 
 
-10. Run code in the second box/section. The output will provide a frequency count for male-male, male-female, female-male, and female-female. Your reference proportions will be displayed next to expected proportions in the field of neuroscience. Proportion difference relative to expected proportions will be printed. NOTE: running just this box will not use your limited credits/queries. Optionally, load your manually modified Authors.csv by uncommenting #names<-read.csv('Authors.csv'). For example, modify Authors.csv to remove self-citations (defined as first or last authors in your bibliography entries who are co-authors of your paper).
+10. Run code in the second box/section. The output will provide a frequency count for male-male, male-female, female-male, and female-female. Your reference proportions will be displayed next to expected proportions in the field of neuroscience. Proportion difference relative to expected proportions will be printed. Modify Authors.csv to remove self-citations (defined as bibliography entries with co-authors who are first or last authors of your paper). Load your manually modified Authors.csv by uncommenting #names<-read.csv('Authors.csv') and rerun the second box/section. NOTE: running just this box will not use your limited credits/queries.
 
 # References
 
