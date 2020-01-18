@@ -37,9 +37,9 @@ If you are not using LaTeX, export your bibliography in .bib format using your r
 
 8. On line 14, define the genderAPI_key with your [free gender-api account](https://gender-api.com/). Once registered and logged in, [find your 18-character API key at the bottom of this page](https://gender-api.com/en/account/overview#my-api-key). NOTE: your free account has 500 queries per month. Re-running all code repeatedly will repeatedly use these credits. 
 
-9. Run code in the first box/section. This box contains the code that will use your limited credits/queries. 
+9. Run code in the first box/section. NOTE: this box contains the code that will use your limited credits/queries. 
 
-10. Run code in the second box/section. The output will provide a frequency count for male-male, male-female, female-male, and female-female. Your reference proportions will be displayed next to expected proportions in the field of neuroscience. Proportion difference relative to expected proportions will be printed. Runinng just this box will not use your limited credits/queries. Optionally, load your manually modified Authors.csv by uncommenting #names<-read.csv('Authors.csv'). For example, modify Authors.csv to remove self-citations (defined as first or last authors in your bibliography entries who are co-authors of your paper).
+10. Run code in the second box/section. The output will provide a frequency count for male-male, male-female, female-male, and female-female. Your reference proportions will be displayed next to expected proportions in the field of neuroscience. Proportion difference relative to expected proportions will be printed. NOTE: running just this box will not use your limited credits/queries. Optionally, load your manually modified Authors.csv by uncommenting #names<-read.csv('Authors.csv'). For example, modify Authors.csv to remove self-citations (defined as first or last authors in your bibliography entries who are co-authors of your paper).
 
 # References
 
