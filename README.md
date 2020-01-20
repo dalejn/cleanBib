@@ -38,11 +38,11 @@ OPTIONALLY: replace the instances of 'LastName, FirstName' in lines 5 and 6 (vie
 
 NOTE: if your author lists are not complete (e.g. your bibliography entry truncates the author list with 'et al.' or 'and Others', then you will need to manually edit the bibliography entry to include all author names). Also note that co-first or co-senior authors will not be accounted for by the code.
 
-5. Go to the previous tab showing the Jupyter notebook directory files. Check the output called cleanedBib.csv. If there are missing cells under First Author (FA) or Last Author (LA), then check that your .bib file has names for those entries (common causes for blank cells are 'et al.' or 'and Others'). Formatting errors may also be caused by non-standard characters--those names should be manually inputted. Remove the current version of the .bib file and upload the corrected version. Run the code in cleanBib.ipynb again until satisfied with the output. 
+5. Go to the previous tab showing the Jupyter notebook directory files. Check the output called cleanedBib.csv. If there are missing cells under First Author (FA) or Last Author (LA), then check that your .bib file has names for those entries (common causes for blank cells are 'et al.' or 'and Others'). Formatting errors may also be caused by non-standard characters--those names should be manually inputted. For convenient searching of full bibliographies and author names, article titles have been oututted in the column "Title" of cleanedBib.csv. Remove the current version of the .bib file and upload the corrected version. Run the code in cleanBib.ipynb again until satisfied with the output. 
 
 6. Save the output cleanedBib.csv.
 
-OPTIONALLY: Delete rows in cleanbedBib.csv that indicate self-citations (download and re-upload modified cleanedBib.csv needed).
+OPTIONALLY: Delete rows in cleanbedBib.csv that indicate self-citations (download and re-upload modified cleanedBib.csv needed). In the column 'SelfCite', 'Y' indicates presence self-citation, 'N' indicates absence of self-citation, and 'NA' indicates that first and last author names of your paper were not provided.
 
 7. Open getReferenceGends.ipynb. In the new window's menu bar, click on Kernel > Change kernel > R
 
