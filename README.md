@@ -4,9 +4,23 @@
 
 ## Diversity statement template
 
+For `.pdf` and `.tex` templates of this statement, see the `/diversityStatement` directory.
+
+A `.bib` file containing the references used in the statement can be found in `/diversityStatement/bibfile.bib`
+
 > Recent work in neuroscience and other fields has identified a bias in citation practices such that papers from women and other minorities are under-cited relative to the number of such papers in the field [1, 2, 3, 4, 5, 6]. Here we sought to proactively consider choosing references that reflect the diversity of the field in thought, form of contribution, gender, and other factors. We used automatic classification of gender based on the first names of the first and last authors [1], with possible combinations including male/male, male/female, female/male, and female/female. Excluding self-citations to the first and last authors of our current paper, the references contain `A`% male/male, `B`% male/female, `C`% female/male, `D`% female/female, and `E`% unknown categorization. We look forward to future work that could help us to better understand how to support equitable practices in science.
 
-For `.pdf` and `.tex` templates of this statement, see the `/diversityStatement` directory.
+[1] J. D. Dworkin, K. A. Linn, E. G. Teich, P. Zurn, R. T. Shinohara, and D. S. Bassett, “The extent and drivers of gender imbalance in neuroscience reference lists,” bioRxiv, 2020.
+
+[2] D. Maliniak, R. Powers, and B. F. Walter, “The gender citation gap in international relations,” International Organization, vol. 67, no. 4, pp. 889– 922, 2013.
+
+[3] N. Caplar, S. Tacchella, and S. Birrer, “Quantitative evaluation of gender bias in astronomical publications from citation counts,” Nature Astronomy, vol. 1, no. 6, p. 0141, 2017.
+
+[4] P. Chakravartty, R. Kuo, V. Grubbs, and C. McIlwain, “# communicationsowhite,” Journal of Communication, vol. 68, no. 2, pp. 254–266, 2018.
+
+[5] Y. Thiem, K. F. Sealey, A. E. Ferrer, A. M. Trott, and R. Kennison, “Just Ideas? The Status and Future of Publication Ethics in Philosophy: A White Paper,” tech. rep., 2018.
+
+[6] M. L. Dion, J. L. Sumner, and S. M. Mitchell, “Gendered citation patterns across political science and social science methodology fields,” Political Analysis, vol. 26, no. 3, pp. 312–327, 2018.
 
 ## Background and Resources
 
@@ -79,22 +93,6 @@ The only required file you need is your bibliography in .bib format.
 * I have an idea to advance this project, suggestions about how to improve the notebook, and/or found a bug. Can I contribute?
   * Yes, please open an `issue` or `pull request`. We welcome feedback on any pain points in running this code notebook.
 
-# References
-
-`.bib` file containing these references can be found in `/diversityStatement/bibfile.bib`
-
-[1] J. D. Dworkin, K. A. Linn, E. G. Teich, P. Zurn, R. T. Shinohara, and D. S. Bassett, “The extent and drivers of gender imbalance in neuroscience reference lists,” bioRxiv, 2020.
-
-[2] D. Maliniak, R. Powers, and B. F. Walter, “The gender citation gap in international relations,” International Organization, vol. 67, no. 4, pp. 889– 922, 2013.
-
-[3] N. Caplar, S. Tacchella, and S. Birrer, “Quantitative evaluation of gender bias in astronomical publications from citation counts,” Nature Astronomy, vol. 1, no. 6, p. 0141, 2017.
-
-[4] P. Chakravartty, R. Kuo, V. Grubbs, and C. McIlwain, “# communicationsowhite,” Journal of Communication, vol. 68, no. 2, pp. 254–266, 2018.
-
-[5] Y. Thiem, K. F. Sealey, A. E. Ferrer, A. M. Trott, and R. Kennison, “Just Ideas? The Status and Future of Publication Ethics in Philosophy: A White Paper,” tech. rep., 2018.
-
-[6] M. L. Dion, J. L. Sumner, and S. M. Mitchell, “Gendered citation patterns across political science and social science methodology fields,” Political Analysis, vol. 26, no. 3, pp. 312–327, 2018.
-
 # Contributors
 (alphabetical)
 
@@ -105,6 +103,6 @@ The only required file you need is your bibliography in .bib format.
 
 # Changelog
 
-2/11/2020 - added repository photo for social media, move instructions into Jupyter notebook
+2/11/2020 - added repository photo for social media, move instructions into Jupyter notebook, added code to automatically remove unused .bib entries instead of needing user to manually remove them.
 
 1/19/2020 - added code to output a column with article titles to make it easier to manually search which bib entries need manual editing. Also added code to output another column that optionally checks for self-citations.
