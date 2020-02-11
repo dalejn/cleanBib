@@ -1,1 +1,5 @@
 pybtex==0.22.2
+numpy
+bibtexparser==1.0.1
+subprocess
+pandas
