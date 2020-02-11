@@ -12,9 +12,9 @@ For `.pdf` and `.tex` templates of this statement, see the `/diversityStatement`
 
 Motivated from work by [J. D. Dworkin, K. A. Linn, E. G. Teich, P. Zurn, R. T. Shinohara, and D. S. Bassett (2020). bioRxiv. doi: https://doi.org/10.1101/2020.01.03.894378](https://www.biorxiv.org/content/10.1101/2020.01.03.894378v1.full.pdf)
 
-[Gender base-rates of neuroscience](https://biaswatchneuro.com/base-rates/neuroscience-base-rates/), based on a poll of SfN attendees from 2014-2018. Categorized by subject area.
+* [Gender base-rates of neuroscience](https://biaswatchneuro.com/base-rates/neuroscience-base-rates/), based on a poll of SfN attendees from 2014-2018. Categorized by subject area.
 
-A [list highlighting female neuroscientists](https://anneslist.net/). Categorized by subject area and seniority. 
+* A [list highlighting female neuroscientists](https://anneslist.net/). Categorized by subject area and seniority. 
 
 # Instructions to calculate gender proportions
 
@@ -64,9 +64,24 @@ The only required file you need is your bibliography in .bib format.
 
     NOTE: running just this box will not use your limited credits/queries.
 
+# FAQ
+
+* Why do I receive an error when running the code?.
+  * Please open an `issue` and attach the error pasted into a `.txt` or a screenshot of the error. We will try to help resolve it. Note: The most common errors are due to misformatted .bib files. 
+* Will this method work on non-Western names?
+  * Yes, the [Gender API supports 177 countries](https://gender-api.com/en/frequently-asked-questions?gclid=Cj0KCQiAmZDxBRDIARIsABnkbYTy9MHmGoR2uBhxEKANbT9B9EFVOSiRzbGeQi7nUn6ODH83s6-RZKwaAjpZEALw_wcB#which-countries-are-supported). 
+* Are self-citations included?
+  * We do not include self-citations by default. We define self-citations as those including your first or last author as a co-author.
+* What about gender-neutral names?
+  * We exclude names that cannot be classified with >70% confidence. These are reported in the `Diversity Statement` as "unknown." 
+* What is an `.aux` file?
+  * The `.aux` file is generated when you compile the `.tex` file to build your manuscript. It is linked to the `.bib` file(s) and records the citations used in the `.tex` file.
+* I have an idea to advance this project, suggestions about how to improve the notebook, and/or found a bug. Can I contribute?
+  * Yes, please open an `issue` or `pull request`. We welcome feedback on any pain points in running this code notebook.
+
 # References
 
-.bib file containing these references can be found in /diversityStatement/bibfile.bib
+`.bib` file containing these references can be found in `/diversityStatement/bibfile.bib`
 
 [1] J. D. Dworkin, K. A. Linn, E. G. Teich, P. Zurn, R. T. Shinohara, and D. S. Bassett, “The extent and drivers of gender imbalance in neuroscience reference lists,” bioRxiv, 2020.
 
@@ -80,6 +95,16 @@ The only required file you need is your bibliography in .bib format.
 
 [6] M. L. Dion, J. L. Sumner, and S. M. Mitchell, “Gendered citation patterns across political science and social science methodology fields,” Political Analysis, vol. 26, no. 3, pp. 312–327, 2018.
 
+# Contributors
+(alphabetical)
+
+* Eli Cornblath
+* Jordan Dworkin
+* Ann Sizemore Blevins
+* Dale Zhou
+
 # Changelog
 
-1/19/2020 - added code to output a column with article titles to make it easier to manually search which bib entries need manual editing. Also added code to output another column that optionally checks for self-citations. 
+2/11/2020 - added repository photo for social media, move instructions into Jupyter notebook
+
+1/19/2020 - added code to output a column with article titles to make it easier to manually search which bib entries need manual editing. Also added code to output another column that optionally checks for self-citations.
