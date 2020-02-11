@@ -1,3 +1,5 @@
+![Network courtesy Ann Sizemore Blevins](repo_pic.png)
+
 # Statement and Resources
 
 ## Diversity statement template
