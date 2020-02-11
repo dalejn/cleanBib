@@ -9,3 +9,9 @@ dependencies:
     - pybtex
     - glob
     - csv
+    - numpy
+    - bibtexparser
+    - subprocess
+    - os
+    - pandas
+    - re
