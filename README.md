@@ -1,16 +1,20 @@
-# Statement and Resources
+![Network courtesy Ann Sizemore Blevins](repo_pic.png)
+
+# Diversity Statement and Resources
 
 ## Diversity statement template
 
-> Recent work in neuroscience and other fields has identified a bias in citation practices such that papers from women and other minorities are under-cited relative to the number of such papers in the field [1, 2, 3, 4, 5, 6]. Here we sought to proactively consider choosing references that reflect the diversity of the field in thought, form of contribution, gender, and other factors. We used automatic classification of gender based on the first names of the first and last authors [1], with possible combinations including male/male, male/female, female/male, and female/female. Excluding self-citations to the first and last authors of our current paper, the references contain X% male/male, Y % male/female, Z% female/male, A% female/female, and B% unknown categorization. We look forward to future work that could help us to better understand how to support equitable practices in science.
+> Recent work in neuroscience and other fields has identified a bias in citation practices such that papers from women and other minorities are under-cited relative to the number of such papers in the field [1, 2, 3, 4, 5, 6]. Here we sought to proactively consider choosing references that reflect the diversity of the field in thought, form of contribution, gender, and other factors. We used automatic classification of gender based on the first names of the first and last authors [1], with possible combinations including male/male, male/female, female/male, and female/female. Excluding self-citations to the first and last authors of our current paper, the references contain `A`% male/male, `B`% male/female, `C`% female/male, `D`% female/female, and `E`% unknown categorization. We look forward to future work that could help us to better understand how to support equitable practices in science.
 
-See [J. D. Dworkin, K. A. Linn, E. G. Teich, P. Zurn, R. T. Shinohara, and D. S. Bassett (2020). bioRxiv. doi: https://doi.org/10.1101/2020.01.03.894378](https://www.biorxiv.org/content/10.1101/2020.01.03.894378v1.full.pdf)
+For `.pdf` and `.tex` templates of this statement, see the `/diversityStatement` directory.
 
-## Additional resources
+## Background and Resources
 
-For gender base-rates of neuroscience, see this [poll of SfN attendees from 2014-2018](https://biaswatchneuro.com/base-rates/neuroscience-base-rates/). Data for several subfields are available, such as audition, brain stimulation, cognitive neuro, computational neuro, computational psychiatry, neurally-inspired ML, pain, and reinforcement learning. 
+Motivated from work by [J. D. Dworkin, K. A. Linn, E. G. Teich, P. Zurn, R. T. Shinohara, and D. S. Bassett (2020). bioRxiv. doi: https://doi.org/10.1101/2020.01.03.894378](https://www.biorxiv.org/content/10.1101/2020.01.03.894378v1.full.pdf)
 
-For a template diversity statement .pdf and .tex, see the /diversityStatement directory.
+[Gender base-rates of neuroscience](https://biaswatchneuro.com/base-rates/neuroscience-base-rates/), based on a poll of SfN attendees from 2014-2018. Categorized by subject area.
+
+A [list highlighting female neuroscientists](https://anneslist.net/). Categorized by subject area and seniority. 
 
 # Instructions to calculate gender proportions
 
