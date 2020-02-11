@@ -1,6 +1,6 @@
 ![Network courtesy Ann Sizemore Blevins](repo_pic.png)
 
-# Statement and Resources
+# Diversity Statement and Resources
 
 ## Diversity statement template
 
@@ -8,11 +8,11 @@
 
 See [J. D. Dworkin, K. A. Linn, E. G. Teich, P. Zurn, R. T. Shinohara, and D. S. Bassett (2020). bioRxiv. doi: https://doi.org/10.1101/2020.01.03.894378](https://www.biorxiv.org/content/10.1101/2020.01.03.894378v1.full.pdf)
 
+For `.pdf` and `.tex` templates of this statement, see the `/diversityStatement` directory.
+
 ## Additional resources
 
 For gender base-rates of neuroscience, see this [poll of SfN attendees from 2014-2018](https://biaswatchneuro.com/base-rates/neuroscience-base-rates/). Data for several subfields are available, such as audition, brain stimulation, cognitive neuro, computational neuro, computational psychiatry, neurally-inspired ML, pain, and reinforcement learning. 
-
-For a template diversity statement .pdf and .tex, see the /diversityStatement directory.
 
 # Instructions to calculate gender proportions
 
