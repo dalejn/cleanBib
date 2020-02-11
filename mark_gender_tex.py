@@ -9,7 +9,7 @@ import pandas as pd
 homedir = '/Users/Eli/Dropbox/Cornblath_Bassett_Projects/NeuroPathCluster/'
 tex_file = 'neuropathcluster_v5_blue'
 
-cite_gender = pd.read_csv('Authors.csv') # output of getReferenceGends.ipynb
+cite_gender = pd.read_csv(homedir+'Authors.csv') # output of getReferenceGends.ipynb
 cite_gender.index = cite_gender.CitationKey
 cite_gender['Color'] = '' # what color to make each gender category
 colors = {'MM':'red','MW':'blue','WW':'green','WM':'magenta','UU':'black',
@@ -33,5 +33,5 @@ with open(homedir+tex_file+'_gendercolor.tex','w') as fout:
 		fout.write(s)
 		# place color key after abstract
 		if '\\section*{Introduction}\n' in s:			
-			l = ['\t\\textcolor{' + colors[k] + '}{'+k+'}' for k in colors.keys()]
-			fout.write(','.join(l)+'\n')
+			l = ['\\textcolor{' + colors[k] + '}{'+k+'}' for k in colors.keys()]
+			fout.write('\tKey: '+ ', '.join(l)+'.\n')
