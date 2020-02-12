@@ -57,7 +57,7 @@ A `.bib` file containing the references used in the statement can be found in `/
 * What about gender-neutral names?
   * We exclude names that cannot be classified with >70% confidence. These are reported in the `Diversity Statement` as "unknown." 
 * What is an `.aux` file?
-  * The `.aux` file is generated when you compile the `.tex` file to build your manuscript. It is linked to the `.bib` file(s) and records the citations used in the `.tex` file.
+  * The `.aux` file is generated when you compile the `.tex` file to build your manuscript. It is linked to the `.bib` file(s) used to populate your manuscript's reference list and records the citations used.
 * I have an idea to advance this project, suggestions about how to improve the notebook, and/or found a bug. Can I contribute?
   * Yes, please open an `issue` or `pull request`. We welcome feedback on any pain points in running this code notebook.
 
@@ -92,6 +92,6 @@ A `.bib` file containing the references used in the statement can be found in `/
 
 # Changelog
 
-2/11/2020 - added repository photo for social media, move instructions into Jupyter notebook, added code to automatically remove unused .bib entries instead of needing user to manually remove them, made removing self-citations default, added FAQ, added screenshots to instructions
+2/11/2020 - added repository photo for social media, move instructions into Jupyter notebook, added code to automatically remove unused .bib entries instead of needing user to manually remove them, made removing self-citations default, added FAQ, added screenshots to instructions, remove entries with duplicate IDs
 
 1/19/2020 - added code to output a column with article titles to make it easier to manually search which bib entries need manual editing. Also added code to output another column that optionally checks for self-citations.
