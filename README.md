@@ -16,7 +16,7 @@ A `.bib` file containing the references used in the statement can be found in `/
 
 ## Binder
 
-1. Launch the Binder environment. This may take from 1-10 minutes. Please refresh the page if the Binder is still not loading.
+1. Launch the Binder environment. Please refresh the page if the Binder does not load after 5-10 mins.
 
     [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dalejn/cleanBib/master)
 
@@ -92,6 +92,6 @@ A `.bib` file containing the references used in the statement can be found in `/
 
 # Changelog
 
-2/11/2020 - added repository photo for social media, move instructions into Jupyter notebook, added code to automatically remove unused .bib entries instead of needing user to manually remove them, made removing self-citations default, added FAQ
+2/11/2020 - added repository photo for social media, move instructions into Jupyter notebook, added code to automatically remove unused .bib entries instead of needing user to manually remove them, made removing self-citations default, added FAQ, added screenshots to instructions
 
 1/19/2020 - added code to output a column with article titles to make it easier to manually search which bib entries need manual editing. Also added code to output another column that optionally checks for self-citations.
