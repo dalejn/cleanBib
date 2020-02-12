@@ -49,7 +49,7 @@ A `.bib` file containing the references used in the statement can be found in `/
 # FAQ
 
 * Why do I receive an error when running the code?.
-  * Please open an `issue` and attach the error pasted into a `.txt` or a screenshot of the error. We will try to help resolve it. Note: The most common errors are due to misformatted .bib files.
+  * The most common errors are due to misformatted .bib files. Errors will usually provide an indication of the line or type of problem in the .bib file. If you cannot resolve an error, please open an `issue` and attach the error pasted into a `.txt` or a screenshot of the error. We will try to help resolve it.
 * Will this method work on non-Western names?
   * Yes, the [Gender API supports 177 countries](https://gender-api.com/en/frequently-asked-questions?gclid=Cj0KCQiAmZDxBRDIARIsABnkbYTy9MHmGoR2uBhxEKANbT9B9EFVOSiRzbGeQi7nUn6ODH83s6-RZKwaAjpZEALw_wcB#which-countries-are-supported). 
 * Are self-citations included?
@@ -59,9 +59,9 @@ A `.bib` file containing the references used in the statement can be found in `/
 * What is an `.aux` file?
   * The `.aux` file is generated when you compile the `.tex` file to build your manuscript. It is linked to the `.bib` file(s) used to populate your manuscript's reference list and records the citations used.
 * I have an idea to advance this project, suggestions about how to improve the notebook, and/or found a bug. Can I contribute?
-  * Yes, please open an `issue` or `pull request`. We welcome feedback on any pain points in running this code notebook.
+  * Yes, please open an `issue` or `pull request`. We welcome feedback on any pain points in running this code notebook. If you contribute, please modify the `README.md` to credit yourself in the `Contributors` section in the `pull request`. 
 
-# Resources
+# Other Resources
 
 * [Gender base-rates of neuroscience](https://biaswatchneuro.com/base-rates/neuroscience-base-rates/), based on a poll of SfN attendees from 2014-2018. Categorized by subject area.
 
