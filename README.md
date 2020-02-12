@@ -84,9 +84,10 @@ A `.bib` file containing the references used in the statement can be found in `/
 # Contributors
 (alphabetical)
 
+* Ann Sizemore Blevins
 * Eli Cornblath
 * Jordan Dworkin
-* Ann Sizemore Blevins
+* Erin Teich
 * Dale Zhou
 
 # Changelog
