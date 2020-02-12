@@ -1,6 +1,6 @@
-![Network courtesy Ann Sizemore Blevins](images/repo_pic.png)
+![Network courtesy Ann Sizemore Blevins](img/repo_pic.png)
 
-# Diversity Statement and Resources
+# Diversity Statement and Code Notebook
 
 Motivated from work by [J. D. Dworkin, K. A. Linn, E. G. Teich, P. Zurn, R. T. Shinohara, and D. S. Bassett (2020). bioRxiv. doi: https://doi.org/10.1101/2020.01.03.894378](https://www.biorxiv.org/content/10.1101/2020.01.03.894378v1.full.pdf)
 
@@ -12,25 +12,15 @@ A `.bib` file containing the references used in the statement can be found in `/
 
 > Recent work in neuroscience and other fields has identified a bias in citation practices such that papers from women and other minorities are under-cited relative to the number of such papers in the field [1, 2, 3, 4, 5, 6]. Here we sought to proactively consider choosing references that reflect the diversity of the field in thought, form of contribution, gender, and other factors. We used automatic classification of gender based on the first names of the first and last authors [1], with possible combinations including male/male, male/female, female/male, and female/female. Excluding self-citations to the first and last authors of our current paper, the references contain `A`% male/male, `B`% male/female, `C`% female/male, `D`% female/female, and `E`% unknown categorization. We look forward to future work that could help us to better understand how to support equitable practices in science.
 
-# Instructions to calculate gender proportions
-
-## .bib file
-
-
+# Instructions
 
 ## Binder
 
-2. Start the Binder environment.
+1. Launch the Binder environment. This may take from 1-10 minutes. Please refresh the page if the Binder is still not loading.
 
     [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dalejn/cleanBib/master)
 
-3. Upload your bib file to the Jupyter notebook environment (Upload button top-right). 
-
-    NOTE: after selecting which file to upload, you will need to press the new Upload button that has appeared in the directory interface.
-
-4. Open cleanBib.ipynb (will open in a new tab/window) and run the code. 
-
-    OPTIONALLY: replace the instances of 'LastName, FirstName' in lines 5 and 6 (view line numbers by typing Ctrl+M and then L) strings with the names of your first author and last author. The code will check for self-citations in the provided author lists. 
+2. Open the notebook `cleanBib.ipynb`. Follow the instructions above each code block and run them one by one.
 
     NOTE: if your author lists are not complete (e.g. your bibliography entry truncates the author list with 'et al.' or 'and Others', then you will need to manually edit the bibliography entry to include all author names). Also note that co-first or co-senior authors will not be accounted for by the code.
 
