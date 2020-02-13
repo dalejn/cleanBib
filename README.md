@@ -54,6 +54,8 @@ A `.bib` file containing the references used in the statement can be found in `/
   * Yes, the [Gender API supports 177 countries](https://gender-api.com/en/frequently-asked-questions?gclid=Cj0KCQiAmZDxBRDIARIsABnkbYTy9MHmGoR2uBhxEKANbT9B9EFVOSiRzbGeQi7nUn6ODH83s6-RZKwaAjpZEALw_wcB#which-countries-are-supported). 
 * Are self-citations included?
   * We do not include self-citations by default. We define self-citations as those including your first or last author as a co-author.
+* What if a reference has only 1 author?
+  * We count that author as both the first and last author.
 * What about gender-neutral names?
   * We exclude names that cannot be classified with >70% confidence. These are reported in the `Diversity Statement` as "unknown." 
 * What is an `.aux` file?
@@ -92,6 +94,6 @@ A `.bib` file containing the references used in the statement can be found in `/
 
 # Changelog
 
-2/11/2020 - added repository photo for social media, move instructions into Jupyter notebook, added code to automatically remove unused .bib entries instead of needing user to manually remove them, made removing self-citations default, added FAQ, added screenshots to instructions, remove entries with duplicate IDs
+2/13/2020 - added repository photo for social media, move instructions into Jupyter notebook, added code to automatically remove unused .bib entries instead of needing user to manually remove them, made removing self-citations default, added FAQ, added screenshots to instructions, added error message to request users remove entries with duplicate IDs
 
 1/19/2020 - added code to output a column with article titles to make it easier to manually search which bib entries need manual editing. Also added code to output another column that optionally checks for self-citations.
