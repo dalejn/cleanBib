@@ -35,7 +35,7 @@ A `.bib` file containing the references used in the statement can be found in `/
 * Why do I receive an error when running the code?.
   * The most common errors are due to misformatted .bib files. Errors will usually provide an indication of the line or type of problem in the .bib file. If you cannot resolve an error, please open an `issue` and attach the error pasted into a `.txt` or a screenshot of the error. We will try to help resolve it.
 * Will this method work on non-Western names?
-  * Yes, the [Gender API supports 177 countries](https://gender-api.com/en/frequently-asked-questions?gclid=Cj0KCQiAmZDxBRDIARIsABnkbYTy9MHmGoR2uBhxEKANbT9B9EFVOSiRzbGeQi7nUn6ODH83s6-RZKwaAjpZEALw_wcB#which-countries-are-supported). 
+  * Yes, the [Gender API supports 177 countries](https://gender-api.com/en/frequently-asked-questions?gclid=Cj0KCQiAmZDxBRDIARIsABnkbYTy9MHmGoR2uBhxEKANbT9B9EFVOSiRzbGeQi7nUn6ODH83s6-RZKwaAjpZEALw_wcB#which-countries-are-supported) but will classify genders with varying confidence. 
 * Are self-citations included?
   * We do not include self-citations by default. We define self-citations as those including your first or last author as a co-author.
 * What if a reference has only 1 author?
