@@ -14,15 +14,21 @@ A `.bib` file containing the references used in the statement can be found in `/
 
 # Instructions
 
-## Binder
-
 1. Launch the Binder environment. Please refresh the page if the Binder does not load after 5-10 mins.
 
     [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dalejn/cleanBib/master)
 
-2. Open the notebook `cleanBib.ipynb`. Follow the instructions above each code block and run them one by one.
+2. Open the notebook `cleanBib.ipynb`. Follow the instructions above each code block.
 
-    NOTE: if your author lists are not complete (e.g. your bibliography entry truncates the author list with 'et al.' or 'and Others', then you will need to manually edit the bibliography entry to include all author names). Also note that co-first or co-senior authors will not be accounted for by the code.
+## Input/output
+
+| Input                 | Output                                                                                                                        |
+|-----------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| **`.bib` file(s)**    | `cleanBib.csv`: table of author first names, titles, and .bib keys                                                            |
+| `.aux` file (OPTIONAL)| `Authors.csv`: table of author first names, estimated gender classification, and confidence                                   |
+| `.tex` file (OPTIONAL)| `yourTexFile_gendercolor.tex`: your `.tex` file modified to compile .pdf with in-line citations colored-coded by gender pairs |
+
+![Color-coded .tex file, Eli Cornblath](img/texColors.png)
 
 # FAQ
 
@@ -72,6 +78,21 @@ A `.bib` file containing the references used in the statement can be found in `/
 
 # Changelog
 
-2/14/2020 - streamlined instructions, added repository photo for social media, move instructions into Jupyter notebook, added code to automatically remove unused .bib entries instead of needing user to manually remove them, made removing self-citations default, added FAQ, added screenshots to instructions, added error message to request users remove entries with duplicate IDs, throw error if entries are incomplete or blank, handle optional middle initial correctly for self-citations, added SOS notebook support to put all code and instructions into 1 notebook so users don't have to manually change kernel. 
+* __2/14/2020__
+  * streamlined instructions
+  * added repository photo for social media (thanks, Ann!)
+  * move instructions into Jupyter notebook
+  * added code to automatically remove unused .bib entries instead of needing user to manually remove them (thanks, Eli and Erin!)
+  * made removing self-citations default
+  * added FAQ
+  * added screenshots to instructions
+  * added error message to request users remove entries with duplicate IDs. Not automated in case duplicate entry key refers to different references.
+  * throw error if entries are incomplete or blank
+  * fixed handling of optional middle initial correctly for self-citations
+  * added SOS notebook support to put all code and instructions into 1 notebook so users don't have to manually change kernel
+  * added optional entry for co-first or co-last authors
+  * added optional code block to color-code `.tex` file's citation keys by gender pair classifications
 
-1/19/2020 - added code to output a column with article titles to make it easier to manually search which bib entries need manual editing. Also added code to output another column that optionally checks for self-citations.
+* __1/19/2020__ 
+  * added code to output a column with article titles to make it easier to manually search which bib entries need manual editing
+  * added code to output another column that optionally checks for self-citations
