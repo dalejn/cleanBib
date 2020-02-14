@@ -24,7 +24,7 @@ A `.bib` file containing the references used in the statement can be found in `/
 
 | Input                 | Output                                                                                                                        |
 |-----------------------|-------------------------------------------------------------------------------------------------------------------------------|
-| **`.bib` file(s)**    | `cleanBib.csv`: table of author first names, titles, and .bib keys                                                            |
+| `.bib` file(s)**(REQUIRED)**    | `cleanBib.csv`: table of author first names, titles, and .bib keys                                                            |
 | `.aux` file (OPTIONAL)| `Authors.csv`: table of author first names, estimated gender classification, and confidence                                   |
 | `.tex` file (OPTIONAL)| `yourTexFile_gendercolor.tex`: your `.tex` file modified to compile .pdf with in-line citations colored-coded by gender pairs |
 
