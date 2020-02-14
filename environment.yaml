@@ -15,6 +15,6 @@ dependencies:
     - os
     - pandas
     - re
-    - latexcodec
+    - pylatexenc
     - sos
     - sos-notebook
