@@ -1,0 +1,59 @@
+Article,FA,LA,Title,SelfCite
+1,Ye,Andrew,{Title Page Hierarchical organization of the human subcortex unveiled with functional connectivity gradients},N
+2,Will,Matthew,{A distributional code for value in dopamine-based reinforcement learning},N
+3,Aaron,Josef,{Electrophysiological dynamics of antagonistic brain networks reflect attentional fluctuations},N
+4,Dale,Danielle,{Efficient Coding in the Economics of Human Brain Connectomics},Y
+5,Jean,Nathan,{High-frequency neural activity and human cognition: Past present and possible future of intracranial EEG research},N
+6,Diego,Mark,{Spontaneous cortical activity transiently organises into frequency specific phase-coupling networks},N
+7,Alain,Israel,{Filters: When Why and How (Not) to Use Them},N
+8,Nathan,Piotr,{Cortical gamma responses: Searching high and low},N
+9,Abhinav,Joshua,{Functionally distinct high and low theta oscillations in the human hippocampus},N
+10,Mark,Sydney,{Behavioral/Systems/Cognitive Emergence of Persistent Networks in Long-Term Intracranial EEG Recordings},N
+11,Catherine,Sydney,{Emergence of stable functional networks in long-term human electroencephalography.},N
+12,Scott,Bradley,{Cycle-by-cycle analysis of neural oscillations},N
+13,Jessica,Bradley,{Automated cognome construction and semi-automated hypothesis generation},N
+14,Scott,Bradley,{Brain Oscillations and the Importance of Waveform Shape},N
+15,Anup,Terrence,{Interpretation of the precision matrix and its application in estimating sparse brain connectivity during sleep spindles from human electrocorticography recordings},N
+16,Jean-Philippe,Francisco,{Estimating the time-course of coherence between single-trial brain signals: an introduction to wavelet coherence},N
+17,Mikhail,Jan-Mathijs,{A Tutorial Review of Functional Connectivity Analysis Methods and Their Interpretational Pitfalls},N
+18,Julien,A,{Low-and high-gamma oscillations deviate in opposite directions from zero-phase synchrony in the limbic corticostriatal loop},N
+19,Ursula,Danielle,{Influence of Neighborhood SES on Functional Brain Network Development},Y
+20,Matar,Bradley,{Parameterizing neural power spectra},N
+21,Roemer,Bradley,{Uncovering Neuronal Networks Defined by Consistent between-Neuron Spike Timing from Neuronal Spike Recordings},N
+22,Bijan,Ramesh,{Investigating large-scale brain dynamics using field potential recordings: analysis and interpretation},N
+23,Thomas,Dimitri,{Oscillatory multiplexing of population codes for selective communication in the mammalian brain},N
+24,James,Michal,{Resonance with subthreshold oscillatory drive organizes activity and optimizes learning in neural networks},N
+25,Kieran,Josef,{Intracranial Electrophysiology of the Human Default Network},N
+26,Andreas,Michael,{Connectivity Predicts deep brain stimulation outcome in Parkinson disease},N
+27,Richard,Jerome,{Quantitative analysis of high-frequency oscillations (80-500 Hz) recorded in human epileptic hippocampus and entorhinal cortex.},N
+28,|Gy', Protected(Protected('ö')), 'rgy|,|Gy', Protected(Protected('ö')), 'rgy|,{Large-scale recording of neuronal ensembles},N
+29,Takayuki,Toshio,{A dynamical systems approach for estimating phase interactions between rhythms of different frequencies from experimental data},N
+30,Laura,Marco,{Seizure activity per se does not induce tissue damage markers in human neocortical focal epilepsy},N
+31,Alfons,Joachim,{Normal and pathological oscillatory communication in the brain},N
+32,|Gy', Protected(Protected('ö')), 'rgy|,Christof,{The origin of extracellular fields and currents--EEG ECoG LFP and spikes.},N
+33,Christopher,Frederic,{Encoding and Decoding Models in Cognitive Electrophysiology},N
+34,Dror,Naotsugu,{A unified framework for dissecting the effects of common signals on functional and effective connectivity analyses: power coherence and Granger causality},N
+35,Erik,Bradley,{Alpha oscillations control cortical gain by modulating excitatory- inhibitory background activity},N
+36,Erik,Bradley,{Alpha oscillations control cortical gain by modulating excitatory- inhibitory background activity},N
+37,Tom,Alexandre,{Non-linear Auto-Regressive Models for Cross-Frequency Coupling in Neural Time Series},N
+38,Teppei,Kenichi,{Neuronal origin of the temporal dynamics of spontaneous BOLD activity correlation},N
+39,Ali,John,{Serial representation of items during working memory maintenance at letter-selective cortical sites},N
+40,K.,K.,{Broadband Spectral Change: Evidence for a Macroscale Correlate of Population Firing Rate?},N
+41,Selen,Joel,{Harmonic brain modes: a unifying framework for linking space and time in brain dynamics},N
+42,Gerwin,William,{Instantaneous voltage as an alternative to power- and phase-based interpretation of oscillatory brain activity},N
+43,Jason,Clement,{The history and future of deep brain stimulation.},N
+44,Martin,H,{Causal role of beta oscillations in time estimation},N
+45,Robert,Klaus,{The detection of phase amplitude coupling during sensory processing},N
+46,Nir,Edward,{Noninvasive Deep Brain Stimulation via Temporally Interfering Electric Fields},N
+47,Scott,Bradley,{Nonsinusoidal Beta Oscillations Reflect Cortical Pathophysiology in Parkinson's Disease},N
+48,Andreas,Andreas,{Fourier- Hilbert- and wavelet-based signal analysis: Are they really different approaches?},N
+49,S.,S.,{Comparison of Matching Pursuit Algorithm with Other Signal Processing Techniques for Computation of the Time-Frequency Power Spectrum of Brain Signals},N
+50,Kai,Marcel,{Power-law scaling in the brain surface electric potential},N
+51,Edden,Leon,{Non-sinusoidal activity can produce cross-frequency coupling in cortical signals in the absence of functional interaction between neural sources},N
+52,Rachel,Eve,{Reliable neuromodulation from circuits with variable underlying structure},N
+53,Manuel,Fred,{Evaluation of cortical local field potential diffusion in stereotactic electro-encephalography recordings: A glimpse on white matter signal},N
+54,Thomas,Peter,{Neuronal diversity and temporal dynamics: The unity of hippocampal circuit operations},N
+55,Scott,Bradley,{Brain Oscillations and the Importance of Waveform Shape},N
+56,Martin,Cyriel,{An improved index of phase-synchronization for electrophysiological data in the presence of volume-conduction noise and sample-size bias},N
+57,,,{Interictal Epileptiform Activity Outside the Seizure Onset Zone Impacts Cognition. Cognitive Problems in Epilepsy: Are Interictal Epileptiform Discharges to Blame?},N
+58,Josef,Sabine,{Human intracranial EEG: Promises and Limitations},N
