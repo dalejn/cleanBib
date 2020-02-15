@@ -31,8 +31,8 @@ Article,FA,LA,Title,SelfCite,CitationKey
 32,Jean-Philippe,Francisco,{Estimating the time-course of coherence between single-trial brain signals: an introduction to wavelet coherence},N,Lachaux2002
 33,Mikhail,Jan-Mathijs,{A Tutorial Review of Functional Connectivity Analysis Methods and Their Interpretational Pitfalls},N,Lebedev2016
 34,Mikhail,Jan-Mathijs,{A Tutorial Review of Functional Connectivity Analysis Methods and Their Interpretational Pitfalls},N,Lebedev2016
-35,Julien,A,{Low-and high-gamma oscillations deviate in opposite directions from zero-phase synchrony in the limbic corticostriatal loop},N,Catanese2016
-36,Julien,A,{Low-and high-gamma oscillations deviate in opposite directions from zero-phase synchrony in the limbic corticostriatal loop},N,Catanese2016
+35,Julien,,{Low-and high-gamma oscillations deviate in opposite directions from zero-phase synchrony in the limbic corticostriatal loop},N,Catanese2016
+36,Julien,,{Low-and high-gamma oscillations deviate in opposite directions from zero-phase synchrony in the limbic corticostriatal loop},N,Catanese2016
 39,Matar,Bradley,{Parameterizing neural power spectra},N,Haller2018
 40,Matar,Bradley,{Parameterizing neural power spectra},N,Haller2018
 41,Roemer,Bradley,{Uncovering Neuronal Networks Defined by Consistent between-Neuron Spike Timing from Neuronal Spike Recordings},N,VanderMeij2018
@@ -73,8 +73,8 @@ Article,FA,LA,Title,SelfCite,CitationKey
 76,Teppei,Kenichi,{Neuronal origin of the temporal dynamics of spontaneous BOLD activity correlation},N,Matsui2017
 77,Ali,John,{Serial representation of items during working memory maintenance at letter-selective cortical sites},N,Bahramisharif2017
 78,Ali,John,{Serial representation of items during working memory maintenance at letter-selective cortical sites},N,Bahramisharif2017
-79,K.,K.,{Broadband Spectral Change: Evidence for a Macroscale Correlate of Population Firing Rate?},N,Miller
-80,K.,K.,{Broadband Spectral Change: Evidence for a Macroscale Correlate of Population Firing Rate?},N,Miller
+79,K,K,{Broadband Spectral Change: Evidence for a Macroscale Correlate of Population Firing Rate?},N,Miller
+80,K,K,{Broadband Spectral Change: Evidence for a Macroscale Correlate of Population Firing Rate?},N,Miller
 81,Selen,Joel,{Harmonic brain modes: a unifying framework for linking space and time in brain dynamics},N,Atasoy
 82,Selen,Joel,{Harmonic brain modes: a unifying framework for linking space and time in brain dynamics},N,Atasoy
 83,Gerwin,William,{Instantaneous voltage as an alternative to power- and phase-based interpretation of oscillatory brain activity},N,Schalk2017
@@ -91,8 +91,8 @@ Article,FA,LA,Title,SelfCite,CitationKey
 94,Scott,Bradley,{Nonsinusoidal Beta Oscillations Reflect Cortical Pathophysiology in Parkinson's Disease},N,Cole2017
 95,Andreas,Andreas,{Fourier- Hilbert- and wavelet-based signal analysis: Are they really different approaches?},N,Bruns2004
 96,Andreas,Andreas,{Fourier- Hilbert- and wavelet-based signal analysis: Are they really different approaches?},N,Bruns2004
-97,S.,S.,{Comparison of Matching Pursuit Algorithm with Other Signal Processing Techniques for Computation of the Time-Frequency Power Spectrum of Brain Signals},N,ChandranKS2016
-98,S.,S.,{Comparison of Matching Pursuit Algorithm with Other Signal Processing Techniques for Computation of the Time-Frequency Power Spectrum of Brain Signals},N,ChandranKS2016
+97,S,S,{Comparison of Matching Pursuit Algorithm with Other Signal Processing Techniques for Computation of the Time-Frequency Power Spectrum of Brain Signals},N,ChandranKS2016
+98,S,S,{Comparison of Matching Pursuit Algorithm with Other Signal Processing Techniques for Computation of the Time-Frequency Power Spectrum of Brain Signals},N,ChandranKS2016
 99,Kai,Marcel,{Power-law scaling in the brain surface electric potential},N,Miller2009
 100,Kai,Marcel,{Power-law scaling in the brain surface electric potential},N,Miller2009
 101,Edden,Leon,{Non-sinusoidal activity can produce cross-frequency coupling in cortical signals in the absence of functional interaction between neural sources},N,Gerber2016
@@ -109,5 +109,5 @@ Article,FA,LA,Title,SelfCite,CitationKey
 112,Martin,Cyriel,{An improved index of phase-synchronization for electrophysiological data in the presence of volume-conduction noise and sample-size bias},N,Vinck2011
 113,,,{Interictal Epileptiform Activity Outside the Seizure Onset Zone Impacts Cognition. Cognitive Problems in Epilepsy: Are Interictal Epileptiform Discharges to Blame?},N,UngH
 114,,,{Interictal Epileptiform Activity Outside the Seizure Onset Zone Impacts Cognition. Cognitive Problems in Epilepsy: Are Interictal Epileptiform Discharges to Blame?},N,UngH
-115,Josef,Sabine,{Human intracranial EEG: Promises and Limitations},N,Parvizi2017
-116,Josef,Sabine,{Human intracranial EEG: Promises and Limitations},N,Parvizi2017
+115,Josef,Sabine,{Promises and limitations of human intracranial electroencephalography},N,Parvizi2017
+116,Josef,Sabine,{Promises and limitations of human intracranial electroencephalography},N,Parvizi2017
