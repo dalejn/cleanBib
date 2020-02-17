@@ -2,6 +2,8 @@
 
 # Diversity Statement and Code Notebook
 
+[![DOI](https://zenodo.org/badge/232916183.svg)](https://zenodo.org/badge/latestdoi/232916183)
+
 Motivated from work by [J. D. Dworkin, K. A. Linn, E. G. Teich, P. Zurn, R. T. Shinohara, and D. S. Bassett (2020). bioRxiv. doi: https://doi.org/10.1101/2020.01.03.894378](https://www.biorxiv.org/content/10.1101/2020.01.03.894378v1.full.pdf)
 
 For `.pdf` and `.tex` templates of the statement, see the `/diversityStatement` directory in this repository.
