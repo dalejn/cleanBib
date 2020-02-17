@@ -46,6 +46,8 @@ To goal of the coding notebook is to clean your `.bib` file to only contain refe
   * We exclude names that cannot be classified with >70% confidence. These are reported in the `Diversity Statement` as "unknown." 
 * What is an `.aux` file?
   * The `.aux` file is generated when you compile the `.tex` file to build your manuscript. It is linked to the `.bib` file(s) used to populate your manuscript's reference list and records the citations used.
+* Should I include the diversity statement references in the gender proportion calculation?
+  * Because the descriptive statistic of primary interest is of your manuscript's citation practices, please do not include the diversity statement references.
 * I have an idea to advance this project, suggestions about how to improve the notebook, and/or found a bug. Can I contribute?
   * Yes, please open an `issue` or `pull request`. We welcome feedback on any pain points in running this code notebook. If you contribute, please modify the `README.md` to credit yourself in the `Contributors` section in the `pull request`. 
 
