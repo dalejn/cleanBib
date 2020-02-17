@@ -73,6 +73,7 @@ A `.bib` file containing the references used in the statement can be found in `/
 * Ann Sizemore Blevins
 * Eli Cornblath
 * Jordan Dworkin
+* Jeni Stiso
 * Erin Teich
 * Dale Zhou
 
@@ -92,6 +93,7 @@ A `.bib` file containing the references used in the statement can be found in `/
   * added SOS notebook support to put all code and instructions into 1 notebook so users don't have to manually change kernel
   * added optional entry for co-first or co-last authors
   * added optional code block to color-code `.tex` file's citation keys by gender pair classifications
+  * added code to search `Crossref` API to automatically complete some incomplete `.bib` entries (thanks, Jeni!)
 
 * __1/19/2020__ 
   * added code to output a column with article titles to make it easier to manually search which bib entries need manual editing
