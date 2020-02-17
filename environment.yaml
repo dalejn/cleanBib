@@ -9,3 +9,13 @@ dependencies:
     - pybtex
     - glob
     - csv
+    - numpy
+    - bibtexparser
+    - subprocess
+    - os
+    - pandas
+    - re
+    - pylatexenc
+    - sos
+    - sos-notebook
+    - habanero

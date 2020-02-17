@@ -1,1 +1,8 @@
 pybtex==0.22.2
+numpy
+bibtexparser==1.1.0
+pandas
+pylatexenc==2.1
+sos==0.21.5
+sos-notebook==0.21.7
+habanero==0.7.2
