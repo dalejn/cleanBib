@@ -18,3 +18,4 @@ dependencies:
     - pylatexenc
     - sos
     - sos-notebook
+    - habanero

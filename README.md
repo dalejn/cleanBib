@@ -14,6 +14,8 @@ A `.bib` file containing the references used in the statement can be found in `/
 
 # Instructions
 
+To goal of the coding notebook is to clean your `.bib` file to only contain references that you have cited in your manuscript. This cleaned `.bib` will then be used to generate a data table of full first names that will be used to query the probabilistic gender classifier, [Gender API](https://gender-api.com).
+
 1. Launch the Binder environment. Please refresh the page if the Binder does not load after 5-10 mins.
 
     [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dalejn/cleanBib/master)
@@ -33,7 +35,7 @@ A `.bib` file containing the references used in the statement can be found in `/
 # FAQ
 
 * Why do I receive an error when running the code?.
-  * The most common errors are due to misformatted .bib files. Errors will usually provide an indication of the line or type of problem in the .bib file. If you cannot resolve an error, please open an `issue` and attach the error pasted into a `.txt` or a screenshot of the error. We will try to help resolve it.
+  * The most common errors are due to misformatted .bib files. Errors will usually provide an indication of the line or type of problem in the .bib file. They will require you to manually correct the `.bib` file of formatting errors or incomplete entries. If you cannot resolve an error, please open an `issue` and attach the error pasted into a `.txt` or a screenshot of the error. We will try to help resolve it.
 * Will this method work on non-Western names?
   * Yes, the [Gender API supports 177 countries](https://gender-api.com/en/frequently-asked-questions?gclid=Cj0KCQiAmZDxBRDIARIsABnkbYTy9MHmGoR2uBhxEKANbT9B9EFVOSiRzbGeQi7nUn6ODH83s6-RZKwaAjpZEALw_wcB#which-countries-are-supported) but will classify genders with varying confidence. 
 * Are self-citations included?
@@ -79,7 +81,7 @@ A `.bib` file containing the references used in the statement can be found in `/
 
 # Changelog
 
-* __2/14/2020__
+* __2/17/2020__
   * streamlined instructions
   * added repository photo for social media (thanks, Ann!)
   * move instructions into Jupyter notebook
