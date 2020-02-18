@@ -18,7 +18,7 @@ A `.bib` file containing the references used in the statement can be found in `/
 
 To goal of the coding notebook is to clean your `.bib` file to only contain references that you have cited in your manuscript. This cleaned `.bib` will then be used to generate a data table of full first names that will be used to query the probabilistic gender classifier, [Gender API](https://gender-api.com). Proportions of the predicted gender for first and last author pairs (male/male, male/female, female/male, and female/female) will be calculated. 
 
-1. Obtain a `.bib` file of your manuscript's reference list. You can do this in common reference managers. 
+1. Obtain a `.bib` file of your manuscript's reference list. You can do this with common reference managers. 
 
    * [Export `.bib` from Mendeley](https://blog.mendeley.com/2011/10/25/howto-use-mendeley-to-create-citations-using-latex-and-bibtex/)
    * [Export `.bib` from Zotero](https://libguides.mit.edu/ld.php?content_id=34248570)
