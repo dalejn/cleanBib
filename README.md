@@ -21,10 +21,10 @@ To goal of the coding notebook is to clean your `.bib` file to only contain refe
 1. Obtain a `.bib` file of your manuscript's reference list. You can do this in common reference managers. 
 
 Instructions to:
-  * [export `.bib` from Mendeley](https://blog.mendeley.com/2011/10/25/howto-use-mendeley-to-create-citations-using-latex-and-bibtex/)
-  * [export `.bib` from Zotero](https://libguides.mit.edu/ld.php?content_id=34248570)
-  * [export `.bib` from EndNote](https://www.reed.edu/cis/help/LaTeX/EndNote.html)
-  * [export `.bib` from Read Cube Papers](https://support.papersapp.com/support/solutions/articles/30000024634-how-can-i-export-references-from-readcube-papers-)
+   * [export `.bib` from Mendeley](https://blog.mendeley.com/2011/10/25/howto-use-mendeley-to-create-citations-using-latex-and-bibtex/)
+   * [export `.bib` from Zotero](https://libguides.mit.edu/ld.php?content_id=34248570)
+   * [export `.bib` from EndNote](https://www.reed.edu/cis/help/LaTeX/EndNote.html)
+   * [export `.bib` from Read Cube Papers](https://support.papersapp.com/support/solutions/articles/30000024634-how-can-i-export-references-from-readcube-papers-)
 
 2. Launch the Binder environment. Please refresh the page if the Binder does not load after 5-10 mins.
 
@@ -56,7 +56,7 @@ Instructions to:
   * We exclude names that cannot be classified with >70% confidence. These are reported in the `Diversity Statement` as "unknown." 
 * Should I include the diversity statement references in the gender proportion calculation?
   * Please do not include the diversity statement references. The descriptive statistic of primary interest is of your citation practices.
-* * What is a `.bib` file?
+* What is a `.bib` file?
   * The `.bib` file is a bibliography with tagged entry fields used by LaTeX to format a typesetted manuscript's reference list and its in-line citations. If you are not using LaTeX to write your manuscript, common reference managers that are linked to Microsoft Word or Google Docs also allow you to export `.bib` files (See Instructions, Step 1).
 * What is an `.aux` file?
   * The `.aux` file is generated when you compile the `.tex` file to build your manuscript. It is linked to the `.bib` file(s) used to populate your manuscript's reference list and records the citations used.
