@@ -12,7 +12,7 @@ A `.bib` file containing the references used in the statement can be found in `/
 
 ## Diversity statement template
 
-> Recent work in neuroscience and other fields has identified a bias in citation practices such that papers from women and other minorities are under-cited relative to the number of such papers in the field [1, 2, 3, 4, 5, 6]. Here we sought to proactively consider choosing references that reflect the diversity of the field in thought, form of contribution, gender, and other factors. We used automatic classification of gender based on the first names of the first and last authors [1], with possible combinations including male/male, male/female, female/male, and female/female. Excluding self-citations to the first and last authors of our current paper, the references contain `A`% male/male, `B`% male/female, `C`% female/male, `D`% female/female, and `E`% unknown categorization. We look forward to future work that could help us to better understand how to support equitable practices in science.
+> Recent work in neuroscience and other fields has identified a bias in citation practices such that papers from women and other minorities are under-cited relative to the number of such papers in the field [1, 2, 3, 4, 5, 6]. Here we sought to proactively consider choosing references that reflect the diversity of the field in thought, form of contribution, gender, and other factors. We used automatic classification of gender based on the first names of the first and last authors [1, 7], with possible combinations including male/male, male/female, female/male, and female/female. Excluding self-citations to the first and last authors of our current paper, the references contain `A`% male/male, `B`% male/female, `C`% female/male, `D`% female/female, and `E`% unknown categorization. We look forward to future work that could help us to better understand how to support equitable practices in science.
 
 # Instructions
 
@@ -60,7 +60,7 @@ To goal of the coding notebook is to clean your `.bib` file to only contain refe
 * What is an `.aux` file?
   * The `.aux` file is generated when you compile the `.tex` file to build your manuscript. It is linked to the `.bib` file(s) used to populate your manuscript's reference list and records the citations used.
 * I have an idea to advance this project, suggestions about how to improve the notebook, and/or found a bug. Can I contribute?
-  * Yes, please open an `issue` or `pull request`. We welcome feedback on any pain points in running this code notebook. If you contribute, please modify the `README.md` to credit yourself in the `Contributors` section in the `pull request`. 
+  * Yes, please open an `issue` or `pull request`. We welcome feedback on any pain points in running this code notebook. If you contribute, please modify the `README.md` to credit yourself alphabetically in the `Contributors` section in the `pull request`. 
 
 # Other Resources
 
@@ -81,6 +81,8 @@ To goal of the coding notebook is to clean your `.bib` file to only contain refe
 > [5] Y. Thiem, K. F. Sealey, A. E. Ferrer, A. M. Trott, and R. Kennison, “Just Ideas? The Status and Future of Publication Ethics in Philosophy: A White Paper,” tech. rep., 2018.
 
 > [6] M. L. Dion, J. L. Sumner, and S. M. Mitchell, “Gendered citation patterns across political science and social science methodology fields,” Political Analysis, vol. 26, no. 3, pp. 312–327, 2018.
+
+> [7] D. Zhou, E. J. Cornblath, J. Stiso, E. G. Teich, J. D. Dworkin, A. S. Blevins, and D. S. Bassett, “Gender diversity statement and code note- book v1.0,” Feb. 2020.
 
 # Contributors
 (alphabetical)

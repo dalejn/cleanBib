@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  16 JAN 2020 15:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  18 FEB 2020 12:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -77,19 +77,19 @@ Non-PDF special ignored!
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 (./diversityStatement.bbl) [2] (./diversityStatement.aux) ) 
 Here is how much of TeX's memory you used:
- 351 strings out of 492649
- 4187 string characters out of 6129622
- 63960 words of memory out of 5000000
- 4298 multiletter control sequences out of 15000+600000
+ 352 strings out of 492649
+ 4211 string characters out of 6129622
+ 64960 words of memory out of 5000000
+ 4299 multiletter control sequences out of 15000+600000
  7934 words of font info for 28 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 22i,4n,19p,1169b,135s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 22i,4n,19p,1197b,135s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/
 2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2
 018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/20
 18/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on diversityStatement.pdf (2 pages, 57230 bytes).
+Output written on diversityStatement.pdf (2 pages, 57187 bytes).
 PDF statistics:
  27 PDF objects out of 1000 (max. 8388607)
  18 compressed objects within 1 object stream
