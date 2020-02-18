@@ -18,11 +18,13 @@ A `.bib` file containing the references used in the statement can be found in `/
 
 To goal of the coding notebook is to clean your `.bib` file to only contain references that you have cited in your manuscript. This cleaned `.bib` will then be used to generate a data table of full first names that will be used to query the probabilistic gender classifier, [Gender API](https://gender-api.com). Proportions of the predicted gender for first and last author pairs (male/male, male/female, female/male, and female/female) will be calculated. 
 
-1. Obtain a `.bib` file of your manuscript's reference list. You can do this in common reference managers. Instructions to:
-  * [export `.bib` from Mendeley](https://blog.mendeley.com/2011/10/25/howto-use-mendeley-to-create-citations-using-latex-and-bibtex/)
-  * [export `.bib` from Zotero](https://libguides.mit.edu/ld.php?content_id=34248570)
-  * [export `.bib` from EndNote](https://www.reed.edu/cis/help/LaTeX/EndNote.html)
-  * [export `.bib` from Read Cube Papers](https://support.papersapp.com/support/solutions/articles/30000024634-how-can-i-export-references-from-readcube-papers-)
+1. Obtain a `.bib` file of your manuscript's reference list. You can do this in common reference managers. 
+
+  * Instructions to:
+    * [export `.bib` from Mendeley](https://blog.mendeley.com/2011/10/25/howto-use-mendeley-to-create-citations-using-latex-and-bibtex/)
+    * [export `.bib` from Zotero](https://libguides.mit.edu/ld.php?content_id=34248570)
+    * [export `.bib` from EndNote](https://www.reed.edu/cis/help/LaTeX/EndNote.html)
+    * [export `.bib` from Read Cube Papers](https://support.papersapp.com/support/solutions/articles/30000024634-how-can-i-export-references-from-readcube-papers-)
 
 2. Launch the Binder environment. Please refresh the page if the Binder does not load after 5-10 mins.
 
