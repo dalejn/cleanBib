@@ -2,23 +2,23 @@
 
 # Table of Contents
 
-[Diversity Statement and Code Notebook](https://github.com/dalejn/cleanBib#diversity-statement-and-code-notebook)
+* [Diversity Statement and Code Notebook](https://github.com/dalejn/cleanBib#diversity-statement-and-code-notebook)
 
-* [Diversity statement template](https://github.com/dalejn/cleanBib#diversity-statement-template)
+  - [Diversity statement template](https://github.com/dalejn/cleanBib#diversity-statement-template)
 
-[Instructions](https://github.com/dalejn/cleanBib#instructions)
+* [Instructions](https://github.com/dalejn/cleanBib#instructions)
 
-* [Input/output](https://github.com/dalejn/cleanBib#inputoutput)
+  - [Input/output](https://github.com/dalejn/cleanBib#inputoutput)
 
-[FAQ](https://github.com/dalejn/cleanBib#faq)
+* [FAQ](https://github.com/dalejn/cleanBib#faq)
 
-[Other Resources](https://github.com/dalejn/cleanBib#other-resources)
+* [Other Resources](https://github.com/dalejn/cleanBib#other-resources)
 
-[References](https://github.com/dalejn/cleanBib#references)
+* [References](https://github.com/dalejn/cleanBib#references)
 
-[Contributors](https://github.com/dalejn/cleanBib#contributors)
+* [Contributors](https://github.com/dalejn/cleanBib#contributors)
 
-[Changelog](https://github.com/dalejn/cleanBib#changelog)
+* [Changelog](https://github.com/dalejn/cleanBib#changelog)
 
 # Diversity Statement and Code Notebook
 
