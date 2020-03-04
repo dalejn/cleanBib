@@ -4,7 +4,7 @@
 
 [Diversity Statement and Code Notebook](https://github.com/dalejn/cleanBib#diversity-statement-and-code-notebook)
 
-* [Diversity statement template](https://github.com/dalejn/cleanBib#instructions)
+* [Diversity statement template](https://github.com/dalejn/cleanBib#diversity-statement-template)
 
 [Instructions](https://github.com/dalejn/cleanBib#instructions)
 
