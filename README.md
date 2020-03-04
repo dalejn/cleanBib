@@ -4,11 +4,11 @@
 
 [Diversity Statement and Code Notebook](https://github.com/dalejn/cleanBib#diversity-statement-and-code-notebook)
 
-[Diversity statement template](https://github.com/dalejn/cleanBib#instructions)
+* [Diversity statement template](https://github.com/dalejn/cleanBib#instructions)
 
 [Instructions](https://github.com/dalejn/cleanBib#instructions)
 
-[Input/output](https://github.com/dalejn/cleanBib#inputoutput)
+* [Input/output](https://github.com/dalejn/cleanBib#inputoutput)
 
 [FAQ](https://github.com/dalejn/cleanBib#faq)
 
