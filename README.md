@@ -1,5 +1,17 @@
 ![Network courtesy Ann Sizemore Blevins](img/repo_pic.png)
 
+# Table of Contents
+
+[Diversity Statement and Code Notebook](https://github.com/dalejn/cleanBib#diversity-statement-and-code-notebook)
+[Diversity statement template](https://github.com/dalejn/cleanBib#instructions)
+[Instructions](https://github.com/dalejn/cleanBib#instructions)
+[Input/output](https://github.com/dalejn/cleanBib#inputoutput)
+[FAQ](https://github.com/dalejn/cleanBib#faq)
+[Other Resources](https://github.com/dalejn/cleanBib#other-resources)
+[References](https://github.com/dalejn/cleanBib#references)
+[Contributors](https://github.com/dalejn/cleanBib#contributors)
+[Changelog](https://github.com/dalejn/cleanBib#changelog)
+
 # Diversity Statement and Code Notebook
 
 [![DOI](https://zenodo.org/badge/232916183.svg)](https://zenodo.org/badge/latestdoi/232916183)
@@ -16,7 +28,7 @@ A `.bib` file containing the references used in the statement can be found in `/
 
 # Instructions
 
-To goal of the coding notebook is to clean your `.bib` file to only contain references that you have cited in your manuscript. This cleaned `.bib` will then be used to generate a data table of full first names that will be used to query the probabilistic gender classifier, [Gender API](https://gender-api.com). Proportions of the predicted gender for first and last author pairs (male/male, male/female, female/male, and female/female) will be calculated. 
+The goal of the coding notebook is to clean your `.bib` file to only contain references that you have cited in your manuscript. This cleaned `.bib` will then be used to generate a data table of full first names that will be used to query the probabilistic gender classifier, [Gender API](https://gender-api.com). Proportions of the predicted gender for first and last author pairs (male/male, male/female, female/male, and female/female) will be calculated. 
 
 1. Obtain a `.bib` file of your manuscript's reference list. You can do this with common reference managers. 
 
@@ -29,7 +41,7 @@ To goal of the coding notebook is to clean your `.bib` file to only contain refe
 
     [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dalejn/cleanBib/master)
 
-3. Open the notebook `cleanBib.ipynb`. Follow the instructions above each code block.
+3. Open the notebook `cleanBib.ipynb`. Follow the instructions above each code block. It can take 10 minutes to 1 hour complete all of the instructions, depending on the state and size of your `.bib` file. We expect that the most time-consuming step will be manually modifying the `.bib` file to find missing author names, fill incomplete entries, and fix formatting errors. These problems arise because automated methods of reference mangagers and Google Scholar sometimes can not retrieve full information, for example if some journals only provide an author's first initial instead of their full first name.
 
 ## Input/output
 
