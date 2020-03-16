@@ -38,11 +38,11 @@ A `.bib` file containing the references used in the statement can be found in `/
 
 The goal of the coding notebook is to clean your `.bib` file to only contain references that you have cited in your manuscript. This cleaned `.bib` will then be used to generate a data table of full first names that will be used to query the probabilistic gender classifier, [Gender API](https://gender-api.com). Proportions of the predicted gender for first and last author pairs (male/male, male/female, female/male, and female/female) will be calculated. 
 
-1. Obtain a `.bib` file of your manuscript's reference list. You can do this with common reference managers. 
+1. Obtain a `.bib` file of your manuscript's reference list. You can do this with common reference managers. __Please export your .bib in an output style that uses full first names (rather than only first initials) and using the full author lists (rather than abbreviated author lists with "et al.").__
 
    * [Export `.bib` from Mendeley](https://blog.mendeley.com/2011/10/25/howto-use-mendeley-to-create-citations-using-latex-and-bibtex/)
    * [Export `.bib` from Zotero](https://libguides.mit.edu/ld.php?content_id=34248570)
-   * [Export `.bib` from EndNote](https://www.reed.edu/cis/help/LaTeX/EndNote.html)
+   * [Export `.bib` from EndNote](https://www.reed.edu/cis/help/LaTeX/EndNote.html). Note: Please export full first names by either [choosing an output style that does so by default (e.g. in MLA style)](https://canterbury.libguides.com/endnote/basics-output) or by [customizing an output style.](http://bibliotek.usn.no/cite-and-write/endnote/how-to-use/how-to-show-the-author-s-full-name-in-the-reference-list-article185897-28181.html)
    * [Export `.bib` from Read Cube Papers](https://support.papersapp.com/support/solutions/articles/30000024634-how-can-i-export-references-from-readcube-papers-)
 
 2. Launch the Binder environment. Please refresh the page if the Binder does not load after 5-10 mins.
@@ -115,6 +115,12 @@ The goal of the coding notebook is to clean your `.bib` file to only contain ref
 * Dale Zhou
 
 # Changelog
+
+* __3/16/2020__
+  * fix bug with CrossRef title confirmation
+  * add to README instructions on exporting .bib with a style that includes full first author (not just initials) when possible
+  * added a sleep timer for CrossRef API queries
+  * added another self-citation check from the CrossRef search results
 
 * __2/17/2020__
   * streamlined instructions
