@@ -55,7 +55,7 @@ The goal of the coding notebook is to clean your `.bib` file to only contain ref
    * [Export `.bib` from EndNote](https://www.reed.edu/cis/help/LaTeX/EndNote.html). Note: Please export full first names by either [choosing an output style that does so by default (e.g. in MLA style)](https://canterbury.libguides.com/endnote/basics-output) or by [customizing an output style.](http://bibliotek.usn.no/cite-and-write/endnote/how-to-use/how-to-show-the-author-s-full-name-in-the-reference-list-article185897-28181.html)
    * [Export `.bib` from Read Cube Papers](https://support.papersapp.com/support/solutions/articles/30000024634-how-can-i-export-references-from-readcube-papers-)
 
-2. Launch the Binder environment. Please refresh the page if the Binder does not load after 5-10 mins.
+2. Launch the coding environment. Please refresh the page if the Binder does not load after 5-10 mins.
 
     [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dalejn/cleanBib/master)
 
@@ -74,11 +74,13 @@ The goal of the coding notebook is to clean your `.bib` file to only contain ref
 # FAQ
 
 * Why do I receive an error when running the code?.
-  * The most common errors are due to misformatted .bib files. Errors will usually provide an indication of the line or type of problem in the .bib file. They will require you to manually correct the `.bib` file of formatting errors or incomplete entries. If you cannot resolve an error, please open an `issue` and attach the error pasted into a `.txt` or a screenshot of the error. We will try to help resolve it.
+  * The most common errors are due to misformatted .bib files. Errors will usually provide an indication of the line or type of problem in the .bib file. They will require you to manually correct the `.bib` file of formatting errors or incomplete entries. If you cannot resolve an error, please open an `issue`, paste the error text or a screenshot of the error, and attach the files that you used so that we can reproduce the error. We will try to help resolve it.
+* What should I do if the Binder crashes, times out, or takes very long to launch?
+  * Please refresh the Binder or re-launch from our step 2 instruction upon a crash. This has often resolved the issue. The environment will time out if you are inactive for over 10 minutes (but leaving the window open counts as activity). Long launch times can be due to a recent patch by us (temporary slow-down from re-building the Docker image) or heavy load on the server. Please try again at a later time. Please refer to the [Binder User Guide](https://mybinder.readthedocs.io/en/latest/index.html) and [FAQ](https://mybinder.readthedocs.io/en/latest/index.html) for other questions.
 * Will this method work on non-Western names?
   * Yes, the [Gender API supports 177 countries](https://gender-api.com/en/frequently-asked-questions?gclid=Cj0KCQiAmZDxBRDIARIsABnkbYTy9MHmGoR2uBhxEKANbT9B9EFVOSiRzbGeQi7nUn6ODH83s6-RZKwaAjpZEALw_wcB#which-countries-are-supported) but will classify genders with varying confidence. 
 * Are self-citations included?
-  * We do not include self-citations by default. We define self-citations as those including your first or last author as a co-author.
+  * We do not include self-citations by default because we seek to measure engagement with and citation of other researchers' work. We define self-citations as those including your first or last author as a co-author. 
 * What if a reference has only 1 author?
   * We count that author as both the first and last author.
 * What about gender-neutral names?
@@ -125,6 +127,13 @@ The goal of the coding notebook is to clean your `.bib` file to only contain ref
 * Dale Zhou
 
 # Changelog
+
+* __4/9/2020__
+  * fix bug with entry ID string matching for optional aux route, changed to regex
+  * fix bug with duplicate check for optional aux route
+  * added code to auto-remove the 7 references included in the diversity statement
+  * add more descriptive instructions for the last section generating tables and comparing against benchmark
+  * updated FAQ
 
 * __3/16/2020__
   * fix bug with CrossRef title confirmation
