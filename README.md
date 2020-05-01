@@ -83,6 +83,8 @@ The goal of the coding notebook is to clean your `.bib` file to only contain ref
   * We do not include self-citations by default because we seek to measure engagement with and citation of other researchers' work. We define self-citations as those including your first or last author as a co-author. 
 * What if a reference has only 1 author?
   * We count that author as both the first and last author.
+* What if a reference has more than 1 first author or last author?
+  * We do not automatically account for these cases. If you are aware of papers with co-first or co-last authors, then you could manually add duplicate entries for each co-first or co-last author so that they are double-counted.
 * What about gender-neutral names?
   * We exclude names that cannot be classified with >70% confidence. These are reported in the `Diversity Statement` as "unknown." 
 * Should I include the diversity statement references in the gender proportion calculation?
@@ -127,6 +129,13 @@ The goal of the coding notebook is to clean your `.bib` file to only contain ref
 * Dale Zhou
 
 # Changelog
+
+* __5/1/2020__
+  * fix bug with round function
+  * add more informative string outputs to descriptive statistics code
+  * add code to automatically output a template to copy-and-paste in both plain text and LaTeX with the percentages filled in
+  * simplified instructions for descritive statistics code
+  * updated FAQ
 
 * __4/9/2020__
   * fix bug with entry ID string matching for optional aux route, changed to regex
