@@ -130,7 +130,7 @@ The goal of the coding notebook is to clean your `.bib` file to only contain ref
 
 # Changelog
 
-# __5/19/2020__
+* __5/19/2020__
   * fix typos in readme
   * typo in warning for editing .bib instead of cleanedBib.csv
   * add flush.console() to give progress index for R code
