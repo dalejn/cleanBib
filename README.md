@@ -73,8 +73,8 @@ The goal of the coding notebook is to clean your `.bib` file to only contain ref
 
 # FAQ
 
-* Why do I receive an error when running the code?.
-  * The most common errors are due to misformatted .bib files. Errors will usually provide an indication of the line or type of problem in the .bib file. They will require you to manually correct the `.bib` file of formatting errors or incomplete entries. If you cannot resolve an error, please open an `issue`, paste the error text or a screenshot of the error, and attach the files that you used so that we can reproduce the error. We will try to help resolve it.
+* Why do I receive an error when running the code?
+  * The most common errors are due to misformatted .bib files. Errors will usually provide an indication of the line or type of problem in the .bib file. They will require you to manually correct the `.bib` file of formatting errors or incomplete entries. After resolving an error, try running the code block that gave you an error again. If you cannot resolve an error, please open an `issue`, paste the error text or a screenshot of the error, and attach the files that you used so that we can reproduce the error. We will try to help resolve it.
 * What should I do if the Binder crashes, times out, or takes very long to launch?
   * Please refresh the Binder or re-launch from our step 2 instruction upon a crash. This has often resolved the issue. The environment will time out if you are inactive for over 10 minutes (but leaving the window open counts as activity). Long launch times can be due to a recent patch by us (temporary slow-down from re-building the Docker image) or heavy load on the server. Please try again at a later time. Please refer to the [Binder User Guide](https://mybinder.readthedocs.io/en/latest/index.html) and [FAQ](https://mybinder.readthedocs.io/en/latest/index.html) for other questions.
 * Will this method work on non-Western names?
@@ -98,7 +98,7 @@ The goal of the coding notebook is to clean your `.bib` file to only contain ref
 
 # Other Resources
 
-* [Gender base-rates of neuroscience](https://biaswatchneuro.com/base-rates/neuroscience-base-rates/), based on a poll of SfN attendees from 2014-2018. Categorized by subject area.
+* [Gender base-rates of neuroscience](https://biaswatchneuro.com/base-rates/neuroscience-base-rates/), based on a poll of SfN attendees from 2014-2018, categorized by subject area.
 
 * A [list highlighting female neuroscientists](https://anneslist.net/). Categorized by subject area and seniority. 
 
@@ -130,11 +130,20 @@ The goal of the coding notebook is to clean your `.bib` file to only contain ref
 
 # Changelog
 
+# __5/19/2020__
+  * fix typos in readme
+  * typo in warning for editing .bib instead of cleanedBib.csv
+  * add flush.console() to give progress index for R code
+  * added code to handle case one of the main gender pair categories has 0 references
+  * add a savepoint for Authors.csv in codeblock for API query rather than just at the end
+  * fix unknown category rounding
+  * add extra escape backslashes to printed LaTeX template statement
+
 * __5/1/2020__
   * fix bug with round function
   * add more informative string outputs to descriptive statistics code
   * add code to automatically output a template to copy-and-paste in both plain text and LaTeX with the percentages filled in
-  * simplified instructions for descritive statistics code
+  * simplified instructions for descriptive statistics code
   * updated FAQ
 
 * __4/9/2020__
