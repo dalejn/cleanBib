@@ -38,15 +38,15 @@ A `.bib` file containing the references used in the statement can be found in `/
 
 ### Template
 
-> Recent work in neuroscience and other fields has identified a bias in citation practices such that papers from women and other minorities are under-cited relative to the number of such papers in the field [1, 2, 3, 4, 5, 6]. Here we sought to proactively consider choosing references that reflect the diversity of the field in thought, form of contribution, gender, and other factors. We used automatic classification of gender based on the first names of the first and last authors [1, 7], with possible combinations including male/male, male/female, female/male, and female/female. Excluding self-citations to the first and last authors of our current paper, the references contain `A`% male/male, `B`% male/female, `C`% female/male, `D`% female/female, and `E`% unknown categorization. We look forward to future work that could help us to better understand how to support equitable practices in science.
+> Recent work in neuroscience and other fields has identified a bias in citation practices such that papers from women and other minorities are under-cited relative to the number of such papers in the field [1, 2, 3, 4, 5, 6]. Here we sought to proactively consider choosing references that reflect the diversity of the field in thought, form of contribution, gender, and other factors. We used automatic classification of gender based on the first names of the first and last authors [1, 7], with possible combinations including man/man, man/woman, woman/man, and woman/woman. Excluding self-citations to the first and last authors of our current paper, the references contain `A`% man/man, `B`% man/woman, `C`% woman/man, `D`% woman/woman, and `E`% unknown categorization. We look forward to future work that could help us to better understand how to support equitable practices in science.
 
 ### Benchmark
 
-For the top 5 neuroscience journals (Nature Neuroscience, Neuron, Brain, Journal of Neuroscience, and Neuroimage), the expected gender proportions in reference lists as reported by [Dworkin et al.](https://www.biorxiv.org/content/10.1101/2020.01.03.894378v1.full.pdf) are 58.4% for male/male, 9.4% for male-female, 25.5% for female-male, and 6.7% for female-female. Expected proportions were calculated by randomly sampling papers from 28,505 articles in the 5 journals, estimating gender breakdowns using probabilistic name classification tools, and regressing for relevant article variables like publication date, journal, number of authors, review article or not, and first-/last-author seniority. See [Dworkin et al.](https://www.biorxiv.org/content/10.1101/2020.01.03.894378v1.full.pdf) for more details. 
+For the top 5 neuroscience journals (Nature Neuroscience, Neuron, Brain, Journal of Neuroscience, and Neuroimage), the expected gender proportions in reference lists as reported by [Dworkin et al.](https://www.biorxiv.org/content/10.1101/2020.01.03.894378v1.full.pdf) are 58.4% for man/man, 9.4% for man-woman, 25.5% for woman-man, and 6.7% for woman-woman. Expected proportions were calculated by randomly sampling papers from 28,505 articles in the 5 journals, estimating gender breakdowns using probabilistic name classification tools, and regressing for relevant article variables like publication date, journal, number of authors, review article or not, and first-/last-author seniority. See [Dworkin et al.](https://www.biorxiv.org/content/10.1101/2020.01.03.894378v1.full.pdf) for more details. 
 
 # Instructions
 
-The goal of the coding notebook is to clean your `.bib` file to only contain references that you have cited in your manuscript. This cleaned `.bib` will then be used to generate a data table of full first names that will be used to query the probabilistic gender classifier, [Gender API](https://gender-api.com). Proportions of the predicted gender for first and last author pairs (male/male, male/female, female/male, and female/female) will be calculated. 
+The goal of the coding notebook is to clean your `.bib` file to only contain references that you have cited in your manuscript. This cleaned `.bib` will then be used to generate a data table of full first names that will be used to query the probabilistic gender classifier, [Gender API](https://gender-api.com). Proportions of the predicted gender for first and last author pairs (man/man, man/woman, woman/man, and woman/woman) will be calculated. 
 
 1. Obtain a `.bib` file of your manuscript's reference list. You can do this with common reference managers. __Please export your .bib in an output style that uses full first names (rather than only first initials) and using the full author lists (rather than abbreviated author lists with "et al.").__
 
@@ -100,7 +100,7 @@ The goal of the coding notebook is to clean your `.bib` file to only contain ref
 
 * [Gender base-rates of neuroscience](https://biaswatchneuro.com/base-rates/neuroscience-base-rates/), based on a poll of SfN attendees from 2014-2018, categorized by subject area.
 
-* A [list highlighting female neuroscientists](https://anneslist.net/). Categorized by subject area and seniority. 
+* A [list highlighting woman neuroscientists](https://anneslist.net/). Categorized by subject area and seniority. 
 
 # References
 
@@ -138,6 +138,7 @@ The goal of the coding notebook is to clean your `.bib` file to only contain ref
   * add a savepoint for Authors.csv in codeblock for API query rather than just at the end
   * fix unknown category rounding
   * add extra escape backslashes to printed LaTeX template statement
+  * changed to man/woman
 
 * __5/1/2020__
   * fix bug with round function
