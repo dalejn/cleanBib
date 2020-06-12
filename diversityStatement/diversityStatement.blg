@@ -4,38 +4,37 @@ The top-level auxiliary file: diversityStatement.aux
 The style file: ieeetr.bst
 Database file #1: ./bibfile.bib
 Warning--entry type for "zhou_dale_2020_3672110" isn't style-file defined
---line 64 of file ./bibfile.bib
-Warning--empty institution in YannikThiemKrisF.SealeyAmyE.FerrerAdrielM.Trott2018
-You've used 7 entries,
+--line 58 of file ./bibfile.bib
+You've used 6 entries,
             1876 wiz_defined-function locations,
-            522 strings with 5089 characters,
-and the built_in function-call counts, 1918 in all, are:
-= -- 176
-> -- 107
+            518 strings with 4833 characters,
+and the built_in function-call counts, 1730 in all, are:
+= -- 164
+> -- 87
 < -- 0
-+ -- 38
-- -- 31
-* -- 154
-:= -- 295
-add.period$ -- 7
-call.type$ -- 7
-change.case$ -- 8
++ -- 31
+- -- 25
+* -- 135
+:= -- 258
+add.period$ -- 6
+call.type$ -- 6
+change.case$ -- 6
 chr.to.int$ -- 0
-cite$ -- 8
-duplicate$ -- 87
-empty$ -- 160
-format.name$ -- 31
-if$ -- 449
+cite$ -- 6
+duplicate$ -- 81
+empty$ -- 148
+format.name$ -- 25
+if$ -- 412
 int.to.chr$ -- 0
-int.to.str$ -- 7
+int.to.str$ -- 6
 missing$ -- 5
-newline$ -- 24
-num.names$ -- 7
-pop$ -- 19
+newline$ -- 21
+num.names$ -- 6
+pop$ -- 16
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 61
+skip$ -- 60
 stack$ -- 0
 substring$ -- 104
 swap$ -- 37
@@ -43,8 +42,8 @@ text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 1
-while$ -- 17
-width$ -- 8
-write$ -- 69
-(There were 2 warnings)
+warning$ -- 0
+while$ -- 16
+width$ -- 7
+write$ -- 61
+(There was 1 warning)
