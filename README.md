@@ -28,7 +28,15 @@
 
 [![DOI](https://zenodo.org/badge/232916183.svg)](https://zenodo.org/badge/latestdoi/232916183)
 
-Motivated from work by [J. D. Dworkin, K. A. Linn, E. G. Teich, P. Zurn, R. T. Shinohara, and D. S. Bassett (2020). bioRxiv. doi: https://doi.org/10.1101/2020.01.03.894378](https://www.biorxiv.org/content/10.1101/2020.01.03.894378v1.full.pdf)
+Motivated from work by [J. D. Dworkin, K. A. Linn, E. G. Teich, P. Zurn, R. T. Shinohara, and D. S. Bassett (2020). The extent and drivers of gender imbalance in neuroscience reference lists. *Nature Neuroscience*. doi: https://doi.org/10.1038/s41593-020-0658-y](https://doi.org/10.1038/s41593-020-0658-y)
+
+See also this Perspective with concrete suggestions for moving forward: [J. D. Dworkin, P. Zurn, and D. S. Bassett (2020). (In)citing Action to Realize an Equitable Future. *Neuron*. doi: https://doi.org/10.1016/j.neuron.2020.05.011](https://doi.org/10.1016/j.neuron.2020.05.011)
+
+And editorials and research highlights of this work:  
+[A.L. Fairhall and E. Marder (2020). Acknowledging female voices. *Nature Neuroscience*. doi: https://doi.org/10.1038/s41593-020-0667-x](https://www.nature.com/articles/s41593-020-0667-x)  
+[Widening the scope of diversity (2020). *Nature Neuroscience*. doi: https://doi.org/10.1038/s41593-020-0670-2](https://www.nature.com/articles/s41593-020-0670-2)  
+[Z. Budrikis (2020). Growing citation gender gap. *Nature Reviews Physics*. doi: https://doi.org/10.1038/s42254-020-0207-3](https://doi.org/10.1038/s42254-020-0207-3)
+
 
 For `.pdf` and `.tex` templates of the statement, see the `/diversityStatement` directory in this repository.
 
@@ -48,7 +56,9 @@ For the top 5 neuroscience journals (Nature Neuroscience, Neuron, Brain, Journal
 
 The goal of the coding notebook is to clean your `.bib` file to only contain references that you have cited in your manuscript. This cleaned `.bib` will then be used to generate a data table of full first names that will be used to query the probabilistic gender classifier, [Gender API](https://gender-api.com). Proportions of the predicted gender for first and last author pairs (man/man, man/woman, woman/man, and woman/woman) will be calculated. 
 
-1. Obtain a `.bib` file of your manuscript's reference list. You can do this with common reference managers. __Please export your .bib in an output style that uses full first names (rather than only first initials) and using the full author lists (rather than abbreviated author lists with "et al.").__
+If you intend to analyze the reference list of a published paper instead of your own manuscript in progress, search the paper on [Web of Knowledge](http://apps.webofknowledge.com/) (you will need institutional access). Next, [download the .bib file from Web of Science following these instructions, but start from Step 4 and on Step 6 select BibTeX instead of Plain Text](https://github.com/jdwor/gendercitation/blob/master/Step0_PullingWOSdata.pdf).
+
+1. Obtain a `.bib` file of your manuscript's reference list. You can do this with common reference managers. __Please try to export your .bib in an output style that uses full first names (rather than only first initials) and using the full author lists (rather than abbreviated author lists with "et al.").__ If a journal only provides first initials, our code will try to automatically find the full first name using the paper title or DOI (this can typically retrieve the first name 70% of the time). 
 
    * [Export `.bib` from Mendeley](https://blog.mendeley.com/2011/10/25/howto-use-mendeley-to-create-citations-using-latex-and-bibtex/)
    * [Export `.bib` from Zotero](https://libguides.mit.edu/ld.php?content_id=34248570)
@@ -73,34 +83,87 @@ The goal of the coding notebook is to clean your `.bib` file to only contain ref
 
 # FAQ
 
-* Why do I receive an error when running the code?
-  * The most common errors are due to misformatted .bib files. Errors will usually provide an indication of the line or type of problem in the .bib file. They will require you to manually correct the `.bib` file of formatting errors or incomplete entries. After editing the `.bib` file, try re-running the code block that gave you the error. If you cannot resolve an error, please open an `issue`, paste the error text or a screenshot of the error, and attach the files that you used so that we can reproduce the error. We will try to help resolve it.
-* What should I do if the Binder crashes, times out, or takes very long to launch?
-  * Please refresh the Binder or re-launch from our step 2 instruction upon a crash. This has often resolved the issue. The environment will time out if you are inactive for over 10 minutes (but leaving the window open counts as activity). Long launch times can be due to a recent patch by us (temporary slow-down from re-building the Docker image) or heavy load on the server. Please try again at a later time. Please refer to the [Binder User Guide](https://mybinder.readthedocs.io/en/latest/index.html) and [FAQ](https://mybinder.readthedocs.io/en/latest/index.html) for other questions.
-* Will this method work on non-Western names?
-  * Yes, the [Gender API supports 177 countries](https://gender-api.com/en/frequently-asked-questions?gclid=Cj0KCQiAmZDxBRDIARIsABnkbYTy9MHmGoR2uBhxEKANbT9B9EFVOSiRzbGeQi7nUn6ODH83s6-RZKwaAjpZEALw_wcB#which-countries-are-supported) but will classify genders with varying confidence. 
-* Are self-citations included?
-  * We do not include self-citations by default because we seek to measure engagement with and citation of other researchers' work. We define self-citations as those including your first or last author as a co-author. 
-* What if a reference has only 1 author?
-  * We count that author as both the first and last author.
-* What if a reference has more than 1 first author or last author?
-  * We do not automatically account for these cases. If you are aware of papers with co-first or co-last authors, then you could manually add duplicate entries for each co-first or co-last author so that they are double-counted.
-* What about gender-neutral names?
-  * We exclude names that cannot be classified with >70% confidence. These are reported in the `Diversity Statement` as "unknown." 
-* Should I include the diversity statement references in the gender proportion calculation?
-  * Please do not include the diversity statement references. The descriptive statistic of primary interest is of your citation practices.
-* What is a `.bib` file?
-  * The `.bib` file is a bibliography with tagged entry fields used by LaTeX to format a typesetted manuscript's reference list and its in-line citations. If you are not using LaTeX to write your manuscript, common reference managers that are linked to Microsoft Word or Google Docs also allow you to export `.bib` files (See Instructions, Step 1).
-* What is an `.aux` file?
-  * The `.aux` file is generated when you compile the `.tex` file to build your manuscript. It is linked to the `.bib` file(s) used to populate your manuscript's reference list and records the citations used.
-* I have an idea to advance this project, suggestions about how to improve the notebook, and/or found a bug. Can I contribute?
-  * Yes, please open an `issue` or `pull request`. We welcome feedback on any pain points in running this code notebook. If you contribute, please modify the `README.md` to credit yourself alphabetically in the `Contributors` section in the `pull request`. 
+<details>
+  <summary>Why do I receive an error when running the code?</summary>
+
+The most common errors are due to misformatted .bib files. Errors will usually provide an indication of the line or type of problem in the .bib file. They will require you to manually correct the `.bib` file of formatting errors or incomplete entries. After editing the `.bib` file, try re-running the code block that gave you the error. If you cannot resolve an error, please open an `issue`, paste the error text or a screenshot of the error, and attach the files that you used so that we can reproduce the error. We will try to help resolve it.
+</details>
+
+<details>
+  <summary>What should I do if the Binder crashes, times out, or takes very long to launch?</summary>
+Please refresh the Binder or re-launch from our step 2 instruction upon a crash. This has often resolved the issue. The environment will time out if you are inactive for over 10 minutes (but leaving the window open counts as activity). Long launch times (>15 minutes) can be due to a recent patch by us (temporary slow-down from re-building the Docker image) or heavy load on the server. Please try again at a later time. Please refer to the [Binder User Guide](https://mybinder.readthedocs.io/en/latest/index.html) and [FAQ](https://mybinder.readthedocs.io/en/latest/index.html) for other questions.
+</details>
+
+<details>
+  <summary>Will this method work on non-Western names?</summary>
+
+Yes, the [Gender API supports 177 countries](https://gender-api.com/en/frequently-asked-questions?gclid=Cj0KCQiAmZDxBRDIARIsABnkbYTy9MHmGoR2uBhxEKANbT9B9EFVOSiRzbGeQi7nUn6ODH83s6-RZKwaAjpZEALw_wcB#which-countries-are-supported) but will classify genders with varying confidence. 
+</details>
+
+<details>
+  <summary>Are self-citations included?</summary>
+
+We do not include self-citations by default because we seek to measure engagement with and citation of other researchers' work. We define self-citations as those including your first or last author as a co-author. 
+</details>
+
+<details>
+  <summary>What if a reference has only 1 author?</summary>
+
+We count that author as both the first and last author.
+</details>
+
+<details>
+  <summary>What if a reference has more than 1 first author or last author?</summary>
+
+We do not automatically account for these cases. If you are aware of papers with co-first or co-last authors, then you could manually add duplicate entries for each co-first or co-last author so that they are double-counted.
+</details>
+
+<details>
+  <summary>What about gender-neutral names?</summary>
+
+We exclude names that cannot be classified with >70% confidence. These are reported in the `Diversity Statement` as "unknown." If you are confident you can identify the person's gender by pronouns used in personal websites, social media, and institution pages, then manually replace the "unknown" with the reported gender.
+</details>
+
+<details>
+  <summary>Should I include the diversity statement references in the gender proportion calculation?</summary>
+
+Please do not include the diversity statement references. The descriptive statistic of primary interest is of your citation practices.
+</details>
+
+<details>
+  <summary>What is a `.bib` file?</summary>
+
+The `.bib` file is a bibliography with tagged entry fields used by LaTeX to format a typesetted manuscript's reference list and its in-line citations. If you are not using LaTeX to write your manuscript, common reference managers that are linked to Microsoft Word or Google Docs also allow you to export `.bib` files (See Instructions, Step 1).
+</details>
+
+<details>
+  <summary>What is an `.aux` file?</summary>
+
+The `.aux` file is generated when you compile the `.tex` file to build your manuscript. It is linked to the `.bib` file(s) used to populate your manuscript's reference list and records the citations used.
+</details>
+
+<details>
+  <summary>I have an idea to advance this project, suggestions about how to improve the notebook, and/or found a bug. Can I contribute? How do I contribute?</summary>
+
+Yes, please open an `Issue` or `Pull Request`. We welcome feedback on any pain points in running this code notebook (there is an Issue in which you can submit feedback). If you contribute, please don't forget to modify the `README.md` to credit yourself alphabetically in the `Contributors` section in the `pull request`.
+
+To modify the notebook cleanBib.ipynb, please:
+1. Test the code works as intended and does not seem break any existing code (we can also help to check this later) by pasting it into the cleanBib.ipynb Jupyter notebook and running it in an active Binder session. 
+2. When you're confident it works as intended, copy the code again if you made any modifications from testing. Close/end the current Binder session, and start a fresh one to open the cleanBib.ipynb and do not run anything in this notebook (to remove traces of when you last ran it/how many times you've run the code). Go to File > Download As > Notebook (.ipynb). 
+3. [Create a fork of our GitHub repository to your own GitHub account.](https://docs.github.com/en/enterprise/2.13/user/articles/fork-a-repo#:~:text=A%20fork%20is%20a%20copy,point%20for%20your%20own%20idea.)
+4. [Upload and commit your modified cleanBib.ipynb to your fork.](https://docs.github.com/en/enterprise/2.13/user/articles/adding-a-file-to-a-repository)
+5. [Submit a Pull Request to our GitHub repository.](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork)
+</details>
 
 # Other Resources
 
-* [Gender base-rates of neuroscience](https://biaswatchneuro.com/base-rates/neuroscience-base-rates/), based on a poll of SfN attendees from 2014-2018, categorized by subject area.
+* A paper on [Gender bias in (neuro)science: Facts, consequences, and solutions](https://doi.org/10.1111/ejn.14397).
+
+* Data on [speaker composition and gender representation of conferences in neuroscience](https://biaswatchneuro.com/about/).
 
 * A [list highlighting woman neuroscientists](https://anneslist.net/). Categorized by subject area and seniority. 
+
+* [The code used](https://github.com/jdwor/gendercitation) in [J. D. Dworkin, K. A. Linn, E. G. Teich, P. Zurn, R. T. Shinohara, and D. S. Bassett (2020). The extent and drivers of gender imbalance in neuroscience reference lists. *Nature Neuroscience*. doi: https://doi.org/10.1038/s41593-020-0658-y](https://doi.org/10.1038/s41593-020-0658-y) 
 
 # References
 
@@ -127,6 +190,13 @@ The goal of the coding notebook is to clean your `.bib` file to only contain ref
 * Dale Zhou
 
 # Changelog
+
+* __7/5/2020__
+  * update readme format
+  * update other resources
+  * update links to primary article, editorial, and highlights
+  * add instructions for analyzing published paper(s) to new branch
+  * add code for analyzing published paper(s) to new branch
 
 * __6/12/2020__
   * modify statement, references, and acknowledgment of limitations
