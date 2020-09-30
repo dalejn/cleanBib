@@ -165,7 +165,9 @@ If you intend to analyze the reference list of a published paper instead of your
 
 * Data on [speaker composition and gender representation of conferences in neuroscience](https://biaswatchneuro.com/about/).
 
-* A [list highlighting woman neuroscientists](https://anneslist.net/). Categorized by subject area and seniority. 
+* [Anneslist highlights woman neuroscientists](https://anneslist.net/). Categorized by subject area and seniority. 
+
+* The [Women in Neuroscience Repository](https://www.winrepo.org/) helps to identify and recommend women neuroscientists for conferences, symposia or collaborations.
 
 * [The code used](https://github.com/jdwor/gendercitation) in J. D. Dworkin, K. A. Linn, E. G. Teich, P. Zurn, R. T. Shinohara, and D. S. Bassett (2020). The extent and drivers of gender imbalance in neuroscience reference lists. *Nature Neuroscience*. doi: [https://doi.org/10.1038/s41593-020-0658-y](https://doi.org/10.1038/s41593-020-0658-y) 
 
