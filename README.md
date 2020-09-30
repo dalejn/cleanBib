@@ -102,7 +102,7 @@ The goal of the coding notebook is to clean your `.bib` file to only contain ref
 
 * A [list highlighting woman neuroscientists](https://anneslist.net/). Categorized by subject area and seniority. 
 
-* The [Women in Neuroscience Repository](https://www.winrepo.org/) helps to identify and recommend female neuroscientists for conferences, symposia or collaborations.
+* The [Women in Neuroscience Repository](https://www.winrepo.org/) helps to identify and recommend women neuroscientists for conferences, symposia or collaborations.
 
 # References
 
