@@ -89,7 +89,7 @@ If you intend to analyze the reference list of a published paper instead of your
 <details>
   <summary>Why do I receive an error when running the code?</summary>
 
-* The most common errors are due to misformatted .bib files. Errors messages are very detailed, and at the bottom of the printed message will be an indication of the line and type of problem in the .bib file. They will require you to manually correct the `.bib` file of formatting errors or incomplete entries. After editing the `.bib` file, try re-running the code block that gave you the error. If you cannot resolve an error, please open an `issue`, paste the error text or a screenshot of the error, and attach the files that you used so that we can reproduce the error. We will try to help resolve it.
+* The most common errors are due to misformatted .bib files. Errors messages are very detailed, and at the bottom of the printed message will be an indication of the line and type of problem in the .bib file. They will require you to manually correct the `.bib` file of formatting errors or incomplete entries. After editing the `.bib` file, try re-running the code block that gave you the error. If you cannot resolve an error, please open an [Issue](https://github.com/dalejn/cleanBib/issues/new/choose), paste the error text or a screenshot of the error, and attach the files that you used so that we can reproduce the error. We will try to help resolve it.
 </details>
 
 <details>
@@ -117,7 +117,8 @@ This error message indicates that on line X of your uploaded .bib file, there is
 <details>
   <summary>Will this method work on non-Western names?</summary>
 
-* Yes, the [Gender API supports 177 countries](https://gender-api.com/en/frequently-asked-questions?gclid=Cj0KCQiAmZDxBRDIARIsABnkbYTy9MHmGoR2uBhxEKANbT9B9EFVOSiRzbGeQi7nUn6ODH83s6-RZKwaAjpZEALw_wcB#which-countries-are-supported) but will classify genders with varying confidence. 
+* Yes, the [Gender API supports 177 countries](https://gender-api.com/en/frequently-asked-questions?gclid=Cj0KCQiAmZDxBRDIARIsABnkbYTy9MHmGoR2uBhxEKANbT9B9EFVOSiRzbGeQi7nUn6ODH83s6-RZKwaAjpZEALw_wcB#which-countries-are-supported) but will classify genders with varying confidence. The [ethnicolr](https://github.com/appeler/ethnicolr) race probabilities use the last-name–race data from the [2000 census and 2010 census](https://github.com/appeler/ethnicolr/blob/master/ethnicolr/data/census), the [Wikipedia data](https://github.com/appeler/ethnicolr/blob/master/ethnicolr/data/wiki) collected by Skiena and colleagues, and the [Florida voter registration data](http://dx.doi.org/10.7910/DVN/UBIG3F) from early 2017.
+
 </details>
 
 <details>
@@ -133,19 +134,25 @@ This error message indicates that on line X of your uploaded .bib file, there is
 </details>
 
 <details>
+  <summary>What if the author list includes a committee or consortium?</summary>
+
+* Please use either the last named author or the lead of the committee/consortium.
+</details>
+
+<details>
   <summary>What if a reference has more than 1 first author or last author?</summary>
 
 * We do not automatically account for these cases. If you are aware of papers with co-first or co-last authors, then you could manually add duplicate entries for each co-first or co-last author so that they are double-counted.
 </details>
 
 <details>
-  <summary>What about gender-neutral names?</summary>
+  <summary>What about gender-neutral or race-ambiguous names?</summary>
 
-* We exclude names that cannot be classified with >70% confidence. These are reported in the `Diversity Statement` as "unknown." If you are confident you can identify the person's gender by pronouns used in personal websites, social media, and institution pages, then manually replace the "unknown" with the reported gender.
+* We exclude names that cannot be classified with >70% confidence. These are reported in the `Diversity Statement` as "unknown." If you are confident you can identify the person's gender by pronouns used in personal websites, social media, and institution pages, then manually replace the "unknown" with the reported gender. The ethnicolor package can be used to make binary predictions but also provides probabilities that an author belongs to each racial category. Consider the last name “Smith.” The model’s probabilities for the name “Smith” are 73% white, 25% Black, 1% Hispanic, and <1% Asian. We use all four probabilities to estimate how citers probabilistically assign racial categories to names, either implicitly or explicitly, while reading and citing papers. Note that imperfections in the algorithm’s predictions will break the links between citation behavior and author race, and therefore any incorrect estimation in the present data likely biases the results towards the null model.
 </details>
 
 <details>
-  <summary>Should I include the diversity statement references in the gender proportion calculation?</summary>
+  <summary>Should I include the diversity statement references in the proportion calculations?</summary>
 
 * Please do not include the diversity statement references. The descriptive statistic of primary interest is of your citation practices.
 </details>
