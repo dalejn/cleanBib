@@ -30,4 +30,14 @@ D.~Zhou, E.~J. Cornblath, J.~Stiso, E.~G. Teich, J.~D. Dworkin, A.~S. Blevins,
   and D.~S. Bassett, ``Gender diversity statement and code notebook v1.0,''
   Feb. 2020.
 
+\bibitem{ambekar2009name}
+A.~Ambekar, C.~Ward, J.~Mohammed, S.~Male, and S.~Skiena, ``Name-ethnicity
+  classification from open sources,'' in {\em Proceedings of the 15th ACM
+  SIGKDD international conference on Knowledge Discovery and Data Mining},
+  pp.~49--58, 2009.
+
+\bibitem{sood2018predicting}
+G.~Sood and S.~Laohaprapanon, ``Predicting race and ethnicity from the sequence
+  of characters in a name,'' {\em arXiv preprint arXiv:1805.02109}, 2018.
+
 \end{thebibliography}
