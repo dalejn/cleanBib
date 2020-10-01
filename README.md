@@ -95,7 +95,7 @@ If you intend to analyze the reference list of a published paper instead of your
 <details>
   <summary>Common errors</summary>
   <ol>
-  <li><details>
+  <details><li>
     <summary>TokenRequired</summary>
     
     ```TokenRequired: syntax error in line X: entry key expected```
