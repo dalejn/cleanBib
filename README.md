@@ -97,10 +97,8 @@ If you intend to analyze the reference list of a published paper instead of your
   <ol>
   <li><details>
     <summary>TokenRequired</summary>
-    
-    ```TokenRequired: syntax error in line X: entry key expected```
-
-    This error message indicates that on line X of your uploaded .bib file, there is an incomplete entry that is missing a unique key for the citation. For instance, `@article{,` should be changed to `@article{yourUniqueCitationKey`
+    * TokenRequired: syntax error in line X: entry key expected
+    * This error message indicates that on line X of your uploaded .bib file, there is an incomplete entry that is missing a unique key for the citation. For instance, `@article{,` should be changed to `@article{yourUniqueCitationKey`
   </details></li>
 
   </ol>
