@@ -85,6 +85,8 @@ If you intend to analyze the reference list of a published paper instead of your
 | `.tex` file (OPTIONAL) | `race_gender_citations.pdf`: heat map of your citations broken down by probabilistic gender and race estimations
 |                       | `yourTexFile_gendercolor.tex`: your `.tex` file modified to compile .pdf with in-line citations colored-coded by gender pairs |
 
+![Gender-race breakdown, Max Bertolero](img/race_gender_citations.png)
+
 ![Color-coded .tex file, Eli Cornblath](img/texColors.png)
 
 # FAQ
@@ -195,7 +197,9 @@ This error message indicates that on line X of your uploaded .bib file, there is
 
 * The [Women in Neuroscience Repository](https://www.winrepo.org/) helps to identify and recommend women neuroscientists for conferences, symposia or collaborations.
 
-* [The code used](https://github.com/jdwor/gendercitation) in J. D. Dworkin, K. A. Linn, E. G. Teich, P. Zurn, R. T. Shinohara, and D. S. Bassett (2020). The extent and drivers of gender imbalance in neuroscience reference lists. *Nature Neuroscience*. doi: [https://doi.org/10.1038/s41593-020-0658-y](https://doi.org/10.1038/s41593-020-0658-y) 
+* [R code used](https://github.com/jdwor/gendercitation) in J. D. Dworkin, K. A. Linn, E. G. Teich, P. Zurn, R. T. Shinohara, and D. S. Bassett (2020). The extent and drivers of gender imbalance in neuroscience reference lists. *Nature Neuroscience*. doi: [https://doi.org/10.1038/s41593-020-0658-y](https://doi.org/10.1038/s41593-020-0658-y) 
+
+* [Python code](https://github.com/mb3152/balanced_citer) used for probabilistic race breakdowns in M.A. Bertolero et al. (in prep).
 
 * The [Women in Neuroscience Repository](https://www.winrepo.org/) helps to identify and recommend women neuroscientists for conferences, symposia or collaborations.
 
