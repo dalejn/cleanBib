@@ -32,6 +32,8 @@ Motivated from work by:
 
  * J. D. Dworkin, K. A. Linn, E. G. Teich, P. Zurn, R. T. Shinohara, and D. S. Bassett (2020). The extent and drivers of gender imbalance in neuroscience reference lists. *Nature Neuroscience*. [doi: https://doi.org/10.1038/s41593-020-0658-y](https://doi.org/10.1038/s41593-020-0658-y)
 
+ * M.A. Bertolero, J.D. Dworkin, S.U. David, C. López Lloreda, P. Srivastava, J. Stiso, D. Zhou, K. Dzirasa, D.A. Fair, A.N. Kaczkurkin, B.J. Marlin, D. Shohamy, L.Q. Uddin, P. Zurn, D.S. Bassett (2020). Racial and ethnic imbalance in neuroscience reference lists and intersections with gender. *bioRxiv*. [doi: https://doi.org/10.1101/2020.10.12.336230](https://www.biorxiv.org/content/10.1101/2020.10.12.336230v1)
+
 See also this Perspective with concrete suggestions for moving forward: 
 
 * J. D. Dworkin, P. Zurn, and D. S. Bassett (2020). (In)citing Action to Realize an Equitable Future. *Neuron*. [doi: https://doi.org/10.1016/j.neuron.2020.05.011](https://doi.org/10.1016/j.neuron.2020.05.011)
@@ -40,6 +42,7 @@ And editorials and research highlights of this work:
 * A.L. Fairhall and E. Marder (2020). Acknowledging female voices. *Nature Neuroscience*. [doi: https://doi.org/10.1038/s41593-020-0667-x](https://www.nature.com/articles/s41593-020-0667-x)  
 * Widening the scope of diversity (2020). *Nature Neuroscience*. [doi: https://doi.org/10.1038/s41593-020-0670-2](https://www.nature.com/articles/s41593-020-0670-2)  
 * Z. Budrikis (2020). Growing citation gender gap. *Nature Reviews Physics*. [doi: https://doi.org/10.1038/s42254-020-0207-3](https://doi.org/10.1038/s42254-020-0207-3)
+* P. Zurn, D.S. Bassett, and N.C. Rust (2020). "The Citation Diversity Statement: A Practice of Transparency, A Way of Life." *Trends in Cognitive Sciences* [doi: https://doi.org/10.1016/j.tics.2020.06.009](https://doi.org/10.1016/j.tics.2020.06.009)
 
 For `.pdf` and `.tex` templates of the statement, see the `/diversityStatement` directory in this repository.
 
@@ -49,13 +52,13 @@ A `.bib` file containing the references used in the statement can be found in `/
 
 ### Template
 
-> Recent work in several fields of science has identified a bias in citation practices such that papers from women and other minorities are under-cited relative to the number of such papers in the field [1, 2, 3, 4, 5]. Here we sought to proactively consider choosing references that reflect the diversity of the field in thought, form of contribution, gender, and other factors. We obtained predicted gender of the first and last author of each reference by using databases that store the probability of a name being carried by a woman [5, 6]. By this measure (and excluding self-citations to the first and last authors of our current paper), our references contain `A`% woman(first)/woman(last), `B`% man/woman, `C`% woman/man, `D`% man/man, and `E`% unknown categorization. This method is limited in that a) names, pronouns, and social media profiles used to construct the databases may not, in every case, be indicative of gender identity and b) it cannot account for intersex, non-binary, or transgender people. Second, we obtained predicted racial/ethnic category of the first and last author of each reference by databases that store the probability of a first and last name being carried by an author of color [7,8]. By this measure (and excluding self-citations), our references contain `F`% author of color (first)/author of color(last), `G`% white author/author of color, `H`% author of color/white author, and `I`% white author/white author. This method is limited in that a) names, Census entries, and Wikipedia profiles used to make the predictions may not be indicative of racial/ethnic identity, and b) it cannot account for Indigenous and mixed-race authors, or those who may face differential biases due to the ambiguous racialization or ethnicization of their names. We look forward to future work that could help us to better understand how to support equitable practices in science.
+> Recent work in several fields of science has identified a bias in citation practices such that papers from women and other minority scholars are under-cited relative to the number of such papers in the field (1-5). Here we sought to proactively consider choosing references that reflect the diversity of the field in thought, form of contribution, gender, race, ethnicity, and other factors. First, we obtained the predicted gender of the first and last author of each reference by using databases that store the probability of a first name being carried by a woman (5, 6). By this measure (and excluding self-citations to the first and last authors of our current paper), our references contain `A`% woman(first)/woman(last), `B`% man/woman, `C`% woman/man, `D`% man/man, and `E`% unknown categorization. This method is limited in that a) names, pronouns, and social media profiles used to construct the databases may not, in every case, be indicative of gender identity and b) it cannot account for intersex, non-binary, or transgender people. Second, we obtained predicted racial/ethnic category of the first and last author of each reference by databases that store the probability of a first and last name being carried by an author of color [7,8]. By this measure (and excluding self-citations), our references contain `F`% author of color (first)/author of color(last), `G`% white author/author of color, `H`% author of color/white author, and `I`% white author/white author. This method is limited in that a) names, Census entries, and Wikipedia profiles used to make the predictions may not be indicative of racial/ethnic identity, and b) it cannot account for Indigenous and mixed-race authors, or those who may face differential biases due to the ambiguous racialization or ethnicization of their names.  We look forward to future work that could help us to better understand how to support equitable practices in science.
 
 ### Benchmark
 
 For the top 5 neuroscience journals (Nature Neuroscience, Neuron, Brain, Journal of Neuroscience, and Neuroimage), the expected gender proportions in reference lists as reported by [Dworkin et al.](https://doi.org/10.1038/s41593-020-0658-y) are 6.7% for woman(first)/woman(last), 9.4% for man/woman, 25.5% for woman/man, and 58.4% for man/man. Expected proportions were calculated by randomly sampling papers from 28,505 articles in the 5 journals, estimating gender breakdowns using probabilistic name classification tools, and regressing for relevant article variables like publication date, journal, number of authors, review article or not, and first-/last-author seniority. See [Dworkin et al.](https://doi.org/10.1038/s41593-020-0658-y) for more details. 
 
-Using a similar random draw model regressing for relevant variables, the expected race proportions in reference lists as reported by Bertolero et al. were 51.8% for white/white, 12.8% for white/author-of-color, 23.5% for author-of-color/white, and 11.9% for author-of-color/author-of-color. 
+Using a similar random draw model regressing for relevant variables, the expected race proportions in reference lists as reported by [Bertolero et al.](https://www.biorxiv.org/content/10.1101/2020.10.12.336230v1) were 51.8% for white/white, 12.8% for white/author-of-color, 23.5% for author-of-color/white, and 11.9% for author-of-color/author-of-color. 
 
 # Instructions
 
@@ -120,9 +123,9 @@ This error message indicates that on line X of your uploaded .bib file, there is
 </details>
 
 <details>
-  <summary>Will this method work on non-Western names?</summary>
+  <summary>Will this method work on non-Western names and how accurate is it?</summary>
 
-* Yes, the [Gender API supports 177 countries](https://gender-api.com/en/frequently-asked-questions?gclid=Cj0KCQiAmZDxBRDIARIsABnkbYTy9MHmGoR2uBhxEKANbT9B9EFVOSiRzbGeQi7nUn6ODH83s6-RZKwaAjpZEALw_wcB#which-countries-are-supported) but will classify genders with varying confidence. The [ethnicolr](https://github.com/appeler/ethnicolr) race probabilities use the last-name–race data from the [2000 census and 2010 census](https://github.com/appeler/ethnicolr/blob/master/ethnicolr/data/census), the [Wikipedia data](https://github.com/appeler/ethnicolr/blob/master/ethnicolr/data/wiki) collected by Skiena and colleagues, and the [Florida voter registration data](http://dx.doi.org/10.7910/DVN/UBIG3F) from early 2017.
+* Yes, the [Gender API supports 177 countries](https://gender-api.com/en/frequently-asked-questions?gclid=Cj0KCQiAmZDxBRDIARIsABnkbYTy9MHmGoR2uBhxEKANbT9B9EFVOSiRzbGeQi7nUn6ODH83s6-RZKwaAjpZEALw_wcB#which-countries-are-supported) but will classify genders with varying confidence. [Dworkin et al. (Supplementary Tables 1 and 2)](https://doi.org/10.1038/s41593-020-0658-y) assessed the extent of potential gender mislabeling by manual inspecting a sample of 200 authors. They found that the relative accuracy of the automated determination procedure at the level of both individual authors had an accuracy ≈ 0.96 and article gender categories had an accuracy ≈ 0.92. Because errors in gender determination would break the links between citation behavior and author gender, any incorrect estimation in the present data likely biases the results towards the null. The [ethnicolr](https://github.com/appeler/ethnicolr) race probabilities use the last-name–race data from the [2000 census and 2010 census](https://github.com/appeler/ethnicolr/blob/master/ethnicolr/data/census), the [Wikipedia data](https://github.com/appeler/ethnicolr/blob/master/ethnicolr/data/wiki) collected by Skiena and colleagues, and the [Florida voter registration data](http://dx.doi.org/10.7910/DVN/UBIG3F) from early 2017. Please see this [confusion matrix for the accuracy and precision of the algorithm during cross-validation](https://github.com/mb3152/balanced_citer).
 
 </details>
 
@@ -199,7 +202,7 @@ This error message indicates that on line X of your uploaded .bib file, there is
 
 * [R code used](https://github.com/jdwor/gendercitation) in J. D. Dworkin, K. A. Linn, E. G. Teich, P. Zurn, R. T. Shinohara, and D. S. Bassett (2020). The extent and drivers of gender imbalance in neuroscience reference lists. *Nature Neuroscience*. doi: [https://doi.org/10.1038/s41593-020-0658-y](https://doi.org/10.1038/s41593-020-0658-y) 
 
-* [Python code](https://github.com/mb3152/balanced_citer) used for probabilistic race breakdowns in M.A. Bertolero et al. (in prep).
+* [Python code](https://github.com/mb3152/balanced_citer) used for probabilistic race breakdowns in M.A. Bertolero, J.D. Dworkin, S.U. David, C. López Lloreda, P. Srivastava, J. Stiso, D. Zhou, K. Dzirasa, D.A. Fair, A.N. Kaczkurkin, B.J. Marlin, D. Shohamy, L.Q. Uddin, P. Zurn, D.S. Bassett (2020). Racial and ethnic imbalance in neuroscience reference lists and intersections with gender. *bioRxiv*. [doi: https://doi.org/10.1101/2020.10.12.336230](https://www.biorxiv.org/content/10.1101/2020.10.12.336230v1)
 
 * The [Women in Neuroscience Repository](https://www.winrepo.org/) helps to identify and recommend women neuroscientists for conferences, symposia or collaborations.
 
@@ -215,7 +218,7 @@ This error message indicates that on line X of your uploaded .bib file, there is
 
 > [5] J. D. Dworkin, K. A. Linn, E. G. Teich, P. Zurn, R. T. Shinohara, and D. S. Bassett, “The extent and drivers of gender imbalance in neuroscience reference lists,” Nature Neuroscience, 2020.
 
-> [6] D. Zhou, E. J. Cornblath, J. Stiso, E. G. Teich, J. D. Dworkin, A. S. Blevins, and D. S. Bassett, “Gender diversity statement and code notebook v1.0,” Feb. 2020.
+> [6] D. Zhou, M. A. Bertolero, J. Stiso, E. J. Cornblath, E. G. Teich, A. S. Blevins, Virtualmario, C. Camp, J. D. Dworkin, and D. S. Bassett, “Gender diversity statement and code notebook v1.1,” Oct. 2020.
 
 > [7] Ambekar, A., Ward, C., Mohammed, J., Male, S., & Skiena, S. (2009, June). Name-ethnicity classification from open sources. In Proceedings of the 15th ACM SIGKDD international conference on Knowledge Discovery and Data Mining (pp. 49-58).
 
@@ -233,6 +236,11 @@ This error message indicates that on line X of your uploaded .bib file, there is
 * Dale Zhou
 
 # Changelog
+
+* __10/13/2020__
+  * update wiki to florida race data
+  * update statement
+  * update additional resources
 
 * __9/30/2020__
   * add code for race probability
