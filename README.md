@@ -34,15 +34,15 @@ Motivated from work by:
 
  * M.A. Bertolero, J.D. Dworkin, S.U. David, C. López Lloreda, P. Srivastava, J. Stiso, D. Zhou, K. Dzirasa, D.A. Fair, A.N. Kaczkurkin, B.J. Marlin, D. Shohamy, L.Q. Uddin, P. Zurn, D.S. Bassett (2020). Racial and ethnic imbalance in neuroscience reference lists and intersections with gender. *bioRxiv*. [doi: https://doi.org/10.1101/2020.10.12.336230](https://www.biorxiv.org/content/10.1101/2020.10.12.336230v1)
 
-See also this Perspective with concrete suggestions for moving forward: 
+See also these Perspectives with actionable recommendations moving forward for scientists at all levels: 
 
 * J. D. Dworkin, P. Zurn, and D. S. Bassett (2020). (In)citing Action to Realize an Equitable Future. *Neuron*. [doi: https://doi.org/10.1016/j.neuron.2020.05.011](https://doi.org/10.1016/j.neuron.2020.05.011)
+* P. Zurn, D.S. Bassett, and N.C. Rust (2020). "The Citation Diversity Statement: A Practice of Transparency, A Way of Life." *Trends in Cognitive Sciences* [doi: https://doi.org/10.1016/j.tics.2020.06.009](https://doi.org/10.1016/j.tics.2020.06.009)
 
 And editorials and research highlights of this work:  
 * A.L. Fairhall and E. Marder (2020). Acknowledging female voices. *Nature Neuroscience*. [doi: https://doi.org/10.1038/s41593-020-0667-x](https://www.nature.com/articles/s41593-020-0667-x)  
 * Widening the scope of diversity (2020). *Nature Neuroscience*. [doi: https://doi.org/10.1038/s41593-020-0670-2](https://www.nature.com/articles/s41593-020-0670-2)  
 * Z. Budrikis (2020). Growing citation gender gap. *Nature Reviews Physics*. [doi: https://doi.org/10.1038/s42254-020-0207-3](https://doi.org/10.1038/s42254-020-0207-3)
-* P. Zurn, D.S. Bassett, and N.C. Rust (2020). "The Citation Diversity Statement: A Practice of Transparency, A Way of Life." *Trends in Cognitive Sciences* [doi: https://doi.org/10.1016/j.tics.2020.06.009](https://doi.org/10.1016/j.tics.2020.06.009)
 
 For `.pdf` and `.tex` templates of the statement, see the `/diversityStatement` directory in this repository.
 
