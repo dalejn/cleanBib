@@ -8,7 +8,9 @@
 
     + [Template](https://github.com/dalejn/cleanBib#template)
 
-    + [Benchmark](https://github.com/dalejn/cleanBib#benchmark)
+    + [Benchmark across neuroscience](https://github.com/dalejn/cleanBib#benchmark-across-neuroscience)
+
+    + [Benchmark for papers using this tool](https://github.com/dalejn/cleanBib#benchmark-for-papers-using-this-tool)
 
 * [Instructions](https://github.com/dalejn/cleanBib#instructions)
 
@@ -54,13 +56,15 @@ A `.bib` file containing the references used in the statement can be found in `/
 
 > Recent work in several fields of science has identified a bias in citation practices such that papers from women and other minority scholars are under-cited relative to the number of such papers in the field (1-5). Here we sought to proactively consider choosing references that reflect the diversity of the field in thought, form of contribution, gender, race, ethnicity, and other factors. First, we obtained the predicted gender of the first and last author of each reference by using databases that store the probability of a first name being carried by a woman (5, 6). By this measure (and excluding self-citations to the first and last authors of our current paper), our references contain `A`% woman(first)/woman(last), `B`% man/woman, `C`% woman/man, `D`% man/man, and `E`% unknown categorization. This method is limited in that a) names, pronouns, and social media profiles used to construct the databases may not, in every case, be indicative of gender identity and b) it cannot account for intersex, non-binary, or transgender people. Second, we obtained predicted racial/ethnic category of the first and last author of each reference by databases that store the probability of a first and last name being carried by an author of color [7,8]. By this measure (and excluding self-citations), our references contain `F`% author of color (first)/author of color(last), `G`% white author/author of color, `H`% author of color/white author, and `I`% white author/white author. This method is limited in that a) names, Census entries, and Wikipedia profiles used to make the predictions may not be indicative of racial/ethnic identity, and b) it cannot account for Indigenous and mixed-race authors, or those who may face differential biases due to the ambiguous racialization or ethnicization of their names.  We look forward to future work that could help us to better understand how to support equitable practices in science.
 
-### Benchmark
+### Benchmark across neuroscience
 
 For the top 5 neuroscience journals (Nature Neuroscience, Neuron, Brain, Journal of Neuroscience, and Neuroimage), the expected gender proportions in reference lists as reported by [Dworkin et al.](https://doi.org/10.1038/s41593-020-0658-y) are 6.7% for woman(first)/woman(last), 9.4% for man/woman, 25.5% for woman/man, and 58.4% for man/man. Expected proportions were calculated by randomly sampling papers from 28,505 articles in the 5 journals, estimating gender breakdowns using probabilistic name classification tools, and regressing for relevant article variables like publication date, journal, number of authors, review article or not, and first-/last-author seniority. See [Dworkin et al.](https://doi.org/10.1038/s41593-020-0658-y) for more details. 
 
 Using a similar random draw model regressing for relevant variables, the expected race proportions in reference lists as reported by [Bertolero et al.](https://www.biorxiv.org/content/10.1101/2020.10.12.336230v1) were 51.8% for white/white, 12.8% for white/author-of-color, 23.5% for author-of-color/white, and 11.9% for author-of-color/author-of-color. 
 
-We're interested in determining whether papers that have a citation diversity statement have more diverse reference lists. This is a work in progress, but here is a preliminary visualization of the relative gender proportions in reference lists of papers with diversity statements (relative to the expected gender proportions). See the [cleanBibImpact repository](https://github.com/koudyk/cleanBibImpact) for the code and data for this ongoing project. 
+### Benchmark for papers using this tool
+
+Papers with citation diversity statements tend to have more balanced reference lists with respect to the expected benchmarks. Prior to v1.1 (October 2020) of the code, the diversity statement only included predicted gender. Below, we show a preliminary visualization of the relative gender proportions in reference lists of papers with diversity statements (relative to the expected gender proportions) from January to October 2020. See the [cleanBibImpact repository](https://github.com/koudyk/cleanBibImpact) for the code and data for this ongoing project. 
 
 ![Citing papers' citation diversity, Kendra Oudyk](img/relative_gender_proportions_in_citing_papers.png)
 
