@@ -60,6 +60,10 @@ For the top 5 neuroscience journals (Nature Neuroscience, Neuron, Brain, Journal
 
 Using a similar random draw model regressing for relevant variables, the expected race proportions in reference lists as reported by [Bertolero et al.](https://www.biorxiv.org/content/10.1101/2020.10.12.336230v1) were 51.8% for white/white, 12.8% for white/author-of-color, 23.5% for author-of-color/white, and 11.9% for author-of-color/author-of-color. 
 
+We're interested in determining whether papers that have a citation diversity statement have more diverse reference lists. This is a work in progress, but here is a preliminary visualization of the relative gender proportions in reference lists of papers with diversity statements (relative to the expected gender proportions). See the [cleanBibImpact repository](https://github.com/koudyk/cleanBibImpact) for the code and data for this ongoing project. 
+
+![Citing papers' citation diversity, Kendra Oudyk](img/relative_gender_proportions_in_citing_papers.png)
+
 # Instructions
 
 The goal of the coding notebook is to clean your `.bib` file to only contain references that you have cited in your manuscript. This cleaned `.bib` will then be used to generate a data table of full first names that will be used to query the probabilistic gender ([Gender API](https://gender-api.com)) and race ([ethnicolr](https://github.com/appeler/ethnicolr)) classifier. Proportions of the predicted gender for first and last author pairs (man/man, man/woman, woman/man, and woman/woman) will be calculated. 
@@ -205,6 +209,8 @@ This error message indicates that on line X of your uploaded .bib file, there is
 * [Python code](https://github.com/mb3152/balanced_citer) used for probabilistic race breakdowns in M.A. Bertolero, J.D. Dworkin, S.U. David, C. López Lloreda, P. Srivastava, J. Stiso, D. Zhou, K. Dzirasa, D.A. Fair, A.N. Kaczkurkin, B.J. Marlin, D. Shohamy, L.Q. Uddin, P. Zurn, D.S. Bassett (2020). Racial and ethnic imbalance in neuroscience reference lists and intersections with gender. *bioRxiv*. [doi: https://doi.org/10.1101/2020.10.12.336230](https://www.biorxiv.org/content/10.1101/2020.10.12.336230v1)
 
 * The [Women in Neuroscience Repository](https://www.winrepo.org/) helps to identify and recommend women neuroscientists for conferences, symposia or collaborations.
+
+* The [cleanBibImpact](https://github.com/koudyk/cleanBibImpact) is an ongoing project looking at whether papers that have a citation diversity statement have more diverse reference lists.
 
 # References
 
