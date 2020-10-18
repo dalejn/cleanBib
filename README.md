@@ -239,13 +239,21 @@ This error message indicates that on line X of your uploaded .bib file, there is
 
 * Max Bertolero
 * Ann Sizemore Blevins
+* Christopher Camp
 * Eli Cornblath
 * Jordan Dworkin
+* Cleanthis Michael
+* Kendra Oudyk
 * Jeni Stiso
 * Erin Teich
+* virtualmarioe
 * Dale Zhou
 
 # Changelog
+
+* __10/18/2020__
+  * add predicted gender benchmarks for papers using this tool/with a diversity statement, thanks to Kendra for the work from [Organization for Human Brain Mapping Hackathon 2020](https://ohbm.github.io/hackathon2020/)!
+  * add R code to plot the predicted gender balance compared to benchmarks, as in [Dworkin et al. (2020)](https://doi.org/10.1038/s41593-020-0658-y), thanks to Cleanthis for the work from [Organization for Human Brain Mapping Hackathon 2020!](https://ohbm.github.io/hackathon2020/)
 
 * __10/13/2020__
   * update wiki to florida race data
