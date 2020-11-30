@@ -128,24 +128,21 @@ The goal of the coding notebook is to analyze the predicted gender and race of f
 <details>
 <summary>Common errors</summary>
 
-<ol>
-<li><details>
+<details>
 <summary>TokenRequired</summary>
     
 ```TokenRequired: syntax error in line X: entry key expected```
 
 This error message indicates that on line X of your uploaded .bib file, there is an incomplete entry that is missing a unique key for the citation. For instance, `@article{,` should be changed to `@article{yourUniqueCitationKey`
-</li></details>
+</details>
 
-<li><details>
+<details>
 <summary>Syntax Error</summary>
     
 ```in line X: ‘Y‘ expected```
 
 This error message could indicate that there is an unexpected character at line X of your .bib file, such as a space in the name of a field. For example, instead of `Early Access Date = …`, the field should be changed to `EarlyAccessDate = …`
-</li></details>
-
-</ol>
+</details>
 
 </details>
 
