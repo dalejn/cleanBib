@@ -78,7 +78,7 @@ Papers with citation diversity statements tend to have more balanced reference l
 
 # Instructions
 
-The goal of the coding notebook is to analyze the predicted gender and race of first and last authors in reference lists of manuscripts in progress. The code will clean your `.bib` file to only contain references that you have cited in your manuscript. This cleaned `.bib` will then be used to generate a data table of names that will be used to query the probabilistic gender ([Gender API](https://gender-api.com)) and race ([ethnicolr](https://github.com/appeler/ethnicolr)) classifier. Proportions of the predicted gender for first and last author pairs (man/man, man/woman, woman/man, and woman/woman) will be calculated. 
+The goal of the coding notebook is to analyze the predicted gender and race of first and last authors in reference lists of manuscripts in progress. The code will clean your `.bib` file to only contain references that you have cited in your manuscript. This cleaned `.bib` will then be used to generate a data table of names that will be used to query the probabilistic gender ([Gender API](https://gender-api.com)) and race ([ethnicolr](https://github.com/appeler/ethnicolr)) classifier. Proportions of the predicted gender for first and last author pairs (man/man, man/woman, woman/man, and woman/woman) and predicted race (white and author of color) will be calculated using the database probabilities. 
 
 <details>
   <summary>A note on analyzing published article(s) for which you do not have access to a .bib file</summary>
