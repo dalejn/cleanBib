@@ -20,6 +20,14 @@
 
 * [Other Resources](https://github.com/dalejn/cleanBib#other-resources)
 
+  - [Papers](https://github.com/dalejn/cleanBib#papers)
+
+  - [Lists and Databases](https://github.com/dalejn/cleanBib#lists-and-databases)
+
+  - [Code](https://github.com/dalejn/cleanBib#code)
+
+  - [Related Projects](https://github.com/dalejn/cleanBib#related-projects)
+
 * [References](https://github.com/dalejn/cleanBib#references)
 
 * [Contributors](https://github.com/dalejn/cleanBib#contributors)
@@ -70,15 +78,30 @@ Papers with citation diversity statements tend to have more balanced reference l
 
 # Instructions
 
-The goal of the coding notebook is to clean your `.bib` file to only contain references that you have cited in your manuscript. This cleaned `.bib` will then be used to generate a data table of full first names that will be used to query the probabilistic gender ([Gender API](https://gender-api.com)) and race ([ethnicolr](https://github.com/appeler/ethnicolr)) classifier. Proportions of the predicted gender for first and last author pairs (man/man, man/woman, woman/man, and woman/woman) will be calculated. 
+The goal of the coding notebook is to analyze the predicted gender and race of first and last authors in reference lists of *manuscripts in progress*. The code will clean your `.bib` file to only contain references that you have cited in your manuscript. This cleaned `.bib` will then be used to generate a data table of names that will be used to query the probabilistic gender ([Gender API](https://gender-api.com)) and race ([ethnicolr](https://github.com/appeler/ethnicolr)) database. Proportions of the predicted gender for first and last author pairs (man/man, man/woman, woman/man, and woman/woman) and predicted race (white and author of color) will be calculated using the database probabilities. 
 
-If you intend to analyze the reference list of a published paper instead of your own manuscript in progress, search the paper on [Web of Knowledge](http://apps.webofknowledge.com/) (you will need institutional access). Next, [download the .bib file from Web of Science following these instructions, but start from Step 4 and on Step 6 select BibTeX instead of Plain Text](https://github.com/jdwor/gendercitation/blob/master/Step0_PullingWOSdata.pdf).
+<details>
+
+<summary>Can I use this code to analyze published article(s) instead of manuscripts in progress?</summary>
+We recognize that you might be curious about your or others' <b>history</b> of citation practices. The main purpose of the notebook is to increase awareness of how you engage with your colleagues' research for works in progress, and to iteratively assess if your <b>current</b> citation practices align with your values. That being said, we are developing analysis of published papers as a secondary feature by using data acquired from Web of Knowledge. However, we caution that this analysis is still in development. This approach will build a table by relying heavily on an automated search using CrossRef API from a single field provided by Web of Science. It will also require more extensive manual edits to the created table because automated search often returns incomplete information. Currently, the code for this secondary feature only supports prediction of gender for published paper(s). When considering how many published papers to analyze, note that Gender-API provides only 500 free searches per month. We recommend analyzing one paper at a time, which is also important to check for self-citations within each paper. If you intend to analyze the reference list of a published paper instead of your own manuscript in progress:
+
+___
+
+  1. Search the paper on [Web of Knowledge](http://apps.webofknowledge.com/) (you will need institutional access). 
+  2. Next, [download the .bib file from Web of Science following these instructions, but start from Step 4 and on Step 6 select BibTeX instead of Plain Text](https://github.com/jdwor/gendercitation/blob/master/Step0_PullingWOSdata.pdf).
+  3. Then, [launch Binder from this link](https://mybinder.org/v2/gh/dalejn/cleanBib/7ffe1823397a77c8c068b549c7b428c79379232e).
+  4. Open the notebook `cleanBib.ipynb`. Follow the instructions above each code block. At the step where the instructions ask you to use `checkingPublishedArticle = True`, please run it using `checkingPublishedArticle = False` first. This will tell you if there are any errors in the .bib file that should be addressed. See FAQ for common errors. 
+
+  It can take 10 minutes to 1 hour complete all of the instructions, depending on the state and size of your `.bib` file. We expect that the most time-consuming step will be manually modifying the `.bib` file to find missing author names, fill incomplete entries, and fix formatting errors. These problems arise because automated methods of reference mangagers and Google Scholar sometimes can not retrieve full information, for example if some journals only provide an author's first initial instead of their full first name.
+___
+
+</details>
 
 1. Obtain a `.bib` file of your manuscript's reference list. You can do this with common reference managers. __Please try to export your .bib in an output style that uses full first names (rather than only first initials) and using the full author lists (rather than abbreviated author lists with "et al.").__ If a journal only provides first initials, our code will try to automatically find the full first name using the paper title or DOI (this can typically retrieve the first name 70% of the time). 
 
    * [Export `.bib` from Mendeley](https://blog.mendeley.com/2011/10/25/howto-use-mendeley-to-create-citations-using-latex-and-bibtex/)
    * [Export `.bib` from Zotero](https://libguides.mit.edu/ld.php?content_id=34248570)
-   * [Export `.bib` from EndNote](https://www.reed.edu/cis/help/LaTeX/EndNote.html). Note: Please export full first names by either [choosing an output style that does so by default (e.g. in MLA style)](https://canterbury.libguides.com/endnote/basics-output) or by [customizing an output style.](http://bibliotek.usn.no/cite-and-write/endnote/how-to-use/how-to-show-the-author-s-full-name-in-the-reference-list-article185897-28181.html)
+   * [Export `.bib` from EndNote](https://www.reed.edu/cis/help/LaTeX/EndNote.html). Note: Please export full first names by either [choosing an output style that does so by default (e.g. in MLA style)](https://canterbury.libguides.com/endnote/basics-output) 
    * [Export `.bib` from Read Cube Papers](https://support.papersapp.com/support/solutions/articles/30000024634-how-can-i-export-references-from-readcube-papers-)
 
 2. Launch the coding environment. Please refresh the page if the Binder does not load after 5-10 mins.
@@ -111,16 +134,21 @@ If you intend to analyze the reference list of a published paper instead of your
 <details>
 <summary>Common errors</summary>
 
-<ol>
-<li><details>
+<details>
 <summary>TokenRequired</summary>
     
 ```TokenRequired: syntax error in line X: entry key expected```
 
 This error message indicates that on line X of your uploaded .bib file, there is an incomplete entry that is missing a unique key for the citation. For instance, `@article{,` should be changed to `@article{yourUniqueCitationKey`
-</li></details>
+</details>
 
-</ol>
+<details>
+<summary>Syntax Error</summary>
+    
+```in line X: ‘Y‘ expected```
+
+This error message could indicate that there is an unexpected character at line X of your .bib file, such as a space in the name of a field. For example, instead of `Early Access Date = …`, the field should be changed to `EarlyAccessDate = …`
+</details>
 
 </details>
 
@@ -134,6 +162,29 @@ This error message indicates that on line X of your uploaded .bib file, there is
   <summary>Will this method work on non-Western names and how accurate is it?</summary>
 
 * Yes, the [Gender API supports 177 countries](https://gender-api.com/en/frequently-asked-questions?gclid=Cj0KCQiAmZDxBRDIARIsABnkbYTy9MHmGoR2uBhxEKANbT9B9EFVOSiRzbGeQi7nUn6ODH83s6-RZKwaAjpZEALw_wcB#which-countries-are-supported) but will classify genders with varying confidence. [Dworkin et al. (2020; Supplementary Tables 1 and 2)](https://doi.org/10.1038/s41593-020-0658-y) assessed the extent of potential gender mislabeling by manual inspecting a sample of 200 authors. They found that the relative accuracy of the automated determination procedure at the level of both individual authors had an accuracy ≈ 0.96 and article gender categories had an accuracy ≈ 0.92. Because errors in gender determination would break the links between citation behavior and author gender, any incorrect estimation in the present data likely biases the results towards the null. The [ethnicolr](https://github.com/appeler/ethnicolr) race probabilities use the last-name–race data from the [2000 census and 2010 census](https://github.com/appeler/ethnicolr/blob/master/ethnicolr/data/census), the [Wikipedia data](https://github.com/appeler/ethnicolr/blob/master/ethnicolr/data/wiki) collected by Skiena and colleagues, and the [Florida voter registration data](http://dx.doi.org/10.7910/DVN/UBIG3F) from early 2017. Across cross-validation folds, the average precision was 0.83, recall was 0.84, and f1-support scores were 0.83 for the Florida model. Please see this [confusion matrix for the accuracy and precision of the algorithm during cross-validation](https://github.com/mb3152/balanced_citer) and [Sood & Laohaprapanon (2018)](https://arxiv.org/abs/1805.02109).
+
+</details>
+
+<details>
+  <summary>How are proportions calculated, especially when considering gender-neutral or race-ambiguous names?</summary>
+
+* The proportions for predicted gender and race are now weighted probabilistically. For instance, if Gender-API predicts a name as man with 72% accuracy, then the 0.72 is added to the man proportion. The proportions are calculated from weighted sums across all author pairs. Similarly for predicted race, the ethnicolor package can be used to make binary predictions but also provides probabilities that an author belongs to each racial category. Consider the last name “Smith.” The model’s probabilities for the name “Smith” are 73% white, 25% Black, 1% Hispanic, and <1% Asian. We use all four probabilities to estimate how citers probabilistically assign racial categories to names, either implicitly or explicitly, while reading and citing papers. Note that imperfections in the algorithm’s predictions will break the links between citation behavior and author race, and therefore any incorrect estimation in the present data likely biases the results towards the null model.
+</details>
+
+<details>
+
+<summary>Can I use this code to analyze published article(s) instead of manuscripts in progress?</summary>
+We recognize that you might be curious about your or others' <b>history</b> of citation practices. The main purpose of the notebook is to increase awareness of how you engage with your colleagues' research for works in progress, and to iteratively assess if your <b>current</b> citation practices align with your values. That being said, we are developing analysis of published papers as a secondary feature by using data acquired from Web of Knowledge. However, we caution that this analysis is still in development. This approach will build a table by relying heavily on an automated search using CrossRef API from a single field provided by Web of Science. It will also require more extensive manual edits to the created table because automated search often returns incomplete information. Currently, the code for this secondary feature only supports prediction of gender for published paper(s). When considering how many published papers to analyze, note that Gender-API provides only 500 free searches per month. We recommend analyzing one paper at a time, which is also important to check for self-citations within each paper. If you intend to analyze the reference list of a published paper instead of your own manuscript in progress:
+
+___
+
+  1. Search the paper on [Web of Knowledge](http://apps.webofknowledge.com/) (you will need institutional access). 
+  2. Next, [download the .bib file from Web of Science following these instructions, but start from Step 4 and on Step 6 select BibTeX instead of Plain Text](https://github.com/jdwor/gendercitation/blob/master/Step0_PullingWOSdata.pdf).
+  3. Then, [launch Binder from this link](https://mybinder.org/v2/gh/dalejn/cleanBib/7ffe1823397a77c8c068b549c7b428c79379232e).
+  4. Open the notebook `cleanBib.ipynb`. Follow the instructions above each code block. At the step where the instructions ask you to use `checkingPublishedArticle = True`, please run it using `checkingPublishedArticle = False` first. This will tell you if there are any errors in the .bib file that should be addressed. See FAQ for common errors. 
+
+  It can take 10 minutes to 1 hour complete all of the instructions, depending on the state and size of your `.bib` file. We expect that the most time-consuming step will be manually modifying the `.bib` file to find missing author names, fill incomplete entries, and fix formatting errors. These problems arise because automated methods of reference mangagers and Google Scholar sometimes can not retrieve full information, for example if some journals only provide an author's first initial instead of their full first name.
+___
 
 </details>
 
@@ -162,12 +213,6 @@ This error message indicates that on line X of your uploaded .bib file, there is
 </details>
 
 <details>
-  <summary>What about gender-neutral or race-ambiguous names?</summary>
-
-* We exclude names that cannot be classified with >70% confidence. These are reported in the `Diversity Statement` as "unknown." If you are confident you can identify the person's gender by pronouns used in personal websites, social media, and institution pages, then manually replace the "unknown" with the reported gender. The ethnicolor package can be used to make binary predictions but also provides probabilities that an author belongs to each racial category. Consider the last name “Smith.” The model’s probabilities for the name “Smith” are 73% white, 25% Black, 1% Hispanic, and <1% Asian. We use all four probabilities to estimate how citers probabilistically assign racial categories to names, either implicitly or explicitly, while reading and citing papers. Note that imperfections in the algorithm’s predictions will break the links between citation behavior and author race, and therefore any incorrect estimation in the present data likely biases the results towards the null model.
-</details>
-
-<details>
   <summary>Should I include the diversity statement references in the proportion calculations?</summary>
 
 * Please do not include the diversity statement references. The descriptive statistic of primary interest is of your citation practices.
@@ -188,7 +233,7 @@ This error message indicates that on line X of your uploaded .bib file, there is
 <details>
   <summary>I have an idea to advance this project, suggestions about how to improve the notebook, and/or found a bug. Can I contribute? How do I contribute?</summary>
 
-* Yes, please open an `Issue` or `Pull Request`. We welcome feedback on any pain points in running this code notebook (there is an Issue in which you can submit feedback). If you contribute, please don't forget to modify the `README.md` to credit yourself alphabetically in the `Contributors` section in the `pull request`.
+* If you have suggestions for changes, please open an `Issue` or `Pull Request`. We welcome feedback on any pain points in running this code notebook (there is an Issue in which you can submit feedback). If you want to contribute but don't know where to start, we keep a to-do list of self-opened issues that we intend to tackle and would welcome help. If you contribute, please don't forget to modify the `README.md` to credit yourself alphabetically in the `Contributors` section in the `pull request`.
 
 * To modify the notebook cleanBib.ipynb, please:
 1. Test the code works as intended and does not seem break any existing code (we can also help to check this later) by pasting it into the cleanBib.ipynb Jupyter notebook and running it in an active Binder session. 
@@ -200,7 +245,13 @@ This error message indicates that on line X of your uploaded .bib file, there is
 
 # Other Resources
 
-* A paper on [Gender bias in (neuro)science: Facts, consequences, and solutions](https://doi.org/10.1111/ejn.14397).
+## Papers
+
+* [Gender bias in (neuro)science: Facts, consequences, and solutions](https://doi.org/10.1111/ejn.14397).
+
+* [Gender and collaboration patterns in a temporal scientific authorship network](https://appliednetsci.springeropen.com/articles/10.1007/s41109-019-0214-4)
+
+## Lists and Databases
 
 * Data on [speaker composition and gender representation of conferences in neuroscience](https://biaswatchneuro.com/about/).
 
@@ -208,11 +259,13 @@ This error message indicates that on line X of your uploaded .bib file, there is
 
 * The [Women in Neuroscience Repository](https://www.winrepo.org/) helps to identify and recommend women neuroscientists for conferences, symposia or collaborations.
 
+## Code
+
 * [R code used](https://github.com/jdwor/gendercitation) in J. D. Dworkin, K. A. Linn, E. G. Teich, P. Zurn, R. T. Shinohara, and D. S. Bassett (2020). The extent and drivers of gender imbalance in neuroscience reference lists. *Nature Neuroscience*. doi: [https://doi.org/10.1038/s41593-020-0658-y](https://doi.org/10.1038/s41593-020-0658-y) 
 
 * [Python code](https://github.com/mb3152/balanced_citer) used for probabilistic race breakdowns in M.A. Bertolero, J.D. Dworkin, S.U. David, C. López Lloreda, P. Srivastava, J. Stiso, D. Zhou, K. Dzirasa, D.A. Fair, A.N. Kaczkurkin, B.J. Marlin, D. Shohamy, L.Q. Uddin, P. Zurn, D.S. Bassett (2020). Racial and ethnic imbalance in neuroscience reference lists and intersections with gender. *bioRxiv*. [doi: https://doi.org/10.1101/2020.10.12.336230](https://www.biorxiv.org/content/10.1101/2020.10.12.336230v1)
 
-* The [Women in Neuroscience Repository](https://www.winrepo.org/) helps to identify and recommend women neuroscientists for conferences, symposia or collaborations.
+## Related Projects
 
 * The [cleanBibImpact](https://github.com/koudyk/cleanBibImpact) is an ongoing project looking at whether papers that have a citation diversity statement have more diverse reference lists.
 
@@ -250,6 +303,15 @@ This error message indicates that on line X of your uploaded .bib file, there is
 * Dale Zhou
 
 # Changelog
+
+* __11/29/2020__
+  * add common error
+  * add other resources and reorganize into subsection headers
+  * added back in a link to prior code to analyze the predicted gender of other published papers' reference lists
+  * fix bug with histogram ordering of baserates for binary gender classification
+  * update FAQs and description of proportions calculated by weighted probability
+  * update instructions and error message text in ipynb
+
 
 * __10/18/2020__
   * add predicted gender benchmarks for papers using this tool/with a diversity statement, thanks to Kendra for the work from [Organization for Human Brain Mapping Hackathon 2020](https://ohbm.github.io/hackathon2020/)!
