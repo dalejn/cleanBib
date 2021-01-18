@@ -150,6 +150,14 @@ This error message indicates that on line X of your uploaded .bib file, there is
 This error message could indicate that there is an unexpected character at line X of your .bib file, such as a space in the name of a field. For example, instead of `Early Access Date = …`, the field should be changed to `EarlyAccessDate = …`
 </details>
 
+<details>
+<summary>Key Error</summary>
+    
+```KeyError: 'author'```
+
+This error message could indicate that you have cited a book and there is no `author` field. In this case, if there is an `editor` field, please change `editor` to `author`. Otherwise, add the `author` metadata.
+</details>
+
 </details>
 
 <details>
@@ -221,7 +229,7 @@ ___
 <details>
   <summary>What is a .bib file?</summary>
 
-* The `.bib` file is a bibliography with tagged entry fields used by LaTeX to format a typesetted manuscript's reference list and its in-line citations. If you are not using LaTeX to write your manuscript, common reference managers that are linked to Microsoft Word or Google Docs also allow you to export `.bib` files (See Instructions, Step 1).
+* The `.bib` file is a bibliography with tagged entry fields used by LaTeX to format a typesetted manuscript's reference list and its in-line citations. If you are not using LaTeX to write your manuscript, common reference managers that are linked to Microsoft Word or Google Docs also allow you to export `.bib` files (See Instructions, Step 1). When you are asked to edit the `.bib` file, this means that you should open the file with a text editor (if you want to edit your own copy of the file) or within the Binder environment (if you want to edit a temporary copy of your uploaded file). Each entry starts with an `@` symbol and includes a reference key, then lists metadata for author, year, journal, etc. Some instructions will ask you to edit the list of names in the "author" data, and some will ask you to remove entire entries.
 </details>
 
 <details>
@@ -303,6 +311,17 @@ ___
 * Dale Zhou
 
 # Changelog
+
+* __1/17/2021__
+  * fix special character endcoding/decoding from latex
+  * fix punctuation removal also removing dashes in names
+  * link analysis to the bib global variable prepared earlier to improve behavior of .aux path. In future, could use this to try to automatically modify .bib file for the user instead of asking them to in step 3.
+  * add common error. In future, could add try/except sequence for editor. 
+  * describe .bib better in FAQ
+  * fix unknownname bug to unknownnames
+  * added back LaTeX template of statement
+  * fix typo in plain text statement "scholarsare"
+  * delete the some extraneous code
 
 * __11/29/2020__
   * add common error
