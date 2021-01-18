@@ -321,7 +321,7 @@ ___
   * fix unknownname bug to unknownnames
   * added back LaTeX template of statement
   * fix typo in plain text statement "scholarsare"
-  * delete the some extraneous code
+  * delete some extraneous code
 
 * __11/29/2020__
   * add common error
