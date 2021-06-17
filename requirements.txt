@@ -15,4 +15,7 @@ tensorboard==2.3.0
 h5py==2.10.0
 oauthlib==3.0.1
 rsa==4.7
+tensorboard==2.3.0
+tensorboard-plugin-wit==1.8.0
 tensorflow==2.4.1
+tensorflow-estimator==2.4.0
