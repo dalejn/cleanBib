@@ -22,6 +22,8 @@
 
   - [Papers](https://github.com/dalejn/cleanBib#papers)
 
+  - [Journal Guidelines](https://github.com/dalejn/cleanBib#journal-guidelines)
+
   - [Lists and Databases](https://github.com/dalejn/cleanBib#lists-and-databases)
 
   - [Code](https://github.com/dalejn/cleanBib#code)
@@ -108,8 +110,8 @@ ___
     <details>
       <summary>Tips for Microsoft Word and Google Docs integration</summary>
 
-     Or: set your citation style to [BibTex](https://www.zotero.org/styles?q=id%3Abibtex) in Word and Google docs, and copy the reference list into a `.bib` file. Make sure you edit `Zotero/styles/bibtex.csl`: change `et-al-min` and `et-al-first` to something large (like 100) to avoid the last author being listed as 'et al.' Remove the line `text variable="abstract" prefix=" abstractNote={" suffix="}"/>` to avoid the `.bib` file getting very large.
-    </details> <br>
+     Set your citation style to [BibTex](https://www.zotero.org/styles?q=id%3Abibtex) in Word and Google docs, and copy the reference list into a `.bib` file. Make sure you edit `Zotero/styles/bibtex.csl`: change `et-al-min` and `et-al-first` to something large (like 100) to avoid the last author being listed as 'et al.' Remove the line `text variable="abstract" prefix=" abstractNote={" suffix="}"/>` to avoid the `.bib` file getting very large.
+    </details> 
 
    * [Export `.bib` from EndNote](https://www.reed.edu/cis/help/LaTeX/EndNote.html). Note: Please export full first names by either [choosing an output style that does so by default (e.g. in MLA style)](https://canterbury.libguides.com/endnote/basics-output)
    * [Export `.bib` from Read Cube Papers](https://support.papersapp.com/support/solutions/articles/30000024634-how-can-i-export-references-from-readcube-papers-)
