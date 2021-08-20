@@ -78,7 +78,7 @@ Using a similar random draw model regressing for relevant variables, the expecte
 
 Papers with citation diversity statements tend to have more balanced reference lists with respect to the expected benchmarks. Prior to v1.1 (October 2020) of the code, the diversity statement only included predicted gender. Below, we show a preliminary visualization of the relative gender proportions in reference lists of papers with diversity statements (relative to the expected gender proportions) from January 2020 to January 2021. See the [cleanBibImpact repository](https://github.com/koudyk/cleanBibImpact) for the code and data for this ongoing project.
 
-<img src="https://github.com/dalejn/cleanBib/blob/master/img/relative_diversity_with_swarm_with_title.png" width="200">
+![Citing papers' citation diversity, Kendra Oudyk](img/relative_diversity_with_swarm_with_title.png)
 
 # Instructions
 
