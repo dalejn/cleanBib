@@ -6,7 +6,6 @@ pylatexenc==2.1
 sos==0.21.5
 sos-notebook==0.21.7
 habanero==0.7.2
-tqdm==2.2.3
 ethnicolr==0.4.0
 matplotlib==3.3.2
 seaborn==0.11.0
