@@ -118,7 +118,7 @@ ___
 
 2. Launch the coding environment. Please refresh the page if the Binder does not load after 5-10 mins.
 
-    [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dalejn/cleanBib/HEAD)
+    [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dalejn/cleanBib/HEAD?urlpath=/tree/)
 
 3. Open the notebook `cleanBib.ipynb`. Follow the instructions above each code block. It can take 10 minutes to 1 hour complete all of the instructions, depending on the state and size of your `.bib` file. We expect that the most time-consuming step will be manually modifying the `.bib` file to find missing author names, fill incomplete entries, and fix formatting errors. These problems arise because automated methods of reference mangagers and Google Scholar sometimes can not retrieve full information, for example if some journals only provide an author's first initial instead of their full first name.
 
@@ -200,7 +200,7 @@ ___
 
   1. Search the paper on [Web of Knowledge](http://apps.webofknowledge.com/) (you will need institutional access).
   2. Next, [download the .bib file from Web of Science following these instructions, but start from Step 4 and on Step 6 select BibTeX instead of Plain Text](https://github.com/jdwor/gendercitation/blob/master/Step0_PullingWOSdata.pdf).
-  3. Then, [launch Binder from this link](https://mybinder.org/v2/gh/dalejn/cleanBib/7ffe1823397a77c8c068b549c7b428c79379232e).
+  3. Then, [launch Binder from this link](https://mybinder.org/v2/gh/dalejn/cleanBib/7ffe1823397a77c8c068b549c7b428c79379232e?urlpath=/tree/).
   4. Open the notebook `cleanBib.ipynb`. Follow the instructions above each code block. At the step where the instructions ask you to use `checkingPublishedArticle = True`, please run it using `checkingPublishedArticle = False` first. This will tell you if there are any errors in the .bib file that should be addressed. See FAQ for common errors.
 
   It can take 10 minutes to 1 hour complete all of the instructions, depending on the state and size of your `.bib` file. We expect that the most time-consuming step will be manually modifying the `.bib` file to find missing author names, fill incomplete entries, and fix formatting errors. These problems arise because automated methods of reference mangagers and Google Scholar sometimes can not retrieve full information, for example if some journals only provide an author's first initial instead of their full first name.
@@ -340,6 +340,11 @@ ___
 * Dale Zhou
 
 # Changelog
+
+* __9/14/2021__
+  * force Binder to load with [classic theme](https://discourse.jupyter.org/t/mybinder-org-using-jupyterlab-by-default/10715) because new default breaks SOS notebook R code
+  * suppress tensorflow warnings
+  * add new citations to skip list
 
 * __8/20/2021__
   * add new references to default printed statement template
