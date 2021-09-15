@@ -345,6 +345,7 @@ ___
   * force Binder to load with [classic theme](https://discourse.jupyter.org/t/mybinder-org-using-jupyterlab-by-default/10715) because new default breaks SOS notebook R code
   * suppress tensorflow warnings
   * add new citations to skip list
+  * downgrade Jupyter client to play well with new Binder defaults
 
 * __8/20/2021__
   * add new references to default printed statement template
