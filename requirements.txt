@@ -18,3 +18,4 @@ tensorflow==1.15.2
 jupyterlab-sos
 sos-r
 sos-python
+jupyter-client==6.1.12
