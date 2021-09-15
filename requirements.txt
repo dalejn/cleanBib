@@ -15,3 +15,4 @@ oauthlib==3.0.1
 rsa==4.7
 Keras==2.2.4
 tensorflow==1.15.2
+jupyterlab-sos==0.8.1
