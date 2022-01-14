@@ -3,8 +3,8 @@ numpy==1.19.2
 bibtexparser==1.1.0
 pandas==1.1.3
 pylatexenc==2.1
-sos
-sos-notebook
+sos==0.21.5
+sos-notebook==0.21.7
 habanero==0.7.2
 ethnicolr==0.4.0
 matplotlib==3.3.2
@@ -15,7 +15,3 @@ oauthlib==3.0.1
 rsa==4.7
 Keras==2.2.4
 tensorflow==1.15.2
-jupyterlab-sos
-sos-r
-sos-python
-jupyter-client==6.1.12
