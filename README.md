@@ -326,6 +326,8 @@ ___
 # Contributors
 (alphabetical)
 
+* Raul Alcantara Castillo
+* Dani Bassett
 * Max Bertolero
 * Ann Sizemore Blevins
 * Christopher Camp
@@ -333,6 +335,7 @@ ___
 * Jordan Dworkin
 * Cleanthis Michael
 * Kendra Oudyk
+* Rebecca Saxe
 * Jeni Stiso
 * Erin Teich
 * Anne Urai
