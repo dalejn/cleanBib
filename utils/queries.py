@@ -1,4 +1,4 @@
-def namesFromXref(doi, title, authorPos):
+def namesFromXref(cr, doi, title, authorPos):
     '''Use DOI and article titles to query Crossref for author list'''
     if authorPos == 'first':
         idx = 0
@@ -29,23 +29,4 @@ def namesFromXref(doi, title, authorPos):
     return name
 
 
-def namesFromXrefSelfCite(doi, title):
-    selfCiteCheck = 0
-    # get cross ref data
-    authors = ['']
-    # first try DOI
-    if doi != "":
-        works = cr.works(query=title, select=["DOI", "author"], limit=1, filter={'doi': doi})
-        if works['message']['total-results'] > 0:
-            authors = works['message']['items'][0]['author']
 
-    for i in authors:
-        if i != "":
-            first = i['given'].replace('.', ' ').split()[0]
-            last = i['family'].replace('.', ' ').split()[0]
-            authors = removeMiddleName(last + ", " + first)
-            if authors in removeMiddleName(yourFirstAuthor) or authors in removeMiddleName(
-                    convertSpecialCharsToUTF8(yourFirstAuthor)) or authors in removeMiddleName(
-                    yourLastAuthor) or authors in removeMiddleName(convertSpecialCharsToUTF8(yourLastAuthor)):
-                selfCiteCheck += 1
-    return selfCiteCheck

@@ -1,3 +1,7 @@
+import subprocess
+from pylatexenc.latex2text import LatexNodes2Text
+import unicodedata
+
 def checkcites_output(aux_file):
     '''take in aux file for tex document, return list of citation keys
     that are in .bib file but not in document'''
@@ -12,9 +16,9 @@ def checkcites_output(aux_file):
             if x[0] == '-':  # and if first character is a '-', it's a citation key
                 unused_array_final.append(x[2:]) # truncate '- '
     if "------------------------------------------------------------------------" in unused_array_final:
-        return(result)
+        return result
     else:
-        return(unused_array_final)
+        return unused_array_final
 
 
 def removeMiddleName(line):
@@ -29,7 +33,7 @@ def removeMiddleName(line):
         first, middle = arr
     elif n==1:
         return line
-    return(str(first + ' ' + middle))
+    return str(first + ' ' + middle)
 
 
 def returnFirstName(line):
@@ -43,7 +47,7 @@ def returnFirstName(line):
         first, middle = arr
     elif n==1:
         return line
-    return(str(middle))
+    return str(middle)
 
 
 def convertLatexSpecialChars(latex_text):
@@ -53,3 +57,24 @@ def convertLatexSpecialChars(latex_text):
 def convertSpecialCharsToUTF8(text):
     data = LatexNodes2Text().latex_to_text(text)
     return unicodedata.normalize('NFD', data).encode('ascii', 'ignore').decode('utf-8')
+
+def namesFromXrefSelfCite(doi, title):
+    selfCiteCheck = 0
+    # get cross ref data
+    authors = ['']
+    # first try DOI
+    if doi != "":
+        works = cr.works(query=title, select=["DOI", "author"], limit=1, filter={'doi': doi})
+        if works['message']['total-results'] > 0:
+            authors = works['message']['items'][0]['author']
+
+    for i in authors:
+        if i != "":
+            first = i['given'].replace('.', ' ').split()[0]
+            last = i['family'].replace('.', ' ').split()[0]
+            authors = removeMiddleName(last + ", " + first)
+            if authors in removeMiddleName(yourFirstAuthor) or authors in removeMiddleName(
+                    convertSpecialCharsToUTF8(yourFirstAuthor)) or authors in removeMiddleName(
+                    yourLastAuthor) or authors in removeMiddleName(convertSpecialCharsToUTF8(yourLastAuthor)):
+                selfCiteCheck += 1
+    return selfCiteCheck
