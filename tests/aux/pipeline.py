@@ -2,14 +2,14 @@ import glob
 from habanero import Crossref
 import sys
 import os
-wd = os.getcwd()
-print(f'{wd[0:-6]}/utils')
-print(f'{wd[0:-6]}/utils')
-sys.path.insert(1, f'{wd[0:-6]}/utils')
+from pathlib import Path
+wd = Path(os.getcwd())
+sys.path.insert(1, f'{wd.parent.parent.absolute()}/utils')
 from preprocessing import *
 
 cr = Crossref()
-homedir = '/home/jovyan/'
+#homedir = '/home/jovyan/'
+homedir = os.getcwd() + '/'
 bib_files = glob.glob(homedir + '*.bib')
 paper_aux_file = glob.glob(homedir + '*.aux')
 paper_bib_file = 'library_paper.bib'
@@ -18,9 +18,9 @@ try:
 except:
     print('No optional .tex file found.')
 
-yourFirstAuthor = 'LastName, FirstName OptionalMiddleInitial'
-yourLastAuthor = 'LastName, FirstName OptionalMiddleInitial'
-optionalEqualContributors = ['LastName, FirstName OptionalMiddleInitial', 'LastName, FirstName OptionalMiddleInitial']
+yourFirstAuthor = 'Stiso, Jennifer '
+yourLastAuthor = 'Bassett, Dani '
+optionalEqualContributors = ['Zhou, Dale']
 checkingPublishedArticle = False
 
 ## end of user input
@@ -29,9 +29,9 @@ if paper_aux_file:
 
 bib_data = get_bib_data(homedir)
 if checkingPublishedArticle:
-    FA,LA = get_names_published(homedir, bib_data)
+    get_names_published(homedir, bib_data, cr)
 else:
     # find and print duplicates
     get_duplicates(bib_data)
     # get names, remove CDS, find self cites
-    FA,LA = get_names(bib_data)
+    get_names(homedir, bib_data, yourFirstAuthor, yourLastAuthor, optionalEqualContributors, cr)

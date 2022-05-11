@@ -1,6 +1,13 @@
 import subprocess
 from pylatexenc.latex2text import LatexNodes2Text
 import unicodedata
+import glob
+from pybtex.database.input import bibtex
+import os
+import csv
+from bibtexparser.bparser import BibTexParser
+import string
+from queries import *
 
 def checkcites_output(aux_file):
     '''take in aux file for tex document, return list of citation keys
@@ -23,7 +30,7 @@ def checkcites_output(aux_file):
 def clean_name(name, flag):
     """
 
-    :param name:
+    :param name: string author name
             flag: utf or latex
     :return: clean_name
     """
@@ -42,11 +49,13 @@ def clean_name(name, flag):
     else:
         raise ValueError
 
+    return clean_name
+
 def removeMiddleName(line):
     """
 
-    :param line:
-    :return:
+    :param line: string author name
+    :return: the same string, but with the middle name removed
     """
     arr = line.split()
     last = arr.pop()
@@ -62,11 +71,11 @@ def removeMiddleName(line):
     return str(first + ' ' + middle)
 
 
-def returnFirstName(line):
+def returnMiddletName(line):
     """
 
-    :param line:
-    :return:
+    :param line: string author name
+    :return: only the middle name
     """
     arr = line.split()
     n = len(arr)
@@ -102,9 +111,9 @@ def convertSpecialCharsToUTF8(text):
 def namesFromXrefSelfCite(doi, title):
     """
 
-    :param doi:
-    :param title:
-    :return:
+    :param doi: DOI of published article
+    :param title: the title of the same article
+    :return: selfCiteCheck: the number of self citations in a published article (indexed by DOI
     """
     selfCiteCheck = 0
     # get cross ref data
@@ -131,22 +140,25 @@ def find_unused_cites(paper_aux_file):
     """
 
     :param paper_aux_file: path to auxfile
-    :return:
     """
     print(checkcites_output(paper_aux_file))
     unused_in_paper = checkcites_output(paper_aux_file)  # get citations in library not used in paper
     print("Unused citations: ", unused_in_paper.count('=>'))
 
-def get_bib_data(homedir):
+def get_bib_data(homedir, parser=""):
     """
 
     :param homedir: home directory
+           parser: a string telling which parser to use (default is not to use bparser)
     :return: bib_data
     """
     ID = glob.glob(homedir + '*bib')
-    with open(ID[0]) as bibtex_file:
-        bib_data = bibtexparser.bparser.BibTexParser(common_strings=True,
-                                                     ignore_nonstandard_types=False).parse_file(bibtex_file)
+    if parser == 'bparser':
+        bib_data = BibTexParser(common_strings=True, ignore_nonstandard_types=False).parse_file(bibtex_file)
+    else:
+        parser = bibtex.Parser()
+        bib_data = parser.parse_file(ID[0])
+
     return bib_data
 
 def get_duplicates(bib_data):
@@ -157,7 +169,7 @@ def get_duplicates(bib_data):
     """
 
     duplicates = []
-    for key in bib_data.entries_dict.keys():
+    for key in bib_data.entries.keys():
         count = str(bib_data.entries).count("'ID\': \'" + key + "\'")
         if count > 1:
             duplicates.append(key)
@@ -167,7 +179,7 @@ def get_duplicates(bib_data):
                          ' '.join(map(str, duplicates)))
 
 
-def get_names_published(outPath, bib_data):
+def get_names_published(homedir, bib_data, cr):
     """
     whole pipeline for published papers
     :return: FA,
@@ -176,7 +188,6 @@ def get_names_published(outPath, bib_data):
     FA = []
     LA = []
     counter = 1
-    selfCiteCount = 0
     titleCount = 1  #
     counterNoDOI = list()  # row index (titleCount) of entries with no DOI
     outPath = homedir + 'cleanedBib.csv'
@@ -212,13 +223,13 @@ def get_names_published(outPath, bib_data):
     articleNum = 0
     for doi in citedArticleDOI:
         try:
-            FA = namesFromXref(doi, '', 'first')
+            FA = namesFromXref(cr, doi, '', 'first')
         except UnboundLocalError:
             sleep(1)
             continue
 
         try:
-            LA = namesFromXref(doi, '', 'last')
+            LA = namesFromXref(cr, doi, '', 'last')
         except UnboundLocalError:
             sleep(1)
             continue
@@ -256,14 +267,13 @@ def get_names_published(outPath, bib_data):
     return FA, LA
 
 
-def get_names(bib_data):
+def get_names(homedir, bib_data, yourFirstAuthor, yourLastAuthor, optionalEqualContributors, cr):
     """
     take bib_data, and get lists of first and last names. should also get self cites and CDS cites
     :return: FA
               LA
     """
     counter = 1
-    nameCount = 0
     outPath = homedir + 'cleanedBib.csv'
 
     if os.path.exists(outPath):
@@ -329,7 +339,7 @@ def get_names(bib_data):
         if FA == '' or len(FA.split('.')[0]) <= 1:
             while True:
                 try:
-                    FA = namesFromXref(doi, title, 'first')
+                    FA = namesFromXref(cr, doi, title, 'first')
                 except UnboundLocalError:
                     sleep(1)
                     continue
@@ -337,13 +347,13 @@ def get_names(bib_data):
         if LA == '' or len(LA.split('.')[0]) <= 1:
             while True:
                 try:
-                    LA = namesFromXref(doi, title, 'last')
+                    LA = namesFromXref(cr, doi, title, 'last')
                 except UnboundLocalError:
                     sleep(1)
                     continue
                 break
 
-        self_cites(author, yourFirstAuthor,yourLastAuthor, optionalEqualContributors)
+        selfCite = self_cites(author, yourFirstAuthor,yourLastAuthor, optionalEqualContributors, FA, LA, counter, key)
         counter += 1
         with open(outPath, 'a', newline='') as csvfile:
             writer = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
@@ -351,7 +361,7 @@ def get_names(bib_data):
                 [counter, convertSpecialCharsToUTF8(FA), convertSpecialCharsToUTF8(LA), title, selfCite, key])
 
 
-def self_cites(author, yourFirstAuthor, yourLastAuthor, optionalEqualContributors):
+def self_cites(author, yourFirstAuthor, yourLastAuthor, optionalEqualContributors, FA, LA, counter, key):
     """
     take author list, and find self citations
 
@@ -359,8 +369,11 @@ def self_cites(author, yourFirstAuthor, yourLastAuthor, optionalEqualContributor
     :param yourFirstAuthor:
     :param yourLastAuthor:
     :param optionalEqualContributors:
+    :param FA:
+    :param LA:
     :return:
     """
+
     if (yourFirstAuthor == 'LastName, FirstName OptionalMiddleInitial') or (
             yourLastAuthor == 'LastName, FirstName OptionalMiddleInitial'):
         raise ValueError("Please enter your manuscript's first and last author names")
@@ -381,74 +394,33 @@ def self_cites(author, yourFirstAuthor, yourLastAuthor, optionalEqualContributor
                            [clean_name(s.rich_last_names, 'utf'),
                             LA]).replace("'","")]
     # I was in the process of cleaning all thisup when we stopped
-    selfCiteCheck2 = [s for s in author if removeMiddleName(yourFirstAuthor) in str([
-        convertLatexSpecialChars(
-            str(s.rich_last_names)[
-            7:-3]).replace(
-            "', Protected('",
-            "").replace(
-            "'), '", ""),
-        convertLatexSpecialChars(
-            str(s.rich_first_names)[
-            7:-3]).replace(
-            "', Protected('",
-            "").replace(
-            "'), '",
-            "")]).replace(
-        "'", "")]
-    selfCiteCheck2a = [s for s in author if removeMiddleName(yourFirstAuthor) in str([
-        convertSpecialCharsToUTF8(
-            str(s.rich_last_names)[
-            7:-3]).replace(
-            "', Protected('",
-            "").replace(
-            "'), '", ""),
-        convertSpecialCharsToUTF8(
-            str(s.rich_first_names)[
-            7:-3]).replace(
-            "', Protected('",
-            "").replace(
-            "'), '",
-            "")]).replace(
-        "'", "")]
-    selfCiteCheck2b = [s for s in author if removeMiddleName(yourFirstAuthor) in str([
-        convertSpecialCharsToUTF8(
-            str(s.rich_last_names)[
-            7:-3]).replace(
-            "', Protected('",
-            "").replace(
-            "'), '", ""),
-        FA]).replace("'",
-                     "")]
+    selfCiteCheck2 = [s for s in author if removeMiddleName(yourFirstAuthor) in
+                      str([clean_name(s.rich_last_names, 'utf'),
+                           clean_name(s.rich_first_names, 'utf')]
+                      ).replace("'", "")]
+    selfCiteCheck2a = [s for s in author if removeMiddleName(yourFirstAuthor) in
+                       str(
+                           [clean_name(s.rich_last_names, 'utf'),
+                            clean_name(s.rich_first_names, 'utf')]
+                       ).replace("'", "")]
+    selfCiteCheck2b = [s for s in author if removeMiddleName(yourFirstAuthor) in
+                       str(
+                            [clean_name(s.rich_last_names, 'utf'),
+                            FA]).replace("'","")]
 
     nameCount = 0
     if optionalEqualContributors != (
             'LastName, FirstName OptionalMiddleInitial', 'LastName, FirstName OptionalMiddleInitial'):
         for name in optionalEqualContributors:
-            selfCiteCheck3 = [s for s in author if removeMiddleName(name) in str([convertLatexSpecialChars(
-                str(s.rich_last_names)[7:-3]).replace("', Protected('", "").replace("'), '", ""),
-                                                                                  convertLatexSpecialChars(
-                                                                                      str(s.rich_first_names)[
-                                                                                      7:-3]).replace(
-                                                                                      "', Protected('",
-                                                                                      "").replace("'), '",
-                                                                                                  "")]).replace(
-                "'", "")]
-            selfCiteCheck3a = [s for s in author if removeMiddleName(name) in str([
-                convertSpecialCharsToUTF8(
-                    str(s.rich_last_names)[
-                    7:-3]).replace(
-                    "', Protected('",
-                    "").replace(
-                    "'), '", ""),
-                convertSpecialCharsToUTF8(
-                    str(s.rich_first_names)[
-                    7:-3]).replace(
-                    "', Protected('",
-                    "").replace(
-                    "'), '",
-                    "")]).replace("'",
-                                  "")]
+            selfCiteCheck3 = [s for s in author if removeMiddleName(name) in
+                              str( [clean_name(s.rich_last_names, 'utf'),
+                           clean_name(s.rich_first_names, 'utf')]
+                      ).replace("'", "")]
+            selfCiteCheck3a = [s for s in author if removeMiddleName(name) in
+                               str(
+                                   [clean_name(s.rich_last_names, 'utf'),
+                                    clean_name(s.rich_first_names, 'utf')]
+                               ).replace("'", "")]
             if len(selfCiteCheck3) > 0:
                 nameCount += 1
             if len(selfCiteCheck3a) > 0:
@@ -468,6 +440,8 @@ def self_cites(author, yourFirstAuthor, yourLastAuthor, optionalEqualContributor
             print(str(counter) + ": " + key + "\t\t  <--  ***NAME MISSING OR POSSIBLY INCOMPLETE***")
         else:
             print(str(counter) + ": " + key)
+
+    return selfCite
 
 
 
