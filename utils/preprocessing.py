@@ -6,8 +6,10 @@ from pybtex.database.input import bibtex
 import os
 import csv
 from bibtexparser.bparser import BibTexParser
+import bibtexparser
 import string
 from queries import *
+import numpy as np
 
 def checkcites_output(aux_file):
     '''take in aux file for tex document, return list of citation keys
@@ -145,38 +147,62 @@ def find_unused_cites(paper_aux_file):
     unused_in_paper = checkcites_output(paper_aux_file)  # get citations in library not used in paper
     print("Unused citations: ", unused_in_paper.count('=>'))
 
-def get_bib_data(homedir, parser=""):
+def get_bib_data(filename, parser="bparser"):
     """
 
     :param homedir: home directory
            parser: a string telling which parser to use (default is not to use bparser)
     :return: bib_data
     """
-    ID = glob.glob(homedir + '*bib')
+    
     if parser == 'bparser':
-        bib_data = BibTexParser(common_strings=True, ignore_nonstandard_types=False).parse_file(bibtex_file)
+        bib_data = BibTexParser(common_strings=True, ignore_nonstandard_types=False).parse_file(open(filename))
     else:
+        # this one will error if you have duplicates
         parser = bibtex.Parser()
-        bib_data = parser.parse_file(ID[0])
+        bib_data = parser.parse_file(filename)
 
     return bib_data
 
-def get_duplicates(bib_data):
+def get_duplicates(bib_data, filename):
     """
     take bib_data, and get duplicates
     :param homedir: home directory
-    :return:
+    :return: bib_data without duplicates
     """
 
     duplicates = []
-    for key in bib_data.entries.keys():
+    for key in bib_data.entries_dict.keys():
         count = str(bib_data.entries).count("'ID\': \'" + key + "\'")
         if count > 1:
             duplicates.append(key)
 
+            # remove from data
+            idx = np.where([x['ID'] == key for x in bib_data.entries])[0]
+            # remove first entry, so we keep that one
+            idx = idx[1:]
+            for i in idx:
+                bib_data.entries.remove(bib_data.entries[i])
+
+        # check that we got the duplicate
+        if (str(bib_data.entries).count("'ID\': \'" + key + "\'")) > 1:
+            raise ValueError("Unable to successfully remove duplicates")
+
     if len(duplicates) > 0:
-        raise ValueError("In your .bib file, we found and removed duplicate entries for:",
-                         ' '.join(map(str, duplicates)))
+        print("In your .bib file, we found and removed duplicate entries for the following entries:\n " +
+                      ' '.join(map(str, duplicates)) +
+              "\n If this is incorrect, please edit you .bib file to give unique identifiers for all unique references:")
+
+        # write new data to file
+        new_bib = filename[:-4] + '_clean.bib'
+        with open(new_bib, 'w') as bibtex_file:
+            bibtexparser.dump(bib_data, bibtex_file)
+
+        # reparse
+        bib_data = get_bib_data(new_bib, "")
+    else:
+        bib_data = get_bib_data(filename, "")
+    return bib_data
 
 
 def get_names_published(homedir, bib_data, cr):
@@ -305,6 +331,7 @@ def get_names(homedir, bib_data, yourFirstAuthor, yourLastAuthor, optionalEqualC
             author = bib_data.entries[key].persons['author']
         except:
             author = bib_data.entries[key].persons['editor']
+
         FA = author[0].rich_first_names
         LA = author[-1].rich_first_names
         FA = convertLatexSpecialChars(str(FA)[7:-3]).translate(str.maketrans('', '', string.punctuation)).replace(
@@ -328,12 +355,12 @@ def get_names(homedir, bib_data, yourFirstAuthor, yourLastAuthor, optionalEqualC
 
         # check that we got a name (not an initial) from the bib file, if not try using the title in the crossref API
         try:
-            title = bib_data.entries[key].fields['title'].replace(',', '').\
+            title = bib_data.entries_dict[key].fields['title'].replace(',', '').\
                 replace(',', '').replace('{', '').replace('}','')
         except:
             title = ''
         try:
-            doi = bib_data.entries[key].fields['doi']
+            doi = bib_data.entries_dict[key].fields['doi']
         except:
             doi = ''
         if FA == '' or len(FA.split('.')[0]) <= 1:

@@ -27,11 +27,11 @@ checkingPublishedArticle = False
 if paper_aux_file:
     find_unused_cites(paper_aux_file)
 
-bib_data = get_bib_data(homedir)
+bib_data = get_bib_data(bib_files[0])
 if checkingPublishedArticle:
     get_names_published(homedir, bib_data, cr)
 else:
     # find and print duplicates
-    get_duplicates(bib_data)
+    bib_data = get_duplicates(bib_data, bib_files[0])
     # get names, remove CDS, find self cites
     get_names(homedir, bib_data, yourFirstAuthor, yourLastAuthor, optionalEqualContributors, cr)
