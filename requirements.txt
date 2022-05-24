@@ -14,4 +14,4 @@ h5py==2.10.0
 oauthlib==3.0.1
 rsa==4.7
 Keras==2.2.4
-tensorflow==1.15.2
+tensorflow==2.6.4
