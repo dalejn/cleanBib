@@ -471,6 +471,40 @@ def self_cites(author, yourFirstAuthor, yourLastAuthor, optionalEqualContributor
     return selfCite
 
 
+def bib_check(homedir):
+    # Do a final check on the bibliography entries
+    with open(os.path.join(homedir, 'cleanedBib.csv')) as csvfile:
+        names_csv = csv.reader(csvfile)
+        names_db = []
+        for row in names_csv:
+            names_db.append(row)
 
+    incomplete_name_bib_keys, self_cite_bib_keys = [[], []]
+    authors_full_list = []
+    for row in names_db[1:]:  # Skip the first row, it's just headers
+        # Check that the authors' names have at least 2 characters and no periods
+        row_id, first_author, last_author, _, self_cite, bib_key = row
+        authors_full_list.append(first_author)  # For counting the number of query calls needed
+        authors_full_list.append(last_author)
+        if len(first_author) < 2 or len(last_author) < 2 or '.' in first_author + last_author:
+            incomplete_name_bib_keys.append(bib_key)
+        if self_cite == 'Y':
+            self_cite_bib_keys.append(bib_key)
+
+    if len(self_cite_bib_keys) > 0:
+        warning_message = "STOP: Please remove self-citations. Then, re-run step 2. "
+        warning_message += "Here are some suggestions to check for with the following citation keys in your .bib file: "
+        print(warning_message)
+        print(self_cite_bib_keys)
+
+    if len(incomplete_name_bib_keys) > 0:
+        warning_message = "STOP: Please revise incomplete full first names or empty cells. Then, re-run step 2. "
+        warning_message += "Here are some suggestions to check for with the following citation keys in your .bib file: "
+        print(warning_message)
+        print(incomplete_name_bib_keys)
+
+    final_warning_message = "Only continue if you've run steps 2,"
+    final_warning_message += " and this code no longer returns errors."
+    print(final_warning_message)
 
 

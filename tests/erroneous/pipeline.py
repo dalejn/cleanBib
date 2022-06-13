@@ -35,3 +35,4 @@ else:
     bib_data = get_duplicates(bib_data, bib_files[0])
     # get names, remove CDS, find self cites
     get_names(homedir, bib_data, yourFirstAuthor, yourLastAuthor, optionalEqualContributors, cr)
+bib_check(homedir)
