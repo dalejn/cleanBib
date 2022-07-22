@@ -1,3 +1,15 @@
+import numpy as np
+import pandas as pd
+import pickle
+import tqdm as tqdm
+import preprocessing
+import re
+import string
+from ethnicolr import pred_fl_reg_name
+from urllib.parse import quote
+from urllib.request import urlopen
+import json
+
 def namesFromXref(cr, doi, title, authorPos):
     '''Use DOI and article titles to query Crossref for author list'''
     if authorPos == 'first':
@@ -29,35 +41,19 @@ def namesFromXref(cr, doi, title, authorPos):
     return name
 
 
-def gender_base(homedir):
-	"""
-	for unknown gender, fill with base rates
-	you will never / can't run this (that file is too big to share)
-	"""
-	main_df = pd.read_csv('/%s/data/NewArticleData2019.csv'%(homedir),header=0)
+def get_gender_base(homedir):
+    """
+    for unknown gender, fill with base rates
+    you will never / can't run this (that file is too big to share)
+    """
+
+    with open(homedir + 'data/gender_base' + '.pkl', 'rb') as f:
+        gender_base = pickle.load(f)
+
+    return gender_base
 
 
-	gender_base = {}
-	for year in np.unique(main_df.PY.values):
-		ydf = main_df[main_df.PY==year].AG
-		fa = np.array([x[0] for x in ydf.values])
-		la = np.array([x[1] for x in ydf.values])
-
-		fa_m = len(fa[fa=='M'])/ len(fa[fa!='U'])
-		fa_w = len(fa[fa=='W'])/ len(fa[fa!='U'])
-
-		la_m = len(la[fa=='M'])/ len(la[la!='U'])
-		la_w = len(la[fa=='W'])/ len(la[la!='U'])
-
-		gender_base[year] = [fa_m,fa_w,la_m,la_w]
-
-	gender_base[2020] = [fa_m,fa_w,la_m,la_w]
-
-	with open(homedir + '/data/gender_base' + '.pkl', 'wb') as f:
-		pickle.dump(gender_base, f, pickle.HIGHEST_PROTOCOL)
-
-
-def get_pred_demos(authors):
+def get_pred_demos(authors, homedir, bibfile, gender_key, font='Palatino', method='florida'):
     """
 
     :param authors:
@@ -79,6 +75,11 @@ def get_pred_demos(authors):
     race = []
 
     idx = 0
+    # save base gender rates
+    gender_base = get_gender_base(homedir)
+    # make a dictionary of names so we don't query the same thing twice
+    full_name_data = {}
+    first_name_data = {}
     for paper in tqdm.tqdm(bibfile.entries, total=len(bibfile.entries)):
         if 'author' not in bibfile.entries[paper].persons.keys():
             continue  # some editorials have no authors
@@ -106,6 +107,17 @@ def get_pred_demos(authors):
             la_fname = la.last_names[0]  # for people like Plato
         la_lname = la.last_names[0]
 
+
+        fa_fname = preprocessing.convertLatexSpecialChars(str(fa_fname.encode("ascii", errors="ignore").decode())).translate(
+            str.maketrans('', '', re.sub('\-', '', string.punctuation))).replace('Protected', "").replace(" ", '')
+        fa_lname = preprocessing.convertLatexSpecialChars(str(fa_lname.encode("ascii", errors="ignore").decode())).translate(
+            str.maketrans('', '', re.sub('\-', '', string.punctuation))).replace('Protected', "").replace(" ", '')
+        la_fname = preprocessing.convertLatexSpecialChars(str(la_fname.encode("ascii", errors="ignore").decode())).translate(
+            str.maketrans('', '', re.sub('\-', '', string.punctuation))).replace('Protected', "").replace(" ", '')
+        la_lname = preprocessing.convertLatexSpecialChars(str(la_lname.encode("ascii", errors="ignore").decode())).translate(
+            str.maketrans('', '', re.sub('\-', '', string.punctuation))).replace('Protected', "").replace(" ", '')
+
+        # double check for self cites again
         if fa_fname.lower().strip() == authors[1].lower().strip():
             if fa_lname.lower().strip() == authors[0].lower().strip():
                 continue
@@ -122,48 +134,35 @@ def get_pred_demos(authors):
             if la_lname.lower().strip() == authors[2].lower().strip():
                 continue
 
-        fa_fname = convertLatexSpecialChars(str(fa_fname.encode("ascii", errors="ignore").decode())).translate(
-            str.maketrans('', '', re.sub('\-', '', string.punctuation))).replace('Protected', "").replace(" ", '')
-        fa_lname = convertLatexSpecialChars(str(fa_lname.encode("ascii", errors="ignore").decode())).translate(
-            str.maketrans('', '', re.sub('\-', '', string.punctuation))).replace('Protected', "").replace(" ", '')
-        la_fname = convertLatexSpecialChars(str(la_fname.encode("ascii", errors="ignore").decode())).translate(
-            str.maketrans('', '', re.sub('\-', '', string.punctuation))).replace('Protected', "").replace(" ", '')
-        la_lname = convertLatexSpecialChars(str(la_lname.encode("ascii", errors="ignore").decode())).translate(
-            str.maketrans('', '', re.sub('\-', '', string.punctuation))).replace('Protected', "").replace(" ", '')
+        if (fa_lname, fa_fname) in full_name_data:
+            fa_race = full_name_data[(fa_lname, fa_fname)]
+        else:
+            names = [{'lname': fa_lname, 'fname': fa_fname}]
+            fa_df = pd.DataFrame(names, columns=['fname', 'lname'])
+            odf = pred_fl_reg_name(fa_df, 'lname', 'fname')
+            fa_race = [odf['nh_white'], odf['asian'], odf['hispanic'], odf['nh_black']]
+            full_name_data[(fa_lname, fa_fname)] = fa_race
 
-        names = [{'lname': fa_lname, 'fname': fa_fname}]
-        fa_df = pd.DataFrame(names, columns=['fname', 'lname'])
-        asian, hispanic, black, white = pred_fl_reg_name(fa_df, 'lname', 'fname').values[0][-4:]
-        fa_race = [white, asian, hispanic, black]
+        if (la_lname, la_fname) in full_name_data:
+            la_race = full_name_data[(la_lname, la_fname)]
+        else:
+            names = [{'lname': la_lname, 'fname': la_fname}]
+            la_df = pd.DataFrame(names, columns=['fname', 'lname'])
+            odf = pred_fl_reg_name(la_df, 'lname', 'fname')
+            la_race = [odf['nh_white'], odf['asian'], odf['hispanic'], odf['nh_black']]
+            full_name_data[(la_lname, la_fname)] = la_race
 
-        names = [{'lname': la_lname, 'fname': la_fname}]
-        la_df = pd.DataFrame(names, columns=['fname', 'lname'])
-        asian, hispanic, black, white = pred_fl_reg_name(la_df, 'lname', 'fname').values[0][-4:]
-        la_race = [white, asian, hispanic, black]
+        if fa_fname in first_name_data:
+            fa_gender, fa_g = first_name_data[fa_fname]
+        else:
+            fa_gender, fa_g = gen_api_query(gender_key, fa_fname, gb)
+            first_name_data[fa_fname] = (fa_gender, fa_g)
 
-        url = "https://gender-api.com/get?key=" + gender_key + "&name=%s" % (quote(fa_fname))
-        response = urlopen(url)
-        decoded = response.read().decode('utf-8')
-        fa_gender = json.loads(decoded)
-        if fa_gender['gender'] == 'female':
-            fa_g = [0, fa_gender['accuracy'] / 100.]
-        if fa_gender['gender'] == 'male':
-            fa_g = [fa_gender['accuracy'] / 100., 0]
-        if fa_gender['gender'] == 'unknown':
-            fa_g = gb[:2]
-
-        url = "https://gender-api.com/get?key=" + gender_key + "&name=%s" % (quote(la_fname))
-        response = urlopen(url)
-        decoded = response.read().decode('utf-8')
-        la_gender = json.loads(decoded)
-        if la_gender['gender'] == 'female':
-            la_g = [0, la_gender['accuracy'] / 100.]
-
-        if la_gender['gender'] == 'male':
-            la_g = [la_gender['accuracy'] / 100., 0]
-
-        if la_gender['gender'] == 'unknown':
-            la_g = gb[2:]
+        if la_fname in first_name_data:
+            la_gender, la_g = first_name_data[la_fname]
+        else:
+            la_gender, la_g = gen_api_query(gender_key, la_fname, gb)
+            first_name_data[la_fname] = (la_gender, la_g)
 
         fa_data = np.array(
             [paper, '%s,%s' % (fa_fname, fa_lname), '%s,%s' % (fa_gender['gender'], fa_gender['accuracy']), fa_race[0],
@@ -181,7 +180,6 @@ def get_pred_demos(authors):
         mm, wm, mw, ww = [mm, wm, mw, ww] / np.sum([mm, wm, mw, ww])
 
         gender.append([mm, wm, mw, ww])
-
         ww = fa_race[0] * la_race[0]
         aw = np.sum(fa_race[1:]) * la_race[0]
         wa = fa_race[0] * np.sum(la_race[1:])
@@ -201,9 +199,22 @@ def get_pred_demos(authors):
     mm, wm, mw, ww = np.mean(gender, axis=0) * 100
     WW, aw, wa, aa = np.mean(race, axis=0) * 100
 
-    return mm, wm, mw, ww, WW, aw, wa,aa
+    return mm, wm, mw, ww, WW, aw, wa, aa, citation_matrix
 
-def print_statements(mm, wm, mw, ww, WW, aw, wa,aa):
+def gen_api_query(gender_key, name, gb):
+    url = "https://gender-api.com/get?key=" + gender_key + "&name=%s" % (quote(name))
+    response = urlopen(url)
+    decoded = response.read().decode('utf-8')
+    gender = json.loads(decoded)
+    if gender['gender'] == 'female':
+        g = [0, gender['accuracy'] / 100.]
+    if gender['gender'] == 'male':
+        g = [gender['accuracy'] / 100., 0]
+    if gender['gender'] == 'unknown':
+        g = gb[:2]
+    return gender, g
+
+def print_statements(mm, wm, mw, ww, WW, aw, wa, aa):
     statement = "Recent work in several fields of science has identified a bias in citation practices such that papers from women and other minority scholars \
     are under-cited relative to the number of such papers in the field (1-9). Here we sought to proactively consider choosing references that reflect the \
     diversity of the field in thought, form of contribution, gender, race, ethnicity, and other factors. First, we obtained the predicted gender of the first \
