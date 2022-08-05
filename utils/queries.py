@@ -80,6 +80,8 @@ def get_pred_demos(authors, homedir, bibfile, gender_key, font='Palatino', metho
     # make a dictionary of names so we don't query the same thing twice
     full_name_data = {}
     first_name_data = {}
+    n_gen_queries = 0
+    n_race_queries = 0
     for paper in tqdm.tqdm(bibfile.entries, total=len(bibfile.entries)):
         if 'author' not in bibfile.entries[paper].persons.keys():
             continue  # some editorials have no authors
@@ -140,6 +142,7 @@ def get_pred_demos(authors, homedir, bibfile, gender_key, font='Palatino', metho
             names = [{'lname': fa_lname, 'fname': fa_fname}]
             fa_df = pd.DataFrame(names, columns=['fname', 'lname'])
             odf = pred_fl_reg_name(fa_df, 'lname', 'fname')
+            n_race_queries = n_race_queries + 1
             fa_race = [odf['nh_white'], odf['asian'], odf['hispanic'], odf['nh_black']]
             full_name_data[(fa_lname, fa_fname)] = fa_race
 
@@ -149,6 +152,7 @@ def get_pred_demos(authors, homedir, bibfile, gender_key, font='Palatino', metho
             names = [{'lname': la_lname, 'fname': la_fname}]
             la_df = pd.DataFrame(names, columns=['fname', 'lname'])
             odf = pred_fl_reg_name(la_df, 'lname', 'fname')
+            n_race_queries = n_race_queries + 1
             la_race = [odf['nh_white'], odf['asian'], odf['hispanic'], odf['nh_black']]
             full_name_data[(la_lname, la_fname)] = la_race
 
@@ -156,12 +160,14 @@ def get_pred_demos(authors, homedir, bibfile, gender_key, font='Palatino', metho
             fa_gender, fa_g = first_name_data[fa_fname]
         else:
             fa_gender, fa_g = gen_api_query(gender_key, fa_fname, gb)
+            n_gen_queries = n_gen_queries + 1
             first_name_data[fa_fname] = (fa_gender, fa_g)
 
         if la_fname in first_name_data:
             la_gender, la_g = first_name_data[la_fname]
         else:
             la_gender, la_g = gen_api_query(gender_key, la_fname, gb)
+            n_gen_queries= n_gen_queries + 1
             first_name_data[la_fname] = (la_gender, la_g)
 
         fa_data = np.array(
@@ -195,6 +201,10 @@ def get_pred_demos(authors, homedir, bibfile, gender_key, font='Palatino', metho
 
         citation_matrix = citation_matrix + paper_matrix
         idx = idx + 1
+
+    # report queries
+    print(f"Queried gender api {n_gen_queries} times out of {len(bibfile.entries)*2} entries")
+    print(f"Queried race/ethnicity api {n_race_queries} times out of {len(bibfile.entries)*2} entries")
 
     mm, wm, mw, ww = np.mean(gender, axis=0) * 100
     WW, aw, wa, aa = np.mean(race, axis=0) * 100
