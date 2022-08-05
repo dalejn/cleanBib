@@ -36,3 +36,15 @@ else:
     # get names, remove CDS, find self cites
     get_names(homedir, bib_data, yourFirstAuthor, yourLastAuthor, optionalEqualContributors, cr)
 bib_check(homedir)
+
+# queries
+try:
+    f = open("genderAPIkey.txt", "r")
+    genderAPI_key = f.readline().replace('\n', '')
+except:
+    genderAPI_key = input("Enter genderAPI key:")
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+
+mm, wm, mw, ww, WW, aw, wa, aa, citation_matrix = get_pred_demos((yourFirstAuthor+' '+yourLastAuthor).replace(',',''), homedir, bib_data, genderAPI_key)
+statement, statementLatex = print_statements(mm, wm, mw, ww, WW, aw, wa, aa)
+print(statement)
