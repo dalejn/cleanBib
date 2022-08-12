@@ -1,0 +1,15 @@
+name: cleanBib
+channels:
+  - defaults
+dependencies:
+  - pip
+  - python
+  - habanero
+  - pylatexenc
+  - pybtex
+  - bibtexparser
+  - numpy
+  - tensorflow=2.8
+  - ipykernel
+  - seaborn
+prefix: /Users/stisoj/opt/anaconda3/envs/cleanBib
