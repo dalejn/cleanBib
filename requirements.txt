@@ -103,7 +103,7 @@ tensorboard==2.8.0
 tensorboard-data-server==0.6.0
 tensorboard-plugin-wit==1.8.1
 tensorflow==2.8.1
-tensorflow-estimator==2.8.1
+tensorflow-estimator
 termcolor
 terminado
 tinycss2
