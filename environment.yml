@@ -3,6 +3,7 @@ channels:
   - conda-forge
 dependencies:
   - python=3.9.10
+  - pip
   - pip:
     - pybtex==0.24.0
     - numpy==1.19.5
