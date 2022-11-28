@@ -1,6 +1,6 @@
 python==3.9.10
 pybtex==0.24.0
-numpy==1.19.5
+numpy==1.22.0
 bibtexparser==1.2.0
 pandas==1.4.2
 pylatexenc==2.10
