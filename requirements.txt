@@ -18,7 +18,7 @@ debugpy
 decorator
 defusedxml
 entrypoints
-ethnicolr==0.8.1
+ethnicolr==0.9.1
 executing
 fastjsonschema
 flatbuffers
