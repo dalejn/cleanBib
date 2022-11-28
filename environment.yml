@@ -25,9 +25,6 @@ dependencies:
     - protobuf==3.20.1
     - nbgitpuller
     - sphinx-gallery
-    - csv
-    - subprocess
-    - os
     - re
     - tqdm
     - json
