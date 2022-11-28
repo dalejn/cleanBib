@@ -30,7 +30,7 @@ google-auth
 google-auth-oauthlib
 google-pasta
 grpcio
-h5py==3.1.0
+h5py
 habanero==1.2.0
 idna
 imgaug
@@ -61,7 +61,7 @@ nbconvert
 nbformat
 nest-asyncio
 notebook
-numpy==1.21
+numpy==1.19.2
 oauthlib
 opt-einsum
 packaging
