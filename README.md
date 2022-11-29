@@ -59,6 +59,7 @@ And editorials and research highlights of this work:
 * Z. Budrikis (2020). Growing citation gender gap. *Nature Reviews Physics*. [doi: https://doi.org/10.1038/s42254-020-0207-3](https://doi.org/10.1038/s42254-020-0207-3)
 * D. J. Sweet (2021). New at cell press: the inclusion and diversity statement. *Cell*, 184(1), 1-2. [doi: https://doi.org/10.1016/j.cell.2020.12.019](https://www.sciencedirect.com/science/article/pii/S0092867420316895?via%3Dihub)
 * B. Rowson, S.M. Duma, M.R. King, I. Efimov, A. Saterbak, and N.C. Chesler (2021). Citation diversity statement in BMES journals. *Annals of Biomedical Engineering*, 1-3. [doi: https://doi.org/10.1007/s10439-021-02739-6](https://link.springer.com/article/10.1007/s10439-021-02739-6)
+* D. Kwon (2022). The rise of citational justice: how scholars are making references fairer. *Nature*, 603(7902), 568-571. [doi: https://doi.org/10.1038/d41586-022-00793-1](https://www.nature.com/articles/d41586-022-00793-1)
 
 For `.pdf` and `.tex` templates of the statement, see the `/diversityStatement` directory in this repository.
 
@@ -333,6 +334,7 @@ ___
 * Christopher Camp
 * Eli Cornblath
 * Jordan Dworkin
+* Kieran Murphy
 * Jordan Matelsky
 * Cleanthis Michael
 * Kendra Oudyk
@@ -344,6 +346,15 @@ ___
 * Dale Zhou
 
 # Changelog
+* __11/28/2022__
+  * major refactor (thanks, Jeni!)
+  * removed SOS notebook
+  * upgraded all packages and libraries
+  * all R code now in Python
+  * majority of code now call functions located in utils/
+  * automate removal of identified duplicates and self-citations
+  * query how many credits left and save some by only querying unique names (thanks, Kieran!)
+  * fixes issue introduced by [protobuf upgrade](https://github.com/protocolbuffers/protobuf/issues/10051)
 
 * __9/14/2021__
   * force Binder to load with [classic theme](https://discourse.jupyter.org/t/mybinder-org-using-jupyterlab-by-default/10715) because new default breaks SOS notebook R code
