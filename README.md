@@ -119,7 +119,7 @@ ___
 
 2. Launch the coding environment. Please refresh the page if the Binder does not load after 5-10 mins.
 
-    [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dalejn/cleanBib/refactor?urlpath=/tree/)
+    [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dalejn/cleanBib/HEAD?urlpath=/tree/)
 
 3. Open the notebook `cleanBib.ipynb`. Follow the instructions above each code block. It can take 10 minutes to 1 hour complete all of the instructions, depending on the state and size of your `.bib` file. We expect that the most time-consuming step will be manually modifying the `.bib` file to find missing author names, fill incomplete entries, and fix formatting errors. These problems arise because automated methods of reference mangagers and Google Scholar sometimes can not retrieve full information, for example if some journals only provide an author's first initial instead of their full first name.
 
@@ -127,7 +127,7 @@ ___
 
 | Input                 | Output                                                                                                                        |
 |-----------------------|-------------------------------------------------------------------------------------------------------------------------------|
-| `.bib` file(s)**(REQUIRED)**    | `cleanBib.csv`: table of author first names, titles, and .bib keys                                                            |
+| `.bib` file(s)**(REQUIRED)**    | `cleanedBib.csv`: table of author first names, titles, and .bib keys                                                            |
 | `.aux` file (OPTIONAL)| `predictions.csv`: table of author first names, estimated gender classification, and confidence                                   |
 | `.tex` file (OPTIONAL) | `race_gender_citations.pdf`: heat map of your citations broken down by probabilistic gender and race estimations
 |                       | `yourTexFile_gendercolor.tex`: your `.tex` file modified to compile .pdf with in-line citations colored-coded by gender pairs |
