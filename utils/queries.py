@@ -9,6 +9,8 @@ from ethnicolr import pred_fl_reg_name
 from urllib.parse import quote
 from urllib.request import urlopen
 import json
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 def namesFromXref(cr, doi, title, authorPos):
     '''Use DOI and article titles to query Crossref for author list'''
@@ -75,6 +77,27 @@ def get_pred_demos(authors, homedir, bibfile, gender_key, font='Palatino', metho
     race = []
 
     idx = 0
+    # skip self-citations
+    authors_full_list = pd.read_csv(homedir + 'cleanedBib.csv')
+    skip_selfCites = list(authors_full_list.loc[authors_full_list['SelfCite'] == 'Y']['CitationKey'])
+    # skip citation diversity statement papers
+    diversity_bib_titles = ['The extent and drivers of gender imbalance in neuroscience reference lists',
+                            'The gender citation gap in international relations',
+                            'Gendered citation patterns in international relations journals',
+                            'Quantitative evaluation of gender bias in astronomical publications from citation counts',
+                            '\# CommunicationSoWhite',
+                            '{Just Ideas? The Status and Future of Publication Ethics in Philosophy: A White Paper}',
+                            'Gendered citation patterns across political science and social science methodology fields',
+                            'Gender Diversity Statement and Code Notebook v1.0',
+                            'Racial and ethnic imbalance in neuroscience reference lists and intersections with gender',
+                            'Gender Diversity Statement and Code Notebook v1.1',
+                            'Gendered citation practices in the field of communication',
+                            'Gender disparity in citations in high- impact journal articles',
+                            'Gender Disparity in Citations in High-Impact Journal Articles',
+                            'Gender (im)balance in citation practices in cognitive neuroscience',
+                            'Gender (Im)balance in Citation Practices in Cognitive Neuroscience',
+                            'Name-ethnicity classification from open sources',
+                            'Predicting race and ethnicity from the sequence of characters in a name']
     # save base gender rates
     gender_base = get_gender_base(homedir)
     # make a dictionary of names so we don't query the same thing twice
@@ -83,6 +106,10 @@ def get_pred_demos(authors, homedir, bibfile, gender_key, font='Palatino', metho
     n_gen_queries = 0
     n_race_queries = 0
     for paper in tqdm.tqdm(bibfile.entries, total=len(bibfile.entries)):
+        if paper in skip_selfCites:
+            continue
+        if bibfile.entries[paper].fields['title'] in diversity_bib_titles:
+            continue
         if 'author' not in bibfile.entries[paper].persons.keys():
             continue  # some editorials have no authors
         if 'year' not in bibfile.entries[paper].fields.keys():
@@ -209,7 +236,7 @@ def get_pred_demos(authors, homedir, bibfile, gender_key, font='Palatino', metho
     mm, wm, mw, ww = np.mean(gender, axis=0) * 100
     WW, aw, wa, aa = np.mean(race, axis=0) * 100
 
-    return mm, wm, mw, ww, WW, aw, wa, aa, citation_matrix
+    return mm, wm, mw, ww, WW, aw, wa, aa, citation_matrix, paper_df
 
 def gen_api_query(gender_key, name, gb):
     url = "https://gender-api.com/get?key=" + gender_key + "&name=%s" % (quote(name))
@@ -225,51 +252,177 @@ def gen_api_query(gender_key, name, gb):
     return gender, g
 
 def print_statements(mm, wm, mw, ww, WW, aw, wa, aa):
-    statement = "Recent work in several fields of science has identified a bias in citation practices such that papers from women and other minority scholars \
-    are under-cited relative to the number of such papers in the field (1-9). Here we sought to proactively consider choosing references that reflect the \
-    diversity of the field in thought, form of contribution, gender, race, ethnicity, and other factors. First, we obtained the predicted gender of the first \
-    and last author of each reference by using databases that store the probability of a first name being carried by a woman (5, 10). By this measure \
-    (and excluding self-citations to the first and last authors of our current paper), our references contain ww% woman(first)/woman(last), \
-    MW% man/woman, WM% woman/man, and MM% man/man. This method is limited in that a) names, pronouns, and social media profiles used to construct the \
-    databases may not, in every case, be indicative of gender identity and b) it cannot account for intersex, non-binary, or transgender people. \
-    Second, we obtained predicted racial/ethnic category of the first and last author of each reference by databases that store the probability of a \
-    first and last name being carried by an author of color (11, 12). By this measure (and excluding self-citations), our references contain AA% author of \
-    color (first)/author of color(last), WA% white author/author of color, AW% author of color/white author, and WW% white author/white author. This method \
-    is limited in that a) names and Florida Voter Data to make the predictions may not be indicative of racial/ethnic identity, and b) \
-    it cannot account for Indigenous and mixed-race authors, or those who may face differential biases due to the ambiguous racialization or ethnicization of their names.  \
-    We look forward to future work that could help us to better understand how to support equitable practices in science."
+    statement = ("Recent work in several fields of science has identified a bias in citation practices such that papers from women and other minority scholars "
+    "are under-cited relative to the number of such papers in the field (1-9). Here we sought to proactively consider choosing references that reflect the "
+    "diversity of the field in thought, form of contribution, gender, race, ethnicity, and other factors. First, we obtained the predicted gender of the first "
+    "and last author of each reference by using databases that store the probability of a first name being carried by a woman (5, 10). By this measure "
+    "and excluding self-citations to the first and last authors of our current paper), our references contain ww% woman(first)/woman(last), "
+    "MW% man/woman, WM% woman/man, and MM% man/man. This method is limited in that a) names, pronouns, and social media profiles used to construct the "
+    "databases may not, in every case, be indicative of gender identity and b) it cannot account for intersex, non-binary, or transgender people. "
+    "Second, we obtained predicted racial/ethnic category of the first and last author of each reference by databases that store the probability of a "
+    "first and last name being carried by an author of color (11, 12). By this measure (and excluding self-citations), our references contain AA% author of "
+    "color (first)/author of color(last), WA% white author/author of color, AW% author of color/white author, and WW% white author/white author. This method "
+    "is limited in that a) names and Florida Voter Data to make the predictions may not be indicative of racial/ethnic identity, and b) "
+    "it cannot account for Indigenous and mixed-race authors, or those who may face differential biases due to the ambiguous racialization or ethnicization of their names. "
+    "We look forward to future work that could help us to better understand how to support equitable practices in science.")
 
     statement = statement.replace('MM', str(np.around(mm, 2)))
     statement = statement.replace('WM', str(np.around(wm, 2)))
     statement = statement.replace('MW', str(np.around(mw, 2)))
     statement = statement.replace('ww', str(np.around(ww, 2)))
-    statement = statement.replace('WW', str(np.around(WW, 2)))
-    statement = statement.replace('AW', str(np.around(aw, 2)))
-    statement = statement.replace('WA', str(np.around(wa, 2)))
+    statement = statement.replace('WW', np.array2string(WW.values[0], formatter={'float_kind':lambda x: "%.2f" % x}))
+    statement = statement.replace('AW', np.array2string(aw.values[0], formatter={'float_kind':lambda x: "%.2f" % x}))
+    statement = statement.replace('WA', np.array2string(wa.values[0], formatter={'float_kind':lambda x: "%.2f" % x}))
     statement = statement.replace('AA', str(np.around(aa, 2)))
 
-    statementLatex = "Recent work in several fields of science has identified a bias in citation practices such that papers from women and other minority scholars \
-    are under-cited relative to the number of such papers in the field \cite{mitchell2013gendered,dion2018gendered,caplar2017quantitative, maliniak2013gender, Dworkin2020.01.03.894378, bertolero2021racial, wang2021gendered, chatterjee2021gender, fulvio2021imbalance}. Here we sought to proactively consider choosing references that reflect the\
-    diversity of the field in thought, form of contribution, gender, race, ethnicity, and other factors. First, we obtained the predicted gender of the first \
-    and last author of each reference by using databases that store the probability of a first name being carried by a woman \cite{Dworkin2020.01.03.894378,zhou_dale_2020_3672110}. By this measure \
-    (and excluding self-citations to the first and last authors of our current paper), our references contain ww\% woman(first)/woman(last), \
-    MW\% man/woman, WM\% woman/man, and MM\% man/man. This method is limited in that a) names, pronouns, and social media profiles used to construct the \
-    databases may not, in every case, be indicative of gender identity and b) it cannot account for intersex, non-binary, or transgender people. \
-    Second, we obtained predicted racial/ethnic category of the first and last author of each reference by databases that store the probability of a \
-    first and last name being carried by an author of color \cite{ambekar2009name, sood2018predicting}. By this measure (and excluding self-citations), our references contain AA\% author of \
-    color (first)/author of color(last), WA\% white author/author of color, AW\% author of color/white author, and WW\% white author/white author. This method \
-    is limited in that a) names and Florida Voter Data to make the predictions may not be indicative of racial/ethnic identity, and b) \
-    it cannot account for Indigenous and mixed-race authors, or those who may face differential biases due to the ambiguous racialization or ethnicization of their names.  \
-    We look forward to future work that could help us to better understand how to support equitable practices in science."
+    statementLatex = ("Recent work in several fields of science has identified a bias in citation practices such that papers from women and other minority scholars "
+    "are under-cited relative to the number of such papers in the field \cite{mitchell2013gendered,dion2018gendered,caplar2017quantitative, maliniak2013gender, Dworkin2020.01.03.894378, bertolero2021racial, wang2021gendered, chatterjee2021gender, fulvio2021imbalance}. Here we sought to proactively consider choosing references that reflect the "
+    "diversity of the field in thought, form of contribution, gender, race, ethnicity, and other factors. First, we obtained the predicted gender of the first "
+    "and last author of each reference by using databases that store the probability of a first name being carried by a woman \cite{Dworkin2020.01.03.894378,zhou_dale_2020_3672110}. By this measure "
+    "(and excluding self-citations to the first and last authors of our current paper), our references contain ww\% woman(first)/woman(last), "
+    "MW\% man/woman, WM\% woman/man, and MM\% man/man. This method is limited in that a) names, pronouns, and social media profiles used to construct the "
+    "databases may not, in every case, be indicative of gender identity and b) it cannot account for intersex, non-binary, or transgender people. "
+    "Second, we obtained predicted racial/ethnic category of the first and last author of each reference by databases that store the probability of a "
+    "first and last name being carried by an author of color \cite{ambekar2009name, sood2018predicting}. By this measure (and excluding self-citations), our references contain AA\% author of "
+    "color (first)/author of color(last), WA\% white author/author of color, AW\% author of color/white author, and WW\% white author/white author. This method "
+    "is limited in that a) names and Florida Voter Data to make the predictions may not be indicative of racial/ethnic identity, and b) "
+    "it cannot account for Indigenous and mixed-race authors, or those who may face differential biases due to the ambiguous racialization or ethnicization of their names. "
+    "We look forward to future work that could help us to better understand how to support equitable practices in science.")
 
     statementLatex = statementLatex.replace('MM', str(np.around(mm, 2)))
     statementLatex = statementLatex.replace('WM', str(np.around(wm, 2)))
     statementLatex = statementLatex.replace('MW', str(np.around(mw, 2)))
     statementLatex = statementLatex.replace('ww', str(np.around(ww, 2)))
-    statementLatex = statementLatex.replace('WW', str(np.around(WW, 2)))
-    statementLatex = statementLatex.replace('AW', str(np.around(aw, 2)))
-    statementLatex = statementLatex.replace('WA', str(np.around(wa, 2)))
+    statementLatex = statementLatex.replace('WW', np.array2string(WW.values[0], formatter={'float_kind':lambda x: "%.2f" % x}))
+    statementLatex = statementLatex.replace('AW', np.array2string(aw.values[0], formatter={'float_kind':lambda x: "%.2f" % x}))
+    statementLatex = statementLatex.replace('WA', np.array2string(wa.values[0], formatter={'float_kind':lambda x: "%.2f" % x}))
     statementLatex = statementLatex.replace('AA', str(np.around(aa, 2)))
 
     return statement, statementLatex
+
+def plot_heatmaps(citation_matrix, homedir):
+    cmap = sns.diverging_palette(220, 10, as_cmap=True)
+    names = ['white_m','api_m','hispanic_m','black_m','white_w','api_w','hispanic_w','black_w']
+    plt.close()
+    sns.set(style='white')
+    fig, axes = plt.subplots(ncols=2,nrows=1,figsize=(7.5,4))
+    axes = axes.flatten()
+    plt.sca(axes[0])
+    heat = sns.heatmap(np.around((citation_matrix/citation_matrix.sum())*100,2),annot=True,ax=axes[0],annot_kws={"size": 8},cmap=cmap,vmax=1,vmin=0)
+    axes[0].set_ylabel('first author',labelpad=0)  
+    heat.set_yticklabels(names,rotation=0)
+    axes[0].set_xlabel('last author',labelpad=1)  
+    heat.set_xticklabels(names,rotation=90) 
+    heat.set_title('percentage of citations')  
+
+    citation_matrix_sum = citation_matrix / np.sum(citation_matrix) 
+
+    expected = np.load('/%s/data/expected_matrix_florida.npy'%(homedir))
+    expected = expected/np.sum(expected)
+
+    percent_overunder = np.ceil( ((citation_matrix_sum - expected) / expected)*100)
+    plt.sca(axes[1])
+    heat = sns.heatmap(np.around(percent_overunder,2),annot=True,ax=axes[1],fmt='g',annot_kws={"size": 8},vmax=50,vmin=-50,cmap=cmap)
+    axes[1].set_ylabel('',labelpad=0)  
+    heat.set_yticklabels('')
+    axes[1].set_xlabel('last author',labelpad=1)  
+    heat.set_xticklabels(names,rotation=90) 
+    heat.set_title('percentage over/under-citations')
+    plt.tight_layout()
+
+    plt.savefig('/home/jovyan/race_gender_citations.pdf')
+
+def plot_histograms():
+    # Plot a histogram #
+    names = pd.read_csv('/home/jovyan/predictions.csv')
+    total_citations = names.CitationKey.nunique()
+    names.GendCat = names.GendCat.str.replace('female', 'W', regex=False)
+    names.GendCat = names.GendCat.str.replace('male', 'M', regex=False)
+    names.GendCat = names.GendCat.str.replace('unknown', 'U', regex=False)
+    gend_cats = names['GendCat'].dropna().unique()  # get a vector of all the gender categories in your paper
+
+    # Create a data frame that will be used to plot the histogram. This will have the gender category (e.g., WW, MM) in the first column and the percentage (e.g., number of WW citations divided by total number of citations * 100) in the second column #
+    dat_for_plot = names.groupby('GendCat').size().reset_index()
+    all_cats = ['MU', 'WW', 'UM', 'MW', 'WM', 'UW', 'MM']
+    empty_dat_for_plot = pd.DataFrame(0, index=np.arange(7), columns=['GendCat', 0])
+    empty_dat_for_plot['GendCat'] = all_cats
+    set(dat_for_plot['GendCat']).intersection(empty_dat_for_plot['GendCat'])
+    for i in set(dat_for_plot['GendCat']).intersection(empty_dat_for_plot['GendCat']):
+        empty_dat_for_plot.loc[empty_dat_for_plot['GendCat'] == i, 0] = dat_for_plot.loc[dat_for_plot['GendCat']== i, 0].values
+    dat_for_plot = empty_dat_for_plot
+    dat_for_plot.rename(columns={0:'count'}, inplace=True)
+    dat_for_plot = dat_for_plot.assign(percentage=dat_for_plot['count']/total_citations*100)
+
+    # Create a data frame with only the WW, MW, WM, MM categories and their base rates - to plot percent citations relative to benchmarks
+    dat_for_baserate_plot = dat_for_plot.loc[(dat_for_plot.GendCat == 'WW') |
+                                             (dat_for_plot.GendCat == 'MW') |
+                                             (dat_for_plot.GendCat == 'WM') |
+                                             (dat_for_plot.GendCat == 'MM'),:]
+    # MM,MW,WM,WW
+    # 58.4% for man/man, 9.4% for man/woman, 25.5% for woman/man, and 6.7% for woman/woman
+    baserate = [6.7, 9.4, 25.5, 58.4]
+    dat_for_baserate_plot['baserate'] = baserate
+    dat_for_baserate_plot = dat_for_baserate_plot.assign(citation_rel_to_baserate=
+                                                         dat_for_baserate_plot.percentage - dat_for_baserate_plot.baserate
+                                                         )
+
+    # plot
+    plt.figure()
+    sns.barplot(data=dat_for_plot, x='GendCat', y='count', order=np.flip(gend_cats))
+    plt.xlabel('Predicted gender category')
+    plt.ylabel('Number of papers')
+    plt.tight_layout()
+
+    plt.figure()
+    sns.barplot(data=dat_for_baserate_plot, x='GendCat', y='citation_rel_to_baserate', order=['WW','WM','MW','MM'])
+    plt.xlabel('Predicted gender category')
+    plt.ylabel('% of citations relative to benchmarks')
+    plt.tight_layout()
+
+
+def check_genderAPI_balance(genderAPI_key, homedir):
+    authors_full_list = pd.read_csv(homedir + 'cleanedBib.csv')
+    authors_full_list = authors_full_list.loc[authors_full_list['SelfCite'] == 'N']
+
+    url = "https://gender-api.com/get-stats?key=" + genderAPI_key
+    response = urlopen(url)
+    decoded = response.read().decode('utf-8')
+    decoded_json = json.loads(decoded)
+    print('Remaining credits: %s'%decoded_json["remaining_requests"])
+    print('This should use (at most) %d credits, '%(authors_full_list.FA.nunique() + authors_full_list.LA.nunique()) + \
+            'saving you approx %d'%((authors_full_list.FA.count() + authors_full_list.LA.count())-
+                                (authors_full_list.FA.nunique() + authors_full_list.LA.nunique())) + \
+          ' credit(s) by storing queries.')
+
+
+def colorful_latex(paper_df, homedir, tex_file):
+    cite_gender = paper_df[1::2]
+    cite_gender.GendCat = cite_gender.GendCat.str.replace('female', 'W', regex=False)
+    cite_gender.GendCat = cite_gender.GendCat.str.replace('male', 'M', regex=False)
+    cite_gender.GendCat = cite_gender.GendCat.str.replace('unknown', 'U', regex=False)
+    cite_gender.index = cite_gender.CitationKey
+    cite_gender['Color'] = '' # what color to make each gender category
+    colors = {'MM':'red','MW':'blue','WW':'green','WM':'magenta','UU':'black',
+    'MU':'black','UM':'black','UW':'black','WU':'black'}
+    for idx in cite_gender.index: # loop through each citation key and set color
+        cite_gender.loc[idx,'Color'] = colors[cite_gender.loc[idx,'GendCat']]
+
+    fin = open(homedir+tex_file)
+    texdoc=fin.readlines()
+    with open(homedir+tex_file[:-4]+'_gendercolor.tex','w') as fout:
+        for i in range(len(texdoc)):
+            s = texdoc[i]
+            cite_instances = re.findall('\\\\cite\{.*?\}',s)
+            cite_keys = re.findall('\\\\cite\{(.*?)\}',s)
+            cite_keys = [x.split(',') for x in cite_keys]
+            cite_keys_sub = [['\\textcolor{' + cite_gender.loc[x.strip(),'Color'] + '}{\\cite{'+x.strip()+'}}' for x in cite_instance] for cite_instance in cite_keys]
+            cite_keys_sub = ['\\textsuperscript{,}'.join(x) for x in cite_keys_sub]
+            for idx,cite_instance in enumerate(cite_instances):
+                s = s.replace(cite_instances[idx],cite_keys_sub[idx])
+            fout.write(s)
+            # place color key after abstract
+            if '\\section*{Introduction}\n' in s:            
+                l = ['\\textcolor{' + colors[k] + '}{'+k+'}' for k in colors.keys()]
+                fout.write('\tKey: '+ ', '.join(l)+'.\n')
+
 

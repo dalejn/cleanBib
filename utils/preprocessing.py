@@ -189,12 +189,13 @@ def get_duplicates(bib_data, filename):
             raise ValueError("Unable to successfully remove duplicates")
 
     if len(duplicates) > 0:
-        print("In your .bib file, we found and removed duplicate entries for the following entries:\n " +
+        print("\n In your .bib file, we found and removed duplicate entries for the following entries:\n " +
                       ' '.join(map(str, duplicates)) +
-              "\n If this is incorrect, please edit you .bib file to give unique identifiers for all unique references:")
+              "\n If this is incorrect, please edit your .bib file to give unique identifiers for all unique references. \n")
 
+    if len(duplicates) > 0:
         # write new data to file
-        new_bib = filename[:-4] + '_clean.bib'
+        new_bib = filename[:-4] + '_noDuplicates.bib'
         with open(new_bib, 'w') as bibtex_file:
             bibtexparser.dump(bib_data, bibtex_file)
 
@@ -312,6 +313,7 @@ def get_names(homedir, bib_data, yourFirstAuthor, yourLastAuthor, optionalEqualC
     for key in bib_data.entries.keys():
         diversity_bib_titles = ['The extent and drivers of gender imbalance in neuroscience reference lists',
                                 'The gender citation gap in international relations',
+                                'Gendered citation patterns in international relations journals',
                                 'Quantitative evaluation of gender bias in astronomical publications from citation counts',
                                 '\# CommunicationSoWhite',
                                 '{Just Ideas? The Status and Future of Publication Ethics in Philosophy: A White Paper}',
@@ -321,7 +323,9 @@ def get_names(homedir, bib_data, yourFirstAuthor, yourLastAuthor, optionalEqualC
                                 'Gender Diversity Statement and Code Notebook v1.1',
                                 'Gendered citation practices in the field of communication',
                                 'Gender disparity in citations in high- impact journal articles',
+                                'Gender Disparity in Citations in High-Impact Journal Articles',
                                 'Gender (im)balance in citation practices in cognitive neuroscience',
+                                'Gender (Im)balance in Citation Practices in Cognitive Neuroscience',
                                 'Name-ethnicity classification from open sources',
                                 'Predicting race and ethnicity from the sequence of characters in a name']
         if bib_data.entries[key].fields['title'] in diversity_bib_titles:
@@ -473,13 +477,16 @@ def self_cites(author, yourFirstAuthor, yourLastAuthor, optionalEqualContributor
 
 def bib_check(homedir):
     # Do a final check on the bibliography entries
+    authors_full_list = pd.read_csv(homedir + 'cleanedBib.csv')
+    skip_selfCites = list(authors_full_list.loc[authors_full_list['SelfCite'] == 'Y']['CitationKey'])
+
     with open(os.path.join(homedir, 'cleanedBib.csv')) as csvfile:
         names_csv = csv.reader(csvfile)
         names_db = []
         for row in names_csv:
             names_db.append(row)
 
-    incomplete_name_bib_keys, self_cite_bib_keys = [[], []]
+    incomplete_name_bib_keys = []
     authors_full_list = []
     for row in names_db[1:]:  # Skip the first row, it's just headers
         # Check that the authors' names have at least 2 characters and no periods
@@ -487,24 +494,18 @@ def bib_check(homedir):
         authors_full_list.append(first_author)  # For counting the number of query calls needed
         authors_full_list.append(last_author)
         if len(first_author) < 2 or len(last_author) < 2 or '.' in first_author + last_author:
-            incomplete_name_bib_keys.append(bib_key)
-        if self_cite == 'Y':
-            self_cite_bib_keys.append(bib_key)
-
-    if len(self_cite_bib_keys) > 0:
-        warning_message = "STOP: Please remove self-citations. Then, re-run step 2. "
-        warning_message += "Here are some suggestions to check for with the following citation keys in your .bib file: "
-        print(warning_message)
-        print(self_cite_bib_keys)
+            if bib_key not in skip_selfCites:
+                incomplete_name_bib_keys.append(bib_key)
 
     if len(incomplete_name_bib_keys) > 0:
-        warning_message = "STOP: Please revise incomplete full first names or empty cells. Then, re-run step 2. "
+        warning_message = "\n STOP: Please revise incomplete full first names or empty cells. Then, re-run step 2. "
         warning_message += "Here are some suggestions to check for with the following citation keys in your .bib file: "
         print(warning_message)
         print(incomplete_name_bib_keys)
 
-    final_warning_message = "Only continue if you've run steps 2,"
-    final_warning_message += " and this code no longer returns errors."
+    final_warning_message = "\n Only continue if you've run step 2,"
+    final_warning_message += " and this code no longer returns error or instructions to revise the .bib file."
+    print("\n")
     print(final_warning_message)
 
 
