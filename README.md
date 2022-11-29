@@ -42,24 +42,26 @@
 
 Motivated from work by:
 
- * J. D. Dworkin, K. A. Linn, E. G. Teich, P. Zurn, R. T. Shinohara, and D. S. Bassett (2020). The extent and drivers of gender imbalance in neuroscience reference lists. *Nature Neuroscience*. [doi: https://doi.org/10.1038/s41593-020-0658-y](https://doi.org/10.1038/s41593-020-0658-y)
+ * J. D. Dworkin, K. A. Linn, E. G. Teich, P. Zurn, R. T. Shinohara, and D. S. Bassett (2020). The extent and drivers of gender imbalance in neuroscience reference lists. [*Nature Neuroscience*.](https://doi.org/10.1038/s41593-020-0658-y)
 
- * M.A. Bertolero, J.D. Dworkin, S.U. David, C. López Lloreda, P. Srivastava, J. Stiso, D. Zhou, K. Dzirasa, D.A. Fair, A.N. Kaczkurkin, B.J. Marlin, D. Shohamy, L.Q. Uddin, P. Zurn, D.S. Bassett (2020). Racial and ethnic imbalance in neuroscience reference lists and intersections with gender. *bioRxiv*. [doi: https://doi.org/10.1101/2020.10.12.336230](https://www.biorxiv.org/content/10.1101/2020.10.12.336230v1)
+ * M.A. Bertolero, J.D. Dworkin, S.U. David, C. López Lloreda, P. Srivastava, J. Stiso, D. Zhou, K. Dzirasa, D.A. Fair, A.N. Kaczkurkin, B.J. Marlin, D. Shohamy, L.Q. Uddin, P. Zurn, D.S. Bassett (2020). Racial and ethnic imbalance in neuroscience reference lists and intersections with gender. [*bioRxiv*.](https://www.biorxiv.org/content/10.1101/2020.10.12.336230v1)
 
- * X. Wang, J.D. Dworkin, D. Zhou, J. Stiso, E.B. Falk, D.S. Bassett, P. Zurn, D.M. Lydon-Staley. Gendered citation practices in the field of communication. *Annals of the International Communication Association*. 2021 Jul 28:1-20. [doi: https://doi.org/10.1080/23808985.2021.1960180](https://www.tandfonline.com/doi/full/10.1080/23808985.2021.1960180)
+ * X. Wang, J.D. Dworkin, D. Zhou, J. Stiso, E.B. Falk, D.S. Bassett, P. Zurn, D.M. Lydon-Staley (2021). Gendered citation practices in the field of communication. [*Annals of the International Communication Association*.](https://www.tandfonline.com/doi/full/10.1080/23808985.2021.1960180)
 
 See also these Perspectives with actionable recommendations moving forward for scientists at all levels:
 
-* J. D. Dworkin, P. Zurn, and D. S. Bassett (2020). (In)citing Action to Realize an Equitable Future. *Neuron*. [doi: https://doi.org/10.1016/j.neuron.2020.05.011](https://doi.org/10.1016/j.neuron.2020.05.011)
-* P. Zurn, D.S. Bassett, and N.C. Rust (2020). "The Citation Diversity Statement: A Practice of Transparency, A Way of Life." *Trends in Cognitive Sciences* [doi: https://doi.org/10.1016/j.tics.2020.06.009](https://doi.org/10.1016/j.tics.2020.06.009)
+* J. D. Dworkin, P. Zurn, and D. S. Bassett (2020). (In)citing Action to Realize an Equitable Future. [*Neuron*.](https://doi.org/10.1016/j.neuron.2020.05.011)
+* P. Zurn, D.S. Bassett, and N.C. Rust (2020). The Citation Diversity Statement: A Practice of Transparency, A Way of Life. [*Trends in Cognitive Sciences*.](https://doi.org/10.1016/j.tics.2020.06.009)
 
 And editorials and research highlights of this work:  
-* A.L. Fairhall and E. Marder (2020). Acknowledging female voices. *Nature Neuroscience*. [doi: https://doi.org/10.1038/s41593-020-0667-x](https://www.nature.com/articles/s41593-020-0667-x)  
-* Widening the scope of diversity (2020). *Nature Neuroscience*. [doi: https://doi.org/10.1038/s41593-020-0670-2](https://www.nature.com/articles/s41593-020-0670-2)  
-* Z. Budrikis (2020). Growing citation gender gap. *Nature Reviews Physics*. [doi: https://doi.org/10.1038/s42254-020-0207-3](https://doi.org/10.1038/s42254-020-0207-3)
-* D. J. Sweet (2021). New at cell press: the inclusion and diversity statement. *Cell*, 184(1), 1-2. [doi: https://doi.org/10.1016/j.cell.2020.12.019](https://www.sciencedirect.com/science/article/pii/S0092867420316895?via%3Dihub)
-* B. Rowson, S.M. Duma, M.R. King, I. Efimov, A. Saterbak, and N.C. Chesler (2021). Citation diversity statement in BMES journals. *Annals of Biomedical Engineering*, 1-3. [doi: https://doi.org/10.1007/s10439-021-02739-6](https://link.springer.com/article/10.1007/s10439-021-02739-6)
-* D. Kwon (2022). The rise of citational justice: how scholars are making references fairer. *Nature*, 603(7902), 568-571. [doi: https://doi.org/10.1038/d41586-022-00793-1](https://www.nature.com/articles/d41586-022-00793-1)
+
+* A.L. Fairhall and E. Marder (2020). Acknowledging female voices. [*Nature Neuroscience*.](https://www.nature.com/articles/s41593-020-0667-x)  
+* Widening the scope of diversity (2020). [*Nature Neuroscience*. ](https://www.nature.com/articles/s41593-020-0670-2)  
+* Z. Budrikis (2020). Growing citation gender gap. [*Nature Reviews Physics*.](https://doi.org/10.1038/s42254-020-0207-3)
+* D. J. Sweet (2021). New at cell press: the inclusion and diversity statement. [*Cell*.](https://www.sciencedirect.com/science/article/pii/S0092867420316895?via%3Dihub)
+* B. Rowson, S.M. Duma, M.R. King, I. Efimov, A. Saterbak, and N.C. Chesler (2021). Citation diversity statement in BMES journals. [*Annals of Biomedical Engineering*.](https://link.springer.com/article/10.1007/s10439-021-02739-6)
+* D. Kwon (2022). The rise of citational justice: how scholars are making references fairer. [*Nature*.](https://www.nature.com/articles/d41586-022-00793-1)
+* C. Lopez Lloreda (2022). Women researchers are cited less than men. Here’s why—and what can be done about it. [*Science*.](https://www.science.org/content/article/women-researchers-cited-less-men-heres-why-what-can-done)
 
 For `.pdf` and `.tex` templates of the statement, see the `/diversityStatement` directory in this repository.
 
