@@ -354,6 +354,7 @@ ___
   * majority of code now call functions located in utils/
   * automate removal of identified duplicates and self-citations
   * query how many credits left and save some by only querying unique names (thanks, Kieran!)
+  * fix the broken optional latex coloring
   * fixes issue introduced by [protobuf upgrade](https://github.com/protocolbuffers/protobuf/issues/10051)
 
 * __9/14/2021__
