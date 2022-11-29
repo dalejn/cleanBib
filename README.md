@@ -334,9 +334,9 @@ ___
 * Christopher Camp
 * Eli Cornblath
 * Jordan Dworkin
-* Kieran Murphy
 * Jordan Matelsky
 * Cleanthis Michael
+* Kieran Murphy
 * Kendra Oudyk
 * Rebecca Saxe
 * Jeni Stiso
