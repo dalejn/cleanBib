@@ -38,7 +38,7 @@
 
 # Diversity Statement and Code Notebook
 
-[![DOI](https://zenodo.org/badge/232916183.svg)](https://zenodo.org/badge/latestdoi/232916183)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7375227.svg)](https://doi.org/10.5281/zenodo.7375227)
 
 Motivated from work by:
 
