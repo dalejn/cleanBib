@@ -395,21 +395,58 @@ def check_genderAPI_balance(genderAPI_key, homedir):
           ' credit(s) by storing queries.')
 
 
-def colorful_latex(paper_df, homedir, tex_file):
+def colorful_latex(paper_df, homedir, tex_file, bib_data):
     cite_gender = paper_df[1::2]
     cite_gender.GendCat = cite_gender.GendCat.str.replace('female', 'W', regex=False)
     cite_gender.GendCat = cite_gender.GendCat.str.replace('male', 'M', regex=False)
     cite_gender.GendCat = cite_gender.GendCat.str.replace('unknown', 'U', regex=False)
-    cite_gender.index = cite_gender.CitationKey
     cite_gender['Color'] = '' # what color to make each gender category
+
+    # add back in self-cites as UU
+    authors_full_list = pd.read_csv(homedir + 'cleanedBib.csv')
+    add_selfCites = list(authors_full_list.loc[authors_full_list['SelfCite'] == 'Y']['CitationKey'])
+    add_selfCites = pd.DataFrame(add_selfCites)
+    add_selfCites.columns =['CitationKey']
+    add_selfCites['GendCat'] = 'UU'
+    cite_gender = pd.concat([cite_gender,add_selfCites])
+
+    # # add back in diversity statement citations as UU
+    diversity_statement_entries = []
+    diversity_bib_titles = ['The extent and drivers of gender imbalance in neuroscience reference lists',
+                                'The gender citation gap in international relations',
+                                'Gendered citation patterns in international relations journals',
+                                'Quantitative evaluation of gender bias in astronomical publications from citation counts',
+                                '\# CommunicationSoWhite',
+                                '{Just Ideas? The Status and Future of Publication Ethics in Philosophy: A White Paper}',
+                                'Gendered citation patterns across political science and social science methodology fields',
+                                'Gender Diversity Statement and Code Notebook v1.0',
+                                'Racial and ethnic imbalance in neuroscience reference lists and intersections with gender',
+                                'Gender Diversity Statement and Code Notebook v1.1',
+                                'Gendered citation practices in the field of communication',
+                                'Gender disparity in citations in high- impact journal articles',
+                                'Gender Disparity in Citations in High-Impact Journal Articles',
+                                'Gender (im)balance in citation practices in cognitive neuroscience',
+                                'Gender (Im)balance in Citation Practices in Cognitive Neuroscience',
+                                'Name-ethnicity classification from open sources',
+                                'Predicting race and ethnicity from the sequence of characters in a name']
+    for paper in bib_data.entries:
+        if bib_data.entries[paper].fields['title'] in diversity_bib_titles:
+            diversity_statement_entries.append(paper)
+    add_selfCites = pd.DataFrame(diversity_statement_entries)
+    add_selfCites.columns =['CitationKey']
+    add_selfCites['GendCat'] = 'UU'
+    cite_gender = pd.concat([cite_gender,add_selfCites])
+
+    # color citations (self-citations and citation diversity statement entries set as black)
+    cite_gender.index = cite_gender.CitationKey
     colors = {'MM':'red','MW':'blue','WW':'green','WM':'magenta','UU':'black',
     'MU':'black','UM':'black','UW':'black','WU':'black'}
     for idx in cite_gender.index: # loop through each citation key and set color
         cite_gender.loc[idx,'Color'] = colors[cite_gender.loc[idx,'GendCat']]
 
-    fin = open(homedir+tex_file)
+    fin = open(tex_file)
     texdoc=fin.readlines()
-    with open(homedir+tex_file[:-4]+'_gendercolor.tex','w') as fout:
+    with open(tex_file[:-4]+'_gendercolor.tex','w') as fout:
         for i in range(len(texdoc)):
             s = texdoc[i]
             cite_instances = re.findall('\\\\cite\{.*?\}',s)
@@ -424,5 +461,6 @@ def colorful_latex(paper_df, homedir, tex_file):
             if '\\section*{Introduction}\n' in s:            
                 l = ['\\textcolor{' + colors[k] + '}{'+k+'}' for k in colors.keys()]
                 fout.write('\tKey: '+ ', '.join(l)+'.\n')
+
 
 
