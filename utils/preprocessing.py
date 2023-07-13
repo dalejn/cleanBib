@@ -381,23 +381,17 @@ def get_names(homedir, bib_data, yourFirstAuthor, yourLastAuthor, optionalEqualC
             doi = ''
 
         if FA == '' or len(FA.split('.')[0]) <= 1 or FA_initials_check == True:
-            while True:
                 try:
                     FA = namesFromXref(cr, doi, title, 'first')
                     used_xref = 'Y'
                 except (UnboundLocalError, KeyError):
                     sleep(1)
-                    continue
-                break
         if LA == '' or len(LA.split('.')[0]) <= 1 or LA_initials_check == True:
-            while True:
                 try:
                     LA = namesFromXref(cr, doi, title, 'last')
                     used_xref = 'Y'
                 except (UnboundLocalError, KeyError):
                     sleep(1)
-                    continue
-                break
 
         selfCite = self_cites(author, yourFirstAuthor,yourLastAuthor, optionalEqualContributors, FA, LA, counter, key)
         counter += 1
