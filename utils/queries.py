@@ -80,6 +80,7 @@ def get_pred_demos(authors, homedir, bibfile, gender_key, font='Palatino', metho
     # skip self-citations
     authors_full_list = pd.read_csv(homedir + 'cleanedBib.csv')
     skip_selfCites = list(authors_full_list.loc[authors_full_list['SelfCite'] == 'Y']['CitationKey'])
+    skip_xref = list(authors_full_list.loc[authors_full_list['UsedXref'] == 'Y']['CitationKey'])
     # skip citation diversity statement papers
     diversity_bib_titles = ['The extent and drivers of gender imbalance in neuroscience reference lists',
                             'The gender citation gap in international relations',
@@ -123,19 +124,24 @@ def get_pred_demos(authors, homedir, bibfile, gender_key, font='Palatino', metho
             gb = gender_base[year]
 
         fa = bibfile.entries[paper].persons['author'][0]
-        try:
-            fa_fname = fa.first_names[0]
-        except:
-            fa_fname = fa.last_names[0]  # for people like Plato
         fa_lname = fa.last_names[0]
-
         la = bibfile.entries[paper].persons['author'][-1]
-        try:
-            la_fname = la.first_names[0]
-        except:
-            la_fname = la.last_names[0]  # for people like Plato
         la_lname = la.last_names[0]
 
+        if paper in skip_xref:
+            fa_fname = authors_full_list.loc[authors_full_list['CitationKey'] == paper]['FA']
+            la_fname = authors_full_list.loc[authors_full_list['CitationKey'] == paper]['LA']
+        else:
+            try:
+                fa_fname = fa.first_names[0]
+            except:
+                fa_fname = fa.last_names[0]  # for people like Plato
+                
+            try:
+                la_fname = la.first_names[0]
+            except:
+                la_fname = la.last_names[0]  # for people like Plato
+        
 
         fa_fname = preprocessing.convertLatexSpecialChars(str(fa_fname.encode("ascii", errors="ignore").decode())).translate(
             str.maketrans('', '', re.sub('\-', '', string.punctuation))).replace('Protected', "").replace(" ", '')

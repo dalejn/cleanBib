@@ -308,9 +308,10 @@ def get_names(homedir, bib_data, yourFirstAuthor, yourLastAuthor, optionalEqualC
 
     with open(outPath, 'w', newline='') as csvfile:
         writer = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-        writer.writerow(['Article', 'FA', 'LA', 'Title', 'SelfCite', 'CitationKey'])
+        writer.writerow(['Article', 'FA', 'LA', 'Title', 'SelfCite', 'CitationKey', 'UsedXref'])
 
     for key in bib_data.entries.keys():
+        used_xref = 'N'
         diversity_bib_titles = ['The extent and drivers of gender imbalance in neuroscience reference lists',
                                 'The gender citation gap in international relations',
                                 'Gendered citation patterns in international relations journals',
@@ -361,16 +362,19 @@ def get_names(homedir, bib_data, yourFirstAuthor, yourLastAuthor, optionalEqualC
         try:
             title = bib_data.entries_dict[key].fields['title'].replace(',', '').\
                 replace(',', '').replace('{', '').replace('}','')
+            used_xref = 'Y'
         except:
             title = ''
         try:
             doi = bib_data.entries_dict[key].fields['doi']
+            used_xref = 'Y'
         except:
             doi = ''
         if FA == '' or len(FA.split('.')[0]) <= 1:
             while True:
                 try:
                     FA = namesFromXref(cr, doi, title, 'first')
+                    used_xref = 'Y'
                 except UnboundLocalError:
                     sleep(1)
                     continue
@@ -379,6 +383,7 @@ def get_names(homedir, bib_data, yourFirstAuthor, yourLastAuthor, optionalEqualC
             while True:
                 try:
                     LA = namesFromXref(cr, doi, title, 'last')
+                    used_xref = 'Y'
                 except UnboundLocalError:
                     sleep(1)
                     continue
@@ -389,7 +394,7 @@ def get_names(homedir, bib_data, yourFirstAuthor, yourLastAuthor, optionalEqualC
         with open(outPath, 'a', newline='') as csvfile:
             writer = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
             writer.writerow(
-                [counter, convertSpecialCharsToUTF8(FA), convertSpecialCharsToUTF8(LA), title, selfCite, key])
+                [counter, convertSpecialCharsToUTF8(FA), convertSpecialCharsToUTF8(LA), title, selfCite, key, used_xref])
 
 
 def self_cites(author, yourFirstAuthor, yourLastAuthor, optionalEqualContributors, FA, LA, counter, key):
