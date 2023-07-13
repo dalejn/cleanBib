@@ -10,6 +10,8 @@ import bibtexparser
 import string
 from queries import *
 import numpy as np
+from time import sleep
+
 
 def checkcites_output(aux_file):
     '''take in aux file for tex document, return list of citation keys
@@ -339,6 +341,16 @@ def get_names(homedir, bib_data, yourFirstAuthor, yourLastAuthor, optionalEqualC
 
         FA = author[0].rich_first_names
         LA = author[-1].rich_first_names
+
+        if '.' in str(FA):
+            FA_initials_check = True
+        else:
+            FA_initials_check = False
+        if '.' in str(LA):
+            LA_initials_check = True
+        else:
+            LA_initials_check = False
+
         FA = convertLatexSpecialChars(str(FA)[7:-3]).translate(str.maketrans('', '', string.punctuation)).replace(
             'Protected', "").replace(" ", '')
         LA = convertLatexSpecialChars(str(LA)[7:-3]).translate(str.maketrans('', '', string.punctuation)).replace(
@@ -360,31 +372,29 @@ def get_names(homedir, bib_data, yourFirstAuthor, yourLastAuthor, optionalEqualC
 
         # check that we got a name (not an initial) from the bib file, if not try using the title in the crossref API
         try:
-            title = bib_data.entries_dict[key].fields['title'].replace(',', '').\
-                replace(',', '').replace('{', '').replace('}','')
-            used_xref = 'Y'
+            title = bib_data.entries[key].fields['title'].replace(',', '').replace('{', '').replace('}','')
         except:
             title = ''
         try:
-            doi = bib_data.entries_dict[key].fields['doi']
-            used_xref = 'Y'
+            doi = bib_data.entries[key].fields['doi']
         except:
             doi = ''
-        if FA == '' or len(FA.split('.')[0]) <= 1:
+
+        if FA == '' or len(FA.split('.')[0]) <= 1 or FA_initials_check == True:
             while True:
                 try:
                     FA = namesFromXref(cr, doi, title, 'first')
                     used_xref = 'Y'
-                except UnboundLocalError:
+                except (UnboundLocalError, KeyError):
                     sleep(1)
                     continue
                 break
-        if LA == '' or len(LA.split('.')[0]) <= 1:
+        if LA == '' or len(LA.split('.')[0]) <= 1 or LA_initials_check == True:
             while True:
                 try:
                     LA = namesFromXref(cr, doi, title, 'last')
                     used_xref = 'Y'
-                except UnboundLocalError:
+                except (UnboundLocalError, KeyError):
                     sleep(1)
                     continue
                 break
@@ -495,7 +505,7 @@ def bib_check(homedir):
     authors_full_list = []
     for row in names_db[1:]:  # Skip the first row, it's just headers
         # Check that the authors' names have at least 2 characters and no periods
-        row_id, first_author, last_author, _, self_cite, bib_key = row
+        row_id, first_author, last_author, _, self_cite, bib_key, xref = row
         authors_full_list.append(first_author)  # For counting the number of query calls needed
         authors_full_list.append(last_author)
         if len(first_author) < 2 or len(last_author) < 2 or '.' in first_author + last_author:
