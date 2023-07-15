@@ -418,49 +418,52 @@ def self_cites(author, yourFirstAuthor, yourLastAuthor, optionalEqualContributor
             yourLastAuthor == 'LastName, FirstName OptionalMiddleInitial'):
         raise ValueError("Please enter your manuscript's first and last author names")
 
-    selfCiteCheck1 = [s for s in author if removeMiddleName(yourLastAuthor) in
+    # for last authors
+    selfCiteCheck1 = [s for s in author if removeMiddleName(yourLastAuthor).lower().strip() in
                       str(
                           [clean_name(s.rich_last_names, 'latex'),
                            clean_name(s.rich_first_names, 'latex')]
-                      ).replace("'", "")]
+                      ).replace("'", "").lower().strip()]
 
-    selfCiteCheck1a = [s for s in author if removeMiddleName(yourLastAuthor) in
+    selfCiteCheck1a = [s for s in author if removeMiddleName(yourLastAuthor).lower().strip() in
                       str(
                           [clean_name(s.rich_last_names, 'utf'),
                            clean_name(s.rich_first_names, 'utf')]
-                      ).replace("'", "")]
-    selfCiteCheck1b = [s for s in author if removeMiddleName(yourLastAuthor) in
+                      ).replace("'", "").lower().strip()]
+    selfCiteCheck1b = [s for s in author if removeMiddleName(yourLastAuthor).lower().strip() in
                        str(
                            [clean_name(s.rich_last_names, 'utf'),
-                            LA]).replace("'","")]
-    # I was in the process of cleaning all thisup when we stopped
-    selfCiteCheck2 = [s for s in author if removeMiddleName(yourFirstAuthor) in
-                      str([clean_name(s.rich_last_names, 'utf'),
-                           clean_name(s.rich_first_names, 'utf')]
-                      ).replace("'", "")]
-    selfCiteCheck2a = [s for s in author if removeMiddleName(yourFirstAuthor) in
+                            LA]).replace("'","").lower().strip()]
+
+    # for first authors
+    selfCiteCheck2 = [s for s in author if removeMiddleName(yourFirstAuthor).lower().strip() in
+                      str([clean_name(s.rich_last_names, 'latex'),
+                           clean_name(s.rich_first_names, 'latex')]
+                      ).replace("'", "").lower().strip()]
+    selfCiteCheck2a = [s for s in author if removeMiddleName(yourFirstAuthor).lower().strip() in
                        str(
                            [clean_name(s.rich_last_names, 'utf'),
                             clean_name(s.rich_first_names, 'utf')]
-                       ).replace("'", "")]
-    selfCiteCheck2b = [s for s in author if removeMiddleName(yourFirstAuthor) in
+                       ).replace("'", "").lower().strip()]
+    selfCiteCheck2b = [s for s in author if removeMiddleName(yourFirstAuthor).lower().strip() in
                        str(
                             [clean_name(s.rich_last_names, 'utf'),
-                            FA]).replace("'","")]
+                            FA]).replace("'","").lower().strip()]
 
+    # for optional equal contributors
     nameCount = 0
     if optionalEqualContributors != (
             'LastName, FirstName OptionalMiddleInitial', 'LastName, FirstName OptionalMiddleInitial'):
         for name in optionalEqualContributors:
-            selfCiteCheck3 = [s for s in author if removeMiddleName(name) in
+            selfCiteCheck3 = [s for s in author if removeMiddleName(name).lower().strip() in
                               str( [clean_name(s.rich_last_names, 'utf'),
                            clean_name(s.rich_first_names, 'utf')]
-                      ).replace("'", "")]
-            selfCiteCheck3a = [s for s in author if removeMiddleName(name) in
+                      ).replace("'", "").lower().strip()]
+            selfCiteCheck3a = [s for s in author if removeMiddleName(name).lower().strip() in
                                str(
                                    [clean_name(s.rich_last_names, 'utf'),
                                     clean_name(s.rich_first_names, 'utf')]
-                               ).replace("'", "")]
+                               ).replace("'", "").lower().strip()]
             if len(selfCiteCheck3) > 0:
                 nameCount += 1
             if len(selfCiteCheck3a) > 0:

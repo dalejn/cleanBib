@@ -348,6 +348,11 @@ ___
 * Dale Zhou
 
 # Changelog
+* __7/14/2023__
+  * fix cross-ref, add new column into cleanBib.csv
+  * add catch for leading or trailing spaces in self-citation check
+  * make self-citation check case insensitive
+
 * __11/28/2022__
   * major refactor (thanks, Jeni!)
   * removed SOS notebook
