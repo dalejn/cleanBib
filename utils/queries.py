@@ -129,8 +129,8 @@ def get_pred_demos(authors, homedir, bibfile, gender_key, font='Palatino', metho
         la_lname = la.last_names[0]
 
         if paper in skip_xref:
-            fa_fname = authors_full_list.loc[authors_full_list['CitationKey'] == paper]['FA']
-            la_fname = authors_full_list.loc[authors_full_list['CitationKey'] == paper]['LA']
+            fa_fname = authors_full_list.loc[authors_full_list['CitationKey'] == paper]['FA'].to_string()
+            la_fname = authors_full_list.loc[authors_full_list['CitationKey'] == paper]['LA'].to_string()
         else:
             try:
                 fa_fname = fa.first_names[0]
