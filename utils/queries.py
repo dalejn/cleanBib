@@ -374,13 +374,13 @@ def plot_histograms():
 
     # plot
     plt.figure()
-    sns.barplot(data=dat_for_plot, x='GendCat', y='count', order=np.flip(gend_cats))
+    sns.barplot(data=dat_for_plot, x='GendCat', y='count', order=np.flip(gend_cats), hue='GendCat')
     plt.xlabel('Predicted gender category')
     plt.ylabel('Number of papers')
     plt.tight_layout()
 
     plt.figure()
-    sns.barplot(data=dat_for_baserate_plot, x='GendCat', y='citation_rel_to_baserate', order=['WW','WM','MW','MM'])
+    sns.barplot(data=dat_for_baserate_plot, x='GendCat', y='citation_rel_to_baserate', order=['WW','WM','MW','MM'], hue='GendCat')
     plt.xlabel('Predicted gender category')
     plt.ylabel('% of citations relative to benchmarks')
     plt.tight_layout()
