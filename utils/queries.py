@@ -412,7 +412,10 @@ def colorful_latex(paper_df, homedir, tex_file, bib_data):
     authors_full_list = pd.read_csv(homedir + 'cleanedBib.csv')
     add_selfCites = list(authors_full_list.loc[authors_full_list['SelfCite'] == 'Y']['CitationKey'])
     add_selfCites = pd.DataFrame(add_selfCites)
-    add_selfCites.columns =['CitationKey']
+    try:
+        add_selfCites.columns = ['CitationKey']
+    except:
+        add_selfCites['CitationKey'] = ''
     add_selfCites['GendCat'] = 'UU'
     cite_gender = pd.concat([cite_gender,add_selfCites])
 
@@ -439,7 +442,10 @@ def colorful_latex(paper_df, homedir, tex_file, bib_data):
         if bib_data.entries[paper].fields['title'] in diversity_bib_titles:
             diversity_statement_entries.append(paper)
     add_selfCites = pd.DataFrame(diversity_statement_entries)
-    add_selfCites.columns =['CitationKey']
+    try:
+        add_selfCites.columns = ['CitationKey']
+    except:
+        add_selfCites['CitationKey'] = ''
     add_selfCites['GendCat'] = 'UU'
     cite_gender = pd.concat([cite_gender,add_selfCites])
 
@@ -467,6 +473,3 @@ def colorful_latex(paper_df, homedir, tex_file, bib_data):
             if '\\section*{Introduction}\n' in s:            
                 l = ['\\textcolor{' + colors[k] + '}{'+k+'}' for k in colors.keys()]
                 fout.write('\tKey: '+ ', '.join(l)+'.\n')
-
-
-
