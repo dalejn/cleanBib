@@ -121,9 +121,9 @@ ___
 
 2. Launch the coding environment. Please refresh the page if the Binder does not load after 5-10 mins.
 
-    __Option 1 (recommended)__: Visit https://notebooks.gesis.org/binder/, paste https://github.com/dalejn/cleanBib into the GitHub repository name or URL field, and press "launch."
+    __Option 1 (recommended)__: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dalejn/cleanBib/HEAD?urlpath=/tree/)
 
-    __Option 2 (experiencing intermittent server issues)__: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dalejn/cleanBib/HEAD?urlpath=/tree/)
+    __Option 2__: Visit https://notebooks.gesis.org/binder/, paste https://github.com/dalejn/cleanBib into the GitHub repository name or URL field, and press "launch."
 
 3. Open the notebook `cleanBib.ipynb`. Follow the instructions above each code block. It can take 10 minutes to 1 hour complete all of the instructions, depending on the state and size of your `.bib` file. We expect that the most time-consuming step will be manually modifying the `.bib` file to find missing author names, fill incomplete entries, and fix formatting errors. These problems arise because automated methods of reference mangagers and Google Scholar sometimes can not retrieve full information, for example if some journals only provide an author's first initial instead of their full first name.
 
@@ -278,6 +278,8 @@ ___
 
 * [Addressing the Gender Gap in Research: Insights from a Women in Neuroscience Conference](https://www.sciencedirect.com/science/article/pii/S0166223621000709)
 
+* [Gender (im)balance in citation practices in cognitive neuroscience](https://doi.org/10.1162/jocn_a_01643).
+
 ## Journal Guidelines
 
 * [Cell Press inclusion and diversity statement FAQ](https://www.cell.com/inclusion-diversity-statement-faqs)
@@ -354,6 +356,10 @@ ___
 * Dale Zhou
 
 # Changelog
+* __09/12/2024__
+  * fix automatic removal of unused cites when using optional .aux file
+  * fix parsing through .aux files if there are more than 1
+
 * __7/14/2023__
   * fix cross-ref, add new column into cleanBib.csv
   * add catch for leading or trailing spaces in self-citation check

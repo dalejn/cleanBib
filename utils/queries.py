@@ -55,9 +55,8 @@ def get_gender_base(homedir):
     return gender_base
 
 
-def get_pred_demos(authors, homedir, bibfile, gender_key, font='Palatino', method='florida'):
+def get_pred_demos(authors, homedir, bibfile, gender_key, unused_keys=None, font='Palatino', method='florida'):
     """
-
     :param authors:
     :return:
     """
@@ -111,6 +110,9 @@ def get_pred_demos(authors, homedir, bibfile, gender_key, font='Palatino', metho
             continue
         if bibfile.entries[paper].fields['title'] in diversity_bib_titles:
             continue
+        if unused_keys:
+            if paper in unused_keys:
+                continue
         if 'author' not in bibfile.entries[paper].persons.keys():
             continue  # some editorials have no authors
         if 'year' not in bibfile.entries[paper].fields.keys():
@@ -243,6 +245,7 @@ def get_pred_demos(authors, homedir, bibfile, gender_key, font='Palatino', metho
     WW, aw, wa, aa = np.mean(race, axis=0) * 100
 
     return mm, wm, mw, ww, WW, aw, wa, aa, citation_matrix, paper_df
+
 
 def gen_api_query(gender_key, name, gb):
     url = "https://gender-api.com/get?key=" + gender_key + "&name=%s" % (quote(name))
